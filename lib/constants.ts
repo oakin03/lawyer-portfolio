@@ -11,6 +11,8 @@ export const ATTORNEY = {
   photo: "/images/attorney-photo.jpg",
   heroImage: "/images/hero-background.jpg",
   address: "Atatürk Bulvarı No: 123, Çankaya / Ankara",
+  phone: "+90 500 000 00 00",
+  barNumber: "Ankara Barosu - 12345",
 };
 
 export const NAV_LINKS = [
@@ -37,6 +39,7 @@ export const SOCIAL_LINKS = {
   instagram: "https://instagram.com/eithan03",
   linkedin: "https://linkedin.com/in/burkay-orkun-akin",
   email: "oakin03@gmail.com",
+  whatsapp: "https://wa.me/905000000000",
 };
 
 export const PRACTICE_AREAS = [
