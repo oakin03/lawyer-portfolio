@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Scale } from "lucide-react";
 import { ATTORNEY, NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
@@ -11,8 +11,9 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-neutral-900">
-          {ATTORNEY.name}
+        <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-neutral-900">
+          <Scale size={22} className="text-burgundy" />
+          {ATTORNEY.office}
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -20,9 +21,10 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-burgundy"
+                className="group relative inline-block text-sm text-neutral-600 transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px]"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
               </Link>
             </li>
           ))}

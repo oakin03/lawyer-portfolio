@@ -1,7 +1,12 @@
 // Instagram and LinkedIn icons — no longer provided by lucide-react v1 (brand icons removed),
 // so we ship minimal custom SVGs matching lucide's stroke style.
 
-export function InstagramIcon({ size = 22 }: { size?: number }) {
+type IconProps = {
+  size?: number;
+  className?: string;
+};
+
+export function InstagramIcon({ size = 22, className }: IconProps) {
   return (
     <svg
       width={size}
@@ -12,6 +17,7 @@ export function InstagramIcon({ size = 22 }: { size?: number }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
     >
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
@@ -20,7 +26,7 @@ export function InstagramIcon({ size = 22 }: { size?: number }) {
   );
 }
 
-export function LinkedinIcon({ size = 22 }: { size?: number }) {
+export function LinkedinIcon({ size = 22, className }: IconProps) {
   return (
     <svg
       width={size}
@@ -31,6 +37,7 @@ export function LinkedinIcon({ size = 22 }: { size?: number }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      className={className}
     >
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
       <rect x="2" y="9" width="4" height="12" />
