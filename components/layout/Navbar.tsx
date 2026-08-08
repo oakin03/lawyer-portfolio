@@ -23,7 +23,7 @@ export default function Navbar() {
         isScrolled ? "border-b border-neutral-200 bg-cream/95 backdrop-blur" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           href="/"
           className={`flex items-center gap-2 text-lg font-semibold tracking-tight transition-colors duration-300 ${

@@ -15,7 +15,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-gradient-to-t from-cream-light via-black/30 to-black/50" />
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl px-4 pb-60 lg:px-8">
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl items-end gap-5 px-6 pb-16 lg:px-8">
         <blockquote className="max-w-md">
           <p className="text-xl italic leading-relaxed text-white sm:text-2xl">
             &ldquo;Adalet gecikirse, adaletsizlik olur.&rdquo;

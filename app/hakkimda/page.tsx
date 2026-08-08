@@ -27,7 +27,7 @@ export default function HakkimdaPage() {
       </section>
 
       <section className="bg-cream-light py-20">
-        <div className="mx-auto flex max-w-4xl flex-col gap-20 px-4">
+        <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4">
           <AboutSection {...ABOUT_SECTIONS[0]} imagePosition="right" />
 
           <ZigzagRow image="/images/about-2.jpg" imageAlt="Eğitim ve Deneyim" imagePosition="left">

@@ -7,7 +7,7 @@ import { ATTORNEY, FOOTER_LINKS_PERSONAL, FOOTER_LINKS_CONTENT, SOCIAL_LINKS } f
 export default function Footer() {
   return (
     <footer className="border-t border-neutral-200 bg-cream py-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
 
         {/* Brand */}
         <div className="max-w-sm">
@@ -91,7 +91,7 @@ export default function Footer() {
                 className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]"
               />
             </a>
-            
+
             <a
               href={`mailto:${SOCIAL_LINKS.email}`}
               aria-label="Send email"
@@ -136,7 +136,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="mx-auto mt-8 max-w-6xl border-t border-neutral-200 px-4 pt-4">
+      <div className="mx-auto mt-8 max-w-7xl border-t border-neutral-200 px-4 pt-4">
         <p className="text-right text-sm italic text-neutral-500">
           {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. Tüm hakları saklıdır.
         </p>

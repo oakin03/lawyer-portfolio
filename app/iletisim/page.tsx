@@ -38,7 +38,7 @@ export default function IletisimPage() {
     </section>
 
         <section className="bg-cream-light py-20">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:items-center">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 md:grid-cols-2 md:items-center">
             <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-8 shadow-sm">
             <ContactForm />
             </div>

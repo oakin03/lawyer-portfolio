@@ -4,7 +4,7 @@ import { PRACTICE_AREAS } from "@/lib/constants";
 export default function PracticeAreas() {
   return (
     <section className="bg-cream-light py-20">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900 sm:text-3xl">
           Faaliyet Alanlarımız
         </h2>

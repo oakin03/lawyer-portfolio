@@ -5,7 +5,7 @@ import { ATTORNEY } from "@/lib/constants";
 export default function AboutPreview() {
   return (
     <section className="bg-cream-light py-20">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 text-center sm:flex-row sm:items-start sm:text-left">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-10 px-4 text-center sm:flex-row sm:items-start sm:text-left">
         <div className="relative h-72 w-56 flex-shrink-0 overflow-hidden rounded-lg border-2 border-burgundy/30 shadow-md sm:h-80 sm:w-64">
           <Image
             src={ATTORNEY.photo}
@@ -16,7 +16,7 @@ export default function AboutPreview() {
           />
         </div>
 
-        <div>
+        <div className="max-w-xl">
           <h2 className="text-2xl font-semibold text-neutral-900">{ATTORNEY.name}</h2>
           <p className="mt-3 leading-relaxed text-neutral-600">{ATTORNEY.aboutPreview}</p>
           <Link
