@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
 import { ATTORNEY } from "@/lib/constants";
 
 export default function LocationMap() {
+  const t = useTranslations("contact.info");
   const query = encodeURIComponent(ATTORNEY.address);
 
   return (
@@ -8,7 +10,7 @@ export default function LocationMap() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="h-[550px] w-full overflow-hidden rounded-lg">
           <iframe
-            title="Ofis konumu"
+            title={t("mapTitle")}
             src={`https://www.google.com/maps?q=${query}&output=embed`}
             width="100%"
             height="100%"

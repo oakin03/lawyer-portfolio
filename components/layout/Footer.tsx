@@ -1,13 +1,28 @@
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/lib/navigation";
 import { Mail, MapPin } from "lucide-react";
 import { InstagramIcon, LinkedinIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
-import { ATTORNEY, FOOTER_LINKS_PERSONAL, FOOTER_LINKS_CONTENT, SOCIAL_LINKS } from "@/lib/constants";
+import { ATTORNEY, SOCIAL_LINKS } from "@/lib/constants";
 
 export default function Footer() {
+  const tNav = useTranslations("nav");
+  const tFooter = useTranslations("footer");
+
+  const corporateLinks = [
+    { label: tNav("home"), href: "/" },
+    { label: tNav("about"), href: "/hakkimda" },
+    { label: tNav("contact"), href: "/iletisim" },
+  ];
+
+  const serviceLinks = [
+    { label: tNav("practiceAreas"), href: "/uzmanlik-alanlari" },
+    { label: tNav("publications"), href: "/yayinlar" },
+  ];
+
   return (
     <footer className="border-t border-neutral-200 bg-cream py-10">
-      <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
+      <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
 
         {/* Brand */}
         <div className="max-w-sm">
@@ -17,13 +32,11 @@ export default function Footer() {
             </div>
             <div>
               <h2 className="text-xl font-bold text-neutral-900">{ATTORNEY.name}</h2>
-              <p className="text-sm text-neutral-500">{ATTORNEY.title}</p>
+              <p className="text-sm text-neutral-500">{tFooter("title")}</p>
             </div>
           </div>
 
-          <p className="mt-4 text-neutral-600">
-            Hukuki süreçlerinizde güvenilir, şeffaf ve kişiye özel bir çözüm ortağı.
-          </p>
+          <p className="mt-4 text-neutral-600">{tFooter("tagline")}</p>
 
           <div className="mt-4 flex items-start gap-2 text-sm text-neutral-500">
             <MapPin size={16} className="mt-0.5 flex-shrink-0" />
@@ -34,15 +47,17 @@ export default function Footer() {
             href="/iletisim"
             className="mt-6 inline-block rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
           >
-            Randevu Al
+            {tFooter("cta")}
           </Link>
         </div>
 
-        {/* Kurumsal */}
+        {/* Kurumsal / Corporate */}
         <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">Kurumsal</h3>
+          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+            {tFooter("corporate")}
+          </h3>
           <ul className="mt-4 space-y-3">
-            {FOOTER_LINKS_PERSONAL.map((link) => (
+            {corporateLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -56,11 +71,13 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Hizmetlerimiz */}
+        {/* Hizmetlerimiz / Services */}
         <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">Hizmetlerimiz</h3>
+          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+            {tFooter("services")}
+          </h3>
           <ul className="mt-4 space-y-3">
-            {FOOTER_LINKS_CONTENT.map((link) => (
+            {serviceLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -74,9 +91,11 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Takip Et */}
+        {/* Takip Et / Follow */}
         <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">Takip Et</h3>
+          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+            {tFooter("follow")}
+          </h3>
           <div className="mt-4 grid grid-cols-2 gap-3">
             <a
               href={SOCIAL_LINKS.instagram}
@@ -86,10 +105,7 @@ export default function Footer() {
               className="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-300 bg-white"
             >
               <span className="absolute inset-0 top-full bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#515BD4] transition-[top] duration-500 group-hover:top-0" />
-              <InstagramIcon
-                size={24}
-                className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]"
-              />
+              <InstagramIcon size={24} className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]" />
             </a>
 
             <a
@@ -98,10 +114,7 @@ export default function Footer() {
               className="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-300 bg-white"
             >
               <span className="absolute inset-0 top-full bg-[#EA4335] transition-[top] duration-500 group-hover:top-0" />
-              <Mail
-                size={24}
-                className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]"
-              />
+              <Mail size={24} className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]" />
             </a>
 
             <a
@@ -112,10 +125,7 @@ export default function Footer() {
               className="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-300 bg-white"
             >
               <span className="absolute inset-0 top-full bg-[#0A66C2] transition-[top] duration-500 group-hover:top-0" />
-              <LinkedinIcon
-                size={24}
-                className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]"
-              />
+              <LinkedinIcon size={24} className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]" />
             </a>
 
             <a
@@ -126,19 +136,16 @@ export default function Footer() {
               className="group relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border-2 border-neutral-300 bg-white"
             >
               <span className="absolute inset-0 top-full bg-[#25D366] transition-[top] duration-500 group-hover:top-0" />
-              <WhatsAppIcon
-                size={24}
-                className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]"
-              />
+              <WhatsAppIcon size={24} className="relative z-10 text-neutral-600 transition-all duration-500 group-hover:text-white group-hover:[transform:rotateY(360deg)]" />
             </a>
           </div>
         </div>
 
       </div>
 
-      <div className="mx-auto mt-8 max-w-7xl border-t border-neutral-200 px-4 pt-4">
+      <div className="mx-auto mt-8 max-w-[1400px] border-t border-neutral-200 px-4 pt-4">
         <p className="text-right text-sm italic text-neutral-500">
-          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. Tüm hakları saklıdır.
+          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. {tFooter("rights")}
         </p>
       </div>
     </footer>

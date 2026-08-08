@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname } from "@/lib/navigation";
 import { Menu, X, Scale } from "lucide-react";
-import { ATTORNEY, NAV_LINKS } from "@/lib/constants";
+import { ATTORNEY } from "@/lib/constants";
 
 export default function Navbar() {
+  const t = useTranslations("nav");
+  const locale = useLocale();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -16,6 +20,16 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    { label: t("home"), href: "/" },
+    { label: t("about"), href: "/hakkimda" },
+    { label: t("practiceAreas"), href: "/uzmanlik-alanlari" },
+    { label: t("publications"), href: "/yayinlar" },
+    { label: t("contact"), href: "/iletisim" },
+  ];
+
+  const inactiveText = isScrolled ? "text-neutral-500 hover:text-neutral-800" : "text-neutral-300 hover:text-white";
 
   return (
     <header
@@ -30,12 +44,12 @@ export default function Navbar() {
             isScrolled ? "text-neutral-900" : "text-white"
           }`}
         >
-          <Scale size={22} className="text-burgundy" />
+          <Scale size={22} className={`transition-colors duration-300 ${isScrolled ? "text-burgundy" : "text-white"}`} />
           {ATTORNEY.office}
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
@@ -50,18 +64,45 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <Link
-          href="/iletisim"
-          className="hidden rounded-md bg-burgundy px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark md:inline-block"
-        >
-          Randevu Al
-        </Link>
+        <div className="flex items-center gap-4 md:flex">
+          {/* Language switcher — compact inline, color follows scroll state like nav links */}
+          <div className="flex items-center gap-2 text-sm font-bold">
+            <Link
+              href={pathname}
+              locale="tr"
+              className={`flex items-center gap-1.5 transition-colors ${
+                isScrolled ? "text-neutral-800 hover:text-burgundy" : "text-white hover:text-neutral-200"
+              }`}
+            >
+              <img src="https://flagcdn.com/24x18/tr.png" alt="Türkçe" className="h-[14px] w-5 rounded-sm object-cover" />
+              TR
+            </Link>
+            <span className={isScrolled ? "text-neutral-300" : "text-white/40"}>/</span>
+            <Link
+              href={pathname}
+              locale="en"
+              className={`flex items-center gap-1.5 transition-colors ${
+                isScrolled ? "text-neutral-800 hover:text-burgundy" : "text-white hover:text-neutral-200"
+              }`}
+            >
+              <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[14px] w-5 rounded-sm object-cover" />
+              EN
+            </Link>
+          </div>
+
+          <Link
+            href="/iletisim"
+            className="rounded-md bg-burgundy px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
+          >
+            {t("cta")}
+          </Link>
+        </div>
 
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
           className={`md:hidden ${isScrolled ? "text-neutral-900" : "text-white"}`}
-          aria-label="Menüyü aç/kapat"
+          aria-label="Menu"
           aria-expanded={isOpen}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,7 +112,7 @@ export default function Navbar() {
       {isOpen && (
         <div className="border-t border-neutral-200 bg-cream md:hidden">
           <ul className="flex flex-col gap-1 px-4 py-4">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -82,13 +123,34 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            <li className="pt-2">
+
+            <li className="flex items-center gap-5 px-3 pt-2">
+              <Link
+                href={pathname}
+                locale="tr"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-base font-bold text-neutral-900"
+              >
+                <img src="https://flagcdn.com/24x18/tr.png" alt="Türkçe" className="h-[18px] w-6 rounded-sm object-cover" />
+                TR
+              </Link>
+              <Link
+                href={pathname}
+                locale="en"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-base font-bold text-neutral-900"
+              >
+                <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[18px] w-6 rounded-sm object-cover" />
+                EN
+              </Link>
+            </li>
+            <li>
               <Link
                 href="/iletisim"
                 onClick={() => setIsOpen(false)}
                 className="block rounded-md bg-burgundy px-3 py-2 text-center text-sm font-semibold text-white hover:bg-burgundy-dark"
               >
-                Randevu Al
+                {t("cta")}
               </Link>
             </li>
           </ul>

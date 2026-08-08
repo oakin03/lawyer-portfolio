@@ -43,29 +43,19 @@ export const SOCIAL_LINKS = {
 };
 
 export const PRACTICE_AREAS = [
-  { title: "Ceza Hukuku", image: "/images/practice-areas/ceza-hukuku.jpg" },
-  { title: "Aile Hukuku", image: "/images/practice-areas/aile-hukuku.jpg" },
-  { title: "İcra ve İflas Hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
-  { title: "İş Hukuku", image: "/images/practice-areas/is-hukuku.jpg" },
-  { title: "Ticaret Hukuku", image: "/images/practice-areas/ticaret-hukuku.jpg" },
-  { title: "Gayrimenkul Hukuku", image: "/images/practice-areas/gayrimenkul-hukuku.jpg" },
-  { title: "Miras Hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
-  { title: "Sözleşmeler Hukuku", image: "/images/practice-areas/sozlesmeler-hukuku.jpg" },
+  { slug: "ceza-hukuku", image: "/images/practice-areas/ceza-hukuku.jpg" },
+  { slug: "aile-hukuku", image: "/images/practice-areas/aile-hukuku.jpg" },
+  { slug: "icra-iflas-hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
+  { slug: "is-hukuku", image: "/images/practice-areas/is-hukuku.jpg" },
+  { slug: "ticaret-hukuku", image: "/images/practice-areas/ticaret-hukuku.jpg" },
+  { slug: "gayrimenkul-hukuku", image: "/images/practice-areas/gayrimenkul-hukuku.jpg" },
+  { slug: "miras-hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
+  { slug: "sozlesmeler-hukuku", image: "/images/practice-areas/sozlesmeler-hukuku.jpg" },
 ];
 
 export const ABOUT_SECTIONS = [
-  {
-    title: "Kim Olduğum",
-    text: ATTORNEY.aboutPreview,
-    image: "/images/about-1.jpg",
-    imagePosition: "left" as const,
-  },
-  {
-    title: "Çalışma Prensiplerim",
-    text: "Her müvekkilimle açık ve dürüst bir iletişim kurmayı önemsiyorum. Hukuki süreçleri anlaşılır bir dilde aktarmak, beklentileri net bir şekilde yönetmek ve her aşamada ulaşılabilir olmak temel prensiplerim arasında. Amacım sadece bir dava kazanmak değil, müvekkillerimin bu süreci güvenle atlatmasını sağlamak.",
-    image: "/images/about-3.jpg",
-    imagePosition: "right" as const,
-  },
+  { key: "whoIAm", image: "/images/about-1.jpg" },
+  { key: "principles", image: "/images/about-3.jpg" },
 ];
 
 export const EXPERIENCE_TIMELINE = [
