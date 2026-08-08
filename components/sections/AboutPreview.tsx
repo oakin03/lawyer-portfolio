@@ -4,15 +4,15 @@ import { ATTORNEY } from "@/lib/constants";
 
 export default function AboutPreview() {
   return (
-    <section className="bg-white py-20">
-      <div className="mx-auto flex max-w-4xl flex-col items-center gap-8 px-4 text-center sm:flex-row sm:text-left">
-        <div className="relative h-40 w-40 flex-shrink-0 overflow-hidden rounded-full border-2 border-burgundy/30 sm:h-48 sm:w-48">
+    <section className="bg-cream-light py-20">
+      <div className="mx-auto flex max-w-4xl flex-col items-center gap-10 px-4 text-center sm:flex-row sm:items-start sm:text-left">
+        <div className="relative h-72 w-56 flex-shrink-0 overflow-hidden rounded-lg border-2 border-burgundy/30 shadow-md sm:h-80 sm:w-64">
           <Image
             src={ATTORNEY.photo}
             alt={`${ATTORNEY.name} portresi`}
             fill
             className="object-cover"
-            sizes="192px"
+            sizes="(max-width: 640px) 224px, 256px"
           />
         </div>
 

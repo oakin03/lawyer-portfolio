@@ -1,18 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Menu, X, Scale } from "lucide-react";
 import { ATTORNEY, NAV_LINKS } from "@/lib/constants";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setIsScrolled(window.scrollY > 20);
+    }
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-neutral-800 bg-neutral-900/95 backdrop-blur supports-[backdrop-filter]:bg-neutral-900/80">
+    <header
+      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+        isScrolled ? "border-b border-neutral-200 bg-cream/95 backdrop-blur" : "bg-transparent"
+      }`}
+    >
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-white">
-          <Scale size={22} className="text-burgundy-light" />
+        <Link
+          href="/"
+          className={`flex items-center gap-2 text-lg font-semibold tracking-tight transition-colors duration-300 ${
+            isScrolled ? "text-neutral-900" : "text-white"
+          }`}
+        >
+          <Scale size={22} className="text-burgundy" />
           {ATTORNEY.office}
         </Link>
 
@@ -21,10 +39,12 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="group relative inline-block text-sm text-neutral-300 transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy-light hover:[-webkit-text-stroke-width:0.6px]"
+                className={`group relative inline-block text-sm transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px] ${
+                  isScrolled ? "text-neutral-700" : "text-neutral-100"
+                }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy-light transition-all duration-500 ease-out group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
               </Link>
             </li>
           ))}
@@ -40,7 +60,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="text-neutral-300 md:hidden"
+          className={`md:hidden ${isScrolled ? "text-neutral-900" : "text-white"}`}
           aria-label="Menüyü aç/kapat"
           aria-expanded={isOpen}
         >
@@ -49,14 +69,14 @@ export default function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="border-t border-neutral-800 bg-neutral-900 md:hidden">
+        <div className="border-t border-neutral-200 bg-cream md:hidden">
           <ul className="flex flex-col gap-1 px-4 py-4">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-300 transition-colors hover:bg-neutral-800 hover:text-burgundy-light"
+                  className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-burgundy"
                 >
                   {link.label}
                 </Link>

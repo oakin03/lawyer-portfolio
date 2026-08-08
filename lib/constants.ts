@@ -52,3 +52,41 @@ export const PRACTICE_AREAS = [
   { title: "Miras Hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
   { title: "Sözleşmeler Hukuku", image: "/images/practice-areas/sozlesmeler-hukuku.jpg" },
 ];
+
+export const ABOUT_SECTIONS = [
+  {
+    title: "Kim Olduğum",
+    text: ATTORNEY.aboutPreview,
+    image: "/images/about-1.jpg",
+    imagePosition: "left" as const,
+  },
+  {
+    title: "Çalışma Prensiplerim",
+    text: "Her müvekkilimle açık ve dürüst bir iletişim kurmayı önemsiyorum. Hukuki süreçleri anlaşılır bir dilde aktarmak, beklentileri net bir şekilde yönetmek ve her aşamada ulaşılabilir olmak temel prensiplerim arasında. Amacım sadece bir dava kazanmak değil, müvekkillerimin bu süreci güvenle atlatmasını sağlamak.",
+    image: "/images/about-3.jpg",
+    imagePosition: "right" as const,
+  },
+];
+
+export const EXPERIENCE_TIMELINE = [
+  {
+    year: "2016",
+    title: "Ankara Üniversitesi Hukuk Fakültesi",
+    description: "Hukuk eğitimimi tamamlayarak lisans derecemi aldım.",
+  },
+  {
+    year: "2017",
+    title: "Ankara Barosu — Avukatlık Stajı",
+    description: "Farklı hukuk bürolarında staj yaparak mesleki deneyimimin temellerini attım.",
+  },
+  {
+    year: "2018",
+    title: "Bağımsız Avukatlık",
+    description: "Kendi büromu kurarak bireysel ve kurumsal müvekkillere hizmet vermeye başladım.",
+  },
+  {
+    year: "2023",
+    title: "Uzmanlaşma",
+    description: "Ceza ve Aile Hukuku alanlarında yoğunlaşarak uzmanlığımı derinleştirdim.",
+  },
+];
