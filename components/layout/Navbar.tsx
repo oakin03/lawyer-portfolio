@@ -64,7 +64,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-4 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           {/* Language switcher — compact inline, color follows scroll state like nav links */}
           <div className="flex items-center gap-2 text-sm font-bold">
             <Link
