@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/lib/navigation";
-import { Menu, X, Scale } from "lucide-react";
 import { ATTORNEY } from "@/lib/constants";
 
 export default function Navbar() {
@@ -38,14 +39,37 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link
-          href="/"
-          className={`flex items-center gap-2 text-lg font-semibold tracking-tight transition-colors duration-300 ${
-            isScrolled ? "text-neutral-900" : "text-white"
-          }`}
-        >
-          <Scale size={22} className={`transition-colors duration-300 ${isScrolled ? "text-burgundy" : "text-white"}`} />
-          {ATTORNEY.office}
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src={isScrolled ? "/images/logo-black.png" : "/images/logo-white.png"}
+            alt="Büşra Nur Karakoç — Avukat & Arabulucu"
+            width={48}
+            height={48}
+            priority
+            className="h-11 w-11 transition-opacity duration-300"
+          />
+
+          <div
+            className={`flex flex-col items-center transition-colors duration-300 ${
+              isScrolled ? "text-neutral-900" : "text-white"
+            }`}
+          >
+            <div className="flex items-center gap-1.5">
+              <span className="h-px w-5 bg-current opacity-60" />
+              <span className="h-1 w-1 rotate-45 bg-current" />
+              <span className="h-px w-5 bg-current opacity-60" />
+            </div>
+
+            <span className="font-serif text-base tracking-wide whitespace-nowrap">
+              {ATTORNEY.name}
+            </span>
+
+            <div className="flex items-center gap-1.5">
+              <span className="h-px w-5 bg-current opacity-60" />
+              <span className="h-1 w-1 rotate-45 bg-current" />
+              <span className="h-px w-5 bg-current opacity-60" />
+            </div>
+          </div>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">

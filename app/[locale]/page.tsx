@@ -14,7 +14,6 @@ export default function Home() {
       <AboutPreview />
       <SectionDivider />
       <PracticeAreas />
-      <SectionDivider />
       <Footer />
     </main>
   );

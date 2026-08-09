@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import PageBanner from "@/components/sections/PageBanner";
 import { getTranslations } from "next-intl/server";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PracticeAreasGrid from "@/components/sections/PracticeAreasGrid";
 import PracticeAreaDetails from "@/components/sections/PracticeAreaDetails";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { ATTORNEY } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,13 +24,7 @@ export default async function UzmanlikAlanlariPage() {
     <main>
       <Navbar />
 
-      <section className="relative flex h-80 w-full items-center justify-center overflow-hidden sm:h-[420px]">
-        <div className="absolute inset-0 bg-[#2a1f1a]" />
-        <div className="relative z-10 text-center">
-          <h1 className="text-3xl font-bold text-white sm:text-4xl">{t("title")}</h1>
-          <p className="mt-3 text-neutral-200">{t("subtitle")}</p>
-        </div>
-      </section>
+      <PageBanner image="/images/practice-areas-banner.jpg" title={t("title")} subtitle={t("subtitle")} />
 
       <section className="bg-cream-light py-20">
         <div className="mx-auto max-w-7xl px-4">
@@ -35,7 +32,9 @@ export default async function UzmanlikAlanlariPage() {
         </div>
       </section>
 
-      <section className="bg-white py-4">
+      <SectionDivider />
+
+      <section className="bg-cream-light py-4">
         <div className="mx-auto max-w-7xl px-4">
           <PracticeAreaDetails />
         </div>

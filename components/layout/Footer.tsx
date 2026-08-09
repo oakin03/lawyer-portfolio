@@ -143,9 +143,10 @@ export default function Footer() {
 
       </div>
 
-      <div className="mx-auto mt-8 max-w-[1400px] border-t border-neutral-200 px-4 pt-4">
+      <div className="mx-auto mt-8 flex max-w-[1400px] items-center justify-between px-4 pt-4 border-t border-neutral-200">
+        <Image src="/images/logo-black.png" alt="" width={24} height={24} className="h-6 w-6 opacity-70" />
         <p className="text-right text-sm italic text-neutral-500">
-          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. {tFooter("rights")}
+          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. Tüm hakları saklıdır.
         </p>
       </div>
     </footer>

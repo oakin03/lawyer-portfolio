@@ -6,6 +6,7 @@
   --color-burgundy-light: #b06774;
   --color-cream: #f5f1ec;
   --color-cream-light: #faf8f5;
+  --font-serif: var(--font-playfair);
 }
 
 html {
