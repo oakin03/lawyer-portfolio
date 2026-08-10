@@ -1,6 +1,6 @@
 export const ATTORNEY = {
   name: "Büşra Nur Karakoç",
-  office: "Karakoç Hukuk Bürosu",
+  office: "Büşra Nur Karakoç | Avukat & Arabulucu",
   title: "Avukat",
   heroHeadline: "Hukuki Süreçlerinizde Yanınızdayım",
   shortBio:

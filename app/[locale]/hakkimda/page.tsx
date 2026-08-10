@@ -11,9 +11,11 @@ import SectionDivider from "@/components/ui/SectionDivider";
 import { ATTORNEY, ABOUT_SECTIONS } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("about.banner");
+  const t = await getTranslations("practiceAreasPage");
+  const tMeta = await getTranslations("meta");
+
   return {
-    title: `${t("title")} | ${ATTORNEY.office}`,
+    title: `${t("title")} | ${tMeta("siteTitle")}`,
     description: t("subtitle"),
   };
 }
