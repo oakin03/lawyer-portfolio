@@ -20,12 +20,11 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 lg:px-8">
         <div className="max-w-2xl mt-10">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
+          <p className="hidden text-sm font-semibold uppercase tracking-[0.2em] text-white/80 sm:block">
             {ATTORNEY.name}
           </p>
 
-          <h1 className="mt-4 font-serif text-4xl leading-tight text-white sm:text-5xl">
-            <br />
+          <h1 className="mt-16 font-serif text-3xl leading-tight text-white sm:mt-4 sm:text-5xl">
             {t("headlineLine1")}
             <br />
             {t("headlineLine2")}
