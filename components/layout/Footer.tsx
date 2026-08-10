@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import LegalLinkModal from "@/components/ui/LegalLinkModal";
 import { Link } from "@/lib/navigation";
 import { Mail, MapPin } from "lucide-react";
 import { InstagramIcon, LinkedinIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
@@ -143,10 +144,26 @@ export default function Footer() {
 
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-[1400px] items-center justify-between px-4 pt-4 border-t border-neutral-200">
-        <Image src="/images/logo-black.png" alt="" width={24} height={24} className="h-6 w-6 opacity-70" />
-        <p className="text-right text-sm italic text-neutral-500">
-          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. Tüm hakları saklıdır.
+      <div className="mx-auto mt-8 flex max-w-[1400px] flex-col items-center gap-4 border-t border-neutral-200 px-4 pt-4 sm:flex-row sm:justify-between">
+        <div className="flex items-center gap-4">
+          <Image src="/images/logo-black.png" alt="" width={24} height={24} className="h-6 w-6 opacity-70" />
+          <LegalLinkModal
+            label={tFooter("legal.kvkkLabel")}
+            title={tFooter("legal.kvkkTitle")}
+            content={tFooter("legal.kvkkContent")}
+            closeLabel={tFooter("legal.close")}
+          />
+          <span className="text-neutral-300">|</span>
+          <LegalLinkModal
+            label={tFooter("legal.privacyLabel")}
+            title={tFooter("legal.privacyTitle")}
+            content={tFooter("legal.privacyContent")}
+            closeLabel={tFooter("legal.close")}
+          />
+        </div>
+
+        <p className="text-sm italic text-neutral-500">
+          {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. {tFooter("rights")}
         </p>
       </div>
     </footer>

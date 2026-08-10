@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
+import { ArrowRight } from "lucide-react";
 import { PRACTICE_AREAS } from "@/lib/constants";
 
 export default function PracticeAreas() {
@@ -10,30 +11,46 @@ export default function PracticeAreas() {
   return (
     <section className="bg-cream-light py-20">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-2xl font-bold uppercase tracking-[0.15em] text-neutral-900 sm:text-3xl">
-          {t("heading")}
-        </h2>
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="text-base font-semibold uppercase tracking-[0.2em] text-burgundy">{t("label")}</p>
+          <h2 className="mt-3 font-serif text-2xl text-neutral-900 sm:text-3xl">{t("heading")}</h2>
+          <p className="mt-4 leading-relaxed text-neutral-600">{t("subtitle")}</p>
+        </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
-          {PRACTICE_AREAS.map((area) => {
-            const title = tAreas(`${area.slug}.title`);
-            return (
-              <Link
-                key={area.slug}
-                href={`/uzmanlik-alanlari#${area.slug}`}
-                className="group relative aspect-square w-full overflow-hidden rounded-lg"
-              >
-                <Image src={area.image} alt={title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" sizes="(max-width: 640px) 50vw, 25vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/60 group-hover:opacity-100">
-                  <p className="px-4 text-center text-sm font-medium text-white">{t("hoverCta")}</p>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-white/20 py-3 text-center backdrop-blur-md">
-                  <p className="text-sm font-semibold text-white sm:text-base">{title}</p>
-                </div>
-              </Link>
-            );
-          })}
+        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {PRACTICE_AREAS.map((area) => (
+            <Link
+              key={area.slug}
+              href={`/uzmanlik-alanlari#${area.slug}`}
+              className="group flex flex-col rounded-lg border border-neutral-200 bg-white p-5 transition-shadow hover:shadow-md"
+            >
+              <div className="relative h-36 w-full overflow-hidden rounded-md">
+                <Image
+                  src={area.image}
+                  alt={tAreas(`${area.slug}.title`)}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+              </div>
+              <h3 className="mt-4 text-lg font-semibold text-neutral-900">
+                {tAreas(`${area.slug}.title`)}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                {tAreas(`${area.slug}.short`)}
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            href="/uzmanlik-alanlari"
+            className="flex items-center gap-2 rounded-md border border-burgundy px-6 py-3 text-sm font-semibold text-burgundy transition-colors hover:bg-burgundy hover:text-white"
+          >
+            {t("viewAll")}
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </section>

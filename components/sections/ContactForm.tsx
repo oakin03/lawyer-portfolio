@@ -81,7 +81,9 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="text-sm font-medium text-neutral-700">{t("company")}</label>
+          <label className="text-sm font-medium text-neutral-700">
+            {t("company")} <span className="text-xs italic text-neutral-400">({t("optional")})</span>
+          </label>
           <input
             type="text"
             value={company}

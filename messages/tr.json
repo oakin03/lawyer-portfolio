@@ -14,53 +14,79 @@
     "title": "Avukat",
     "tagline": "Hukuki süreçlerinizde güvenilir, şeffaf ve kişiye özel bir çözüm ortağı.",
     "cta": "Randevu Al",
-    "rights": "Tüm hakları saklıdır."
+    "rights": "Tüm hakları saklıdır.",
+    "legal": {
+      "kvkkLabel": "KVKK Aydınlatma Metni",
+      "kvkkTitle": "KVKK Aydınlatma Metni",
+      "kvkkContent": "Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu kapsamında hazırlanacak aydınlatma metninin yer tutucusudur. İçerik yakında güncellenecektir.",
+      "privacyLabel": "Gizlilik Politikası",
+      "privacyTitle": "Gizlilik Politikası",
+      "privacyContent": "Bu metin, sitemizin gizlilik politikasının yer tutucusudur. İçerik yakında güncellenecektir.",
+      "close": "Kapat"
+    }
   },
   "home": {
     "hero": {
-      "quote": "Adalet gecikirse, adaletsizlik olur.",
-      "caption": "Bu ilkeyle, her müvekkilimin hakkını zamanında ve eksiksiz almasını sağlamak için çalışıyorum."
+      "headlineLine1": "Hukuki süreçlerinizde",
+      "headlineLine2": "güvenilir bir yol arkadaşı.",
+      "subtitle": "Müvekkillerime şeffaf iletişim, titiz çalışma ve kişiye özel hukuki çözümler sunuyorum.",
+      "ctaPrimary": "Randevu Al",
+      "ctaSecondary": "Uzmanlık Alanlarını İncele",
+      "feature1": { "title": "Şeffaf İletişim", "description": "Hukuki süreci anlaşılır bir dille aktarırım." },
+      "feature2": { "title": "Kişiye Özel Yaklaşım", "description": "Her dosyanın kendine özgü koşullarını dikkate alırım." },
+      "feature3": { "title": "Süreç Boyunca Takip", "description": "Dosyanızın her aşamasında düzenli bilgilendirme sağlarım." }
     },
     "about": {
       "tagline": "Hukuk kariyerime başladığım günden bu yana, her müvekkilimin sadece bir dosya değil, kendine özgü bir hikayesi olduğuna inandım. Bireysel danışmanlıktan kurumsal hukuki süreçlere kadar geniş bir yelpazede, şeffaf iletişim ve titiz bir çalışma disipliniyle hareket ediyorum. Amacım, karmaşık hukuki süreçleri müvekkillerim için anlaşılır kılmak ve her aşamada yanlarında olmak. Bağımsız bir avukat olarak çalışmanın verdiği esneklikle, her davaya gereken zamanı ve özeni ayırabiliyorum. Deneyimlerimi sürekli güncel tutarak, değişen mevzuata en hızlı şekilde adapte olmayı önemsiyorum. Hedefim, uzun vadeli güvene dayalı bir avukat-müvekkil ilişkisi kurmak.",
       "cta": "Devamını Gör"
     },
     "practiceAreas": {
-      "heading": "Faaliyet Alanlarımız",
+      "label": "Uzmanlık Alanlarım",
+      "heading": "Hukuki ihtiyaçlarınıza özel çözümler",
+      "subtitle": "Ceza, aile, iş ve ticari uyuşmazlıklar başta olmak üzere geniş bir yelpazede müvekkillerime profesyonel hukuki destek sağlıyorum.",
+      "viewAll": "Tüm Uzmanlık Alanlarını Gör",
       "hoverCta": "Detaylar için tıklayın"
     }
   },
   "practiceAreas": {
     "ceza-hukuku": {
       "title": "Ceza Hukuku",
+      "short": "Soruşturma ve kovuşturma süreçlerinde etkin savunma hizmeti.",
       "description": "Ceza hukuku, bir suç işlendiği iddiasıyla başlayan soruşturma ve kovuşturma süreçlerini kapsayan, kişi özgürlüğünü doğrudan etkileyen bir hukuk dalıdır. Şüpheli, sanık veya mağdur sıfatıyla bu sürecin herhangi bir aşamasında yer alan kişilerin, haklarının korunması için nitelikli bir hukuki temsile ihtiyacı vardır. Gözaltı ve ifade alma aşamasından, iddianamenin hazırlanmasına, duruşmalara ve gerekirse istinaf/temyiz süreçlerine kadar her adımda yanınızda olarak, savunma stratejinizi titizlikle hazırlıyorum. Adli kontrol, tutukluluk itirazları ve uzlaştırma süreçleri gibi teknik konularda da deneyimli bir yaklaşımla hareket ediyorum. Amacım, sürecin her aşamasında hukuki güvenliğinizi sağlamak ve adil bir yargılama sürecinin işlemesini temin etmektir."
     },
     "aile-hukuku": {
       "title": "Aile Hukuku",
+      "short": "Boşanma, velayet, nafaka ve aile içi uyuşmazlıklarda hukuki destek.",
       "description": "Aile hukuku, evlilik birliğinin kurulmasından sona ermesine kadar geçen süreçte ortaya çıkan tüm hukuki meseleleri kapsar; boşanma, velayet, nafaka, mal rejimi ve mal paylaşımı gibi konular bu alanın başlıca başlıklarıdır. Bu süreçler genellikle duygusal açıdan da yıpratıcı olduğundan, hem hukuki bilgi hem de empatik bir yaklaşım gerektirir. Anlaşmalı ya da çekişmeli boşanma davalarında, velayet ve kişisel ilişki tesisi süreçlerinde, yoksulluk ve iştirak nafakası taleplerinde müvekkillerimin haklarını en iyi şekilde korumaya çalışıyorum. Evlilik öncesi/sonrası mal rejimi sözleşmeleri ve aile içi şiddet mağduriyetlerine yönelik koruma tedbirleri konularında da destek sağlıyorum. Hedefim, bu hassas süreçleri mümkün olduğunca az yıpranarak, adil ve hızlı bir şekilde sonuçlandırmanıza yardımcı olmaktır."
     },
     "icra-iflas-hukuku": {
       "title": "İcra ve İflas Hukuku",
+      "short": "Alacak takibi, haciz ve iflas süreçlerinde haklarınızı korurum.",
       "description": "İcra ve iflas hukuku, alacaklıların alacaklarını tahsil etmesi ve borçluların hukuki süreçler içinde borçlarını yapılandırması ile ilgili işlemleri düzenler. Alacaklı tarafında icra takibi başlatılması, haciz işlemlerinin yürütülmesi ve alacağın en kısa sürede tahsil edilmesi için gerekli tüm hukuki adımları sizin adınıza takip ediyorum. Borçlu tarafında ise itiraz süreçleri, ödeme planları ve konkordato gibi çözüm yollarıyla mağduriyetlerin en aza indirilmesine yardımcı oluyorum. Ticari işletmelerin finansal zorluk yaşadığı durumlarda iflas erteleme ve yeniden yapılandırma süreçlerinde de danışmanlık sağlıyorum. Bu alandaki süreçler sıkı zaman sınırlarına tabi olduğundan, hızlı ve doğru hukuki müdahale büyük önem taşır."
     },
     "is-hukuku": {
       "title": "İş Hukuku",
+      "short": "İşçi ve işveren uyuşmazlıklarında çözüm odaklı danışmanlık ve temsil.",
       "description": "İş hukuku, işçi ve işveren arasındaki ilişkiyi düzenleyen, çalışma hayatının neredeyse her aşamasını kapsayan geniş bir alandır. İşe iade davaları, haksız fesih, kıdem ve ihbar tazminatı talepleri, fazla mesai ve izin hakları gibi konularda hem işçi hem işveren tarafında danışmanlık ve dava takibi sağlıyorum. İş kazası ve meslek hastalığından kaynaklanan tazminat davalarında, mobbing iddialarında ve toplu iş sözleşmesi süreçlerinde de deneyimli bir yaklaşımla hareket ediyorum. İşverenler için iş sözleşmelerinin ve şirket içi yönetmeliklerin mevzuata uygun şekilde hazırlanması konusunda da destek veriyorum. Çalışma hayatındaki haklarınızın korunması ve olası uyuşmazlıkların önlenmesi için proaktif bir hukuki danışmanlık anlayışını benimsiyorum."
     },
     "ticaret-hukuku": {
       "title": "Ticaret Hukuku",
+      "short": "Şirketler hukuku, ticari sözleşmeler ve uyuşmazlıklarda hukuki destek.",
       "description": "Ticaret hukuku, şirketlerin kuruluşundan günlük ticari faaliyetlerine, ortaklık ilişkilerinden uyuşmazlıkların çözümüne kadar işletmelerin hukuki yaşam döngüsünün tamamını kapsar. Şirket kuruluşu, ana sözleşme hazırlanması, ortaklık ve hissedarlık sözleşmeleri gibi yapısal konularda danışmanlık sağlıyorum. Ticari sözleşmelerin hazırlanması ve müzakeresi, tedarik ve distribütörlük ilişkileri, rekabet hukuku uyumluluğu gibi konularda işletmenizin hukuki risklerini en aza indirmeye çalışıyorum. Ortaklar arası uyuşmazlıklar, alacak davaları ve ticari sözleşmelerden doğan ihtilaflarda da etkin bir dava takibi sunuyorum. Amacım, ticari faaliyetlerinizin sağlam bir hukuki zemin üzerinde, öngörülebilir ve güvenli şekilde ilerlemesini sağlamaktır."
     },
     "gayrimenkul-hukuku": {
       "title": "Gayrimenkul Hukuku",
+      "short": "Tapu, kira, kat mülkiyeti ve gayrimenkul uyuşmazlıklarında danışmanlık.",
       "description": "Gayrimenkul hukuku, taşınmaz mülkiyetinin edinilmesinden kiralanmasına, imar süreçlerinden uyuşmazlıkların çözümüne kadar geniş bir alanı kapsar. Tapu iptali ve tescili davaları, kamulaştırma bedelinin tespiti ve kamulaştırmasız el atma davalarında müvekkillerimin haklarını koruyorum. Kira sözleşmelerinden doğan tahliye ve kira bedeli uyuşmazlıklarında, kat mülkiyeti ve yönetim planından kaynaklanan anlaşmazlıklarda da hukuki destek sağlıyorum. Gayrimenkul alım-satım süreçlerinde sözleşmelerin hazırlanması ve tapu işlemlerinin güvenli şekilde yürütülmesi konusunda danışmanlık veriyorum. Taşınmazlarınızla ilgili yatırım kararlarınızı sağlam bir hukuki zeminde almanız için gerekli tüm bilgiyi ve desteği sunmayı hedefliyorum."
     },
     "miras-hukuku": {
       "title": "Miras Hukuku",
+      "short": "Miras paylaşımı, vasiyetname ve miras uyuşmazlıklarında hukuki destek.",
       "description": "Miras hukuku, bir kişinin vefatının ardından mal varlığının mirasçılar arasında nasıl paylaşılacağını düzenleyen, çoğunlukla duyarlı aile ilişkilerini de içeren bir hukuk dalıdır. Veraset ilamı alınması, mirasın reddi ve mirasçılık belgesi süreçlerinde müvekkillerime rehberlik ediyorum. Miras paylaşımı davalarında, mirastan mal kaçırma (muris muvazaası) iddialarında ve tenkis davalarında haklarınızın korunması için titizlikle çalışıyorum. Vasiyetname düzenlenmesi ve miras sözleşmeleri gibi önleyici hukuki araçlar konusunda da danışmanlık sağlıyorum. Miras süreçlerinin genellikle aile içinde hassas dinamikler barındırdığının bilincinde olarak, hem hukuki hem de insani bir yaklaşımla adil bir sonuca ulaşmanız için çalışıyorum."
     },
     "sozlesmeler-hukuku": {
       "title": "Sözleşmeler Hukuku",
+      "short": "Her tür sözleşmenin hazırlanması ve incelenmesinde profesyonel destek.",
       "description": "Sözleşmeler hukuku, taraflar arasındaki hak ve yükümlülükleri düzenleyen, ticari ve bireysel ilişkilerin temelini oluşturan bir alandır. Kira, satış, hizmet, danışmanlık ve iş birliği sözleşmeleri gibi çok çeşitli sözleşme türlerinin hazırlanması ve incelenmesi konusunda destek sağlıyorum. Mevcut bir sözleşmenin haklarınızı yeterince koruyup korumadığının değerlendirilmesi, olası risklerin tespiti ve gerekli revizyonların yapılması sürecinde titizlikle çalışıyorum. Sözleşmeden doğan ihtilaflarda, sözleşmenin feshi veya ifa edilmemesi durumlarında tazminat ve alacak davalarını da takip ediyorum. Her sözleşmenin, imzalandığı andan itibaren sizi koruyacak şekilde açık, dengeli ve hukuka uygun olmasını sağlamayı amaçlıyorum."
     }
   },
@@ -107,6 +133,7 @@
       "company": "Şirket",
       "subject": "Konu",
       "required": "Gerekli",
+      "optional": "isteğe bağlı",
       "submit": "Gönder"
     },
     "info": {

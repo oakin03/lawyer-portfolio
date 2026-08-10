@@ -14,53 +14,79 @@
     "title": "Attorney",
     "tagline": "A reliable, transparent, and personalized legal partner for your legal matters.",
     "cta": "Book a Consultation",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "legal": {
+      "kvkkLabel": "Data Protection Notice",
+      "kvkkTitle": "Data Protection Notice",
+      "kvkkContent": "This is placeholder text for the data protection notice required under Turkish Law No. 6698 (KVKK). The content will be updated soon.",
+      "privacyLabel": "Privacy Policy",
+      "privacyTitle": "Privacy Policy",
+      "privacyContent": "This is placeholder text for our privacy policy. The content will be updated soon.",
+      "close": "Close"
+    }
   },
   "home": {
     "hero": {
-      "quote": "Justice delayed is justice denied.",
-      "caption": "Guided by this principle, I work to ensure every client receives their rights fully and on time."
+      "headlineLine1": "A trusted partner",
+      "headlineLine2": "in your legal journey.",
+      "subtitle": "I offer my clients transparent communication, meticulous work, and personalized legal solutions.",
+      "ctaPrimary": "Book a Consultation",
+      "ctaSecondary": "Explore Practice Areas",
+      "feature1": { "title": "Transparent Communication", "description": "I explain the legal process in clear, understandable language." },
+      "feature2": { "title": "Personalized Approach", "description": "I consider the unique circumstances of every case." },
+      "feature3": { "title": "Ongoing Case Tracking", "description": "I provide regular updates at every stage of your case." }
     },
     "about": {
       "tagline": "Since the beginning of my legal career, I have believed that every client is more than a case file — each one has a story of their own. From individual consultations to corporate legal matters, I work across a wide range of areas with transparent communication and meticulous discipline. My goal is to make complex legal processes understandable for my clients and to stand by them at every stage. The flexibility of working as an independent attorney allows me to give each case the time and attention it deserves. By continuously updating my knowledge, I stay quick to adapt to changes in legislation. My aim is to build long-term, trust-based attorney-client relationships.",
       "cta": "Learn More"
     },
     "practiceAreas": {
-      "heading": "Our Practice Areas",
+      "label": "My Practice Areas",
+      "heading": "Tailored solutions for your legal needs",
+      "subtitle": "I provide professional legal support to my clients across a wide range of areas, particularly in criminal, family, labor, and commercial disputes.",
+      "viewAll": "View All Practice Areas",
       "hoverCta": "Click for details"
     }
   },
   "practiceAreas": {
     "ceza-hukuku": {
       "title": "Criminal Law",
+      "short": "Effective defense during investigation and prosecution processes.",
       "description": "Criminal law covers the investigation and prosecution processes that begin with an alleged offense, directly affecting personal liberty. Anyone involved in this process — as a suspect, defendant, or victim — needs qualified legal representation to protect their rights. I stand by you at every stage, from detention and questioning to the drafting of the indictment, hearings, and, if necessary, appellate proceedings, carefully preparing your defense strategy. I also handle technical matters such as judicial control, objections to detention, and mediation processes with an experienced approach. My goal is to safeguard your legal security at every stage and ensure a fair trial process."
     },
     "aile-hukuku": {
       "title": "Family Law",
+      "short": "Legal support in divorce, custody, alimony, and family disputes.",
       "description": "Family law covers all legal matters arising from the formation of a marriage to its dissolution; divorce, custody, alimony, and division of marital property are among the main topics in this field. As these processes are often emotionally taxing, they require both legal knowledge and an empathetic approach. I work to best protect my clients' rights in contested and uncontested divorce cases, custody and visitation arrangements, and claims for spousal or child support. I also provide support with prenuptial and postnuptial agreements and protective measures for victims of domestic violence. My goal is to help you conclude these sensitive processes fairly and efficiently, with as little strain as possible."
     },
     "icra-iflas-hukuku": {
       "title": "Enforcement and Bankruptcy Law",
+      "short": "Protecting your rights in debt collection, attachment, and bankruptcy processes.",
       "description": "Enforcement and bankruptcy law governs the processes through which creditors collect their claims and debtors restructure their debts within a legal framework. On the creditor side, I handle the initiation of enforcement proceedings, execution of attachments, and pursue the fastest possible collection of your claims. On the debtor side, I help minimize hardship through objection processes, payment plans, and solutions such as concordat. I also provide advisory services on bankruptcy postponement and restructuring for businesses facing financial difficulty. As matters in this area are subject to strict deadlines, swift and accurate legal intervention is essential."
     },
     "is-hukuku": {
       "title": "Labor Law",
+      "short": "Solution-focused advisory and representation in employer-employee disputes.",
       "description": "Labor law regulates the relationship between employees and employers, covering nearly every stage of working life. I provide advisory services and litigation support for both employees and employers in reinstatement cases, wrongful termination, severance and notice pay claims, and disputes over overtime and leave entitlements. I also handle compensation cases arising from workplace accidents and occupational illnesses, mobbing claims, and collective bargaining processes. For employers, I assist in drafting employment contracts and internal policies in compliance with legislation. I take a proactive approach to legal counsel, aiming to protect your rights in the workplace and prevent potential disputes before they arise."
     },
     "ticaret-hukuku": {
       "title": "Commercial Law",
+      "short": "Legal support in corporate matters, commercial contracts, and disputes.",
       "description": "Commercial law covers the entire legal lifecycle of a business, from incorporation and day-to-day operations to partnership relations and dispute resolution. I provide advisory services on structural matters such as company formation, drafting articles of association, and partnership or shareholder agreements. I work to minimize your business's legal risks in the drafting and negotiation of commercial contracts, supply and distribution relationships, and competition law compliance. I also offer effective litigation support in disputes between partners, debt collection cases, and disputes arising from commercial contracts. My goal is to ensure your commercial activities proceed on a solid, predictable, and secure legal foundation."
     },
     "gayrimenkul-hukuku": {
       "title": "Real Estate Law",
+      "short": "Advisory on title deeds, leases, condominium ownership, and property disputes.",
       "description": "Real estate law covers a broad range of matters, from acquiring and leasing property to zoning processes and dispute resolution. I protect my clients' rights in title deed cancellation and registration cases, as well as in claims for expropriation compensation and de facto expropriation. I also provide legal support in eviction and rent disputes arising from lease agreements, and in conflicts stemming from condominium ownership and management plans. I offer advisory services in drafting contracts and safely conducting title deed transactions during property purchase and sale processes. My goal is to give you all the information and support you need to make your real estate investment decisions on solid legal ground."
     },
     "miras-hukuku": {
       "title": "Inheritance Law",
+      "short": "Legal support in estate distribution, wills, and inheritance disputes.",
       "description": "Inheritance law governs how a deceased person's estate is distributed among heirs — a field that often involves sensitive family dynamics. I guide my clients through obtaining certificates of inheritance, renunciation of inheritance, and heirship documentation processes. I work diligently to protect your rights in estate distribution disputes, claims of asset concealment from heirs, and reduction (tenkis) lawsuits. I also provide advisory services on preventive legal tools such as drafting wills and inheritance agreements. Recognizing that inheritance matters often involve delicate family dynamics, I work toward a fair outcome with both a legal and a human approach."
     },
     "sozlesmeler-hukuku": {
       "title": "Contract Law",
+      "short": "Professional support in drafting and reviewing all types of contracts.",
       "description": "Contract law governs the rights and obligations between parties, forming the foundation of both commercial and personal relationships. I provide support in drafting and reviewing a wide range of contracts, including lease, sale, service, consulting, and partnership agreements. I carefully assess whether an existing contract adequately protects your rights, identify potential risks, and make necessary revisions. I also handle compensation and debt collection cases arising from contract disputes, termination, or non-performance. My aim is to ensure every contract is clear, balanced, and legally sound from the moment it is signed, protecting you throughout its duration."
     }
   },
@@ -107,6 +133,7 @@
       "company": "Company",
       "subject": "Subject",
       "required": "Required",
+      "optional": "optional",
       "submit": "Send"
     },
     "info": {
