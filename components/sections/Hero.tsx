@@ -24,7 +24,7 @@ export default function Hero() {
             {ATTORNEY.name}
           </p>
 
-          <h1 className="mt-16 font-serif text-3xl leading-tight text-white sm:mt-4 sm:text-5xl">
+          <h1 className="mt-28 font-serif text-3xl leading-tight text-white sm:mt-4 sm:text-5xl">
             {t("headlineLine1")}
             <br />
             {t("headlineLine2")}
@@ -51,7 +51,7 @@ export default function Hero() {
             </Link>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-14 hidden grid-cols-1 gap-6 sm:grid sm:grid-cols-3">
             {features.map(({ icon: Icon, key }) => (
               <div key={key} className="flex items-start gap-3">
                 <Icon size={20} className="mt-0.5 flex-shrink-0 text-white" />
