@@ -109,7 +109,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                   </div>
                     <h3 className="mt-2 text-lg font-semibold text-neutral-900">{pub.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-600">{pub.excerpt}</p>
-                    <span className="mt-4 text-sm font-medium text-burgundy">{t("readMore")} →</span>
+                    <span className="mt-4 self-end text-sm font-medium text-burgundy">{t("readMore")} →</span>
                   </div>
                 </Link>
               );
