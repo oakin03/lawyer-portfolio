@@ -38,7 +38,6 @@ export default function PublicationsSearch({ publications }: { publications: Pub
         />
       </div>
 
-      {/* Category filter — pulled automatically from PUBLICATION_CATEGORIES (PRACTICE_AREAS + "Other") */}
       <div className="mt-6 flex flex-wrap justify-center gap-2">
         <button
           type="button"
@@ -78,34 +77,33 @@ export default function PublicationsSearch({ publications }: { publications: Pub
               const categoryLabel = tAreas(`${pub.category}.title`);
 
               return (
-                <article
+                <Link
                   key={pub.slug}
+                  href={`/yayinlar/${pub.slug}`}
                   style={{ animationDelay: `${index * 60}ms` }}
-                  className="flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm"
+                  className="flex animate-[fade-in-up_0.5s_ease-out_both] flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
                 >
-                    <div className="relative h-44 w-full bg-neutral-100">
+                  <div className="relative h-44 w-full bg-neutral-100">
                     <Image
-                        src={categoryData?.image ?? "/images/practice-areas/other.jpg"}
-                        alt={categoryLabel}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      src={categoryData?.image ?? "/images/practice-areas/other.jpg"}
+                      alt={categoryLabel}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     <span className="absolute left-3 top-3 rounded-full bg-burgundy px-3 py-1 text-xs font-semibold text-white">
-                        {categoryLabel}
+                      {categoryLabel}
                     </span>
-                    </div>
+                  </div>
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-xs uppercase tracking-wide text-neutral-400">
                       {new Date(pub.date).toLocaleDateString()}
                     </p>
                     <h3 className="mt-2 text-lg font-semibold text-neutral-900">{pub.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-600">{pub.excerpt}</p>
-                    <Link href={`/yayinlar/${pub.slug}`} className="mt-4 text-sm font-medium text-burgundy hover:underline">
-                        {t("readMore")} →
-                    </Link>
+                    <span className="mt-4 text-sm font-medium text-burgundy">{t("readMore")} →</span>
                   </div>
-                </article>
+                </Link>
               );
             })}
           </div>

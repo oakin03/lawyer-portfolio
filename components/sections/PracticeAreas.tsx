@@ -18,10 +18,11 @@ export default function PracticeAreas() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PRACTICE_AREAS.map((area) => (
+          {PRACTICE_AREAS.map((area, index) => (
             <Link
               key={area.slug}
               href={`/uzmanlik-alanlari#${area.slug}`}
+              style={{ animationDelay: `${index * 60}ms` }}
               className="group flex flex-col rounded-lg border border-neutral-200 bg-white p-5 transition-shadow hover:shadow-md"
             >
               <div className="relative h-36 w-full overflow-hidden rounded-md">

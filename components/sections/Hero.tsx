@@ -59,8 +59,12 @@ export default function Hero() {
           </div>
 
           <div className="mt-14 hidden grid-cols-1 gap-6 sm:grid sm:grid-cols-3">
-            {features.map(({ icon: Icon, key }) => (
-              <div key={key} className="flex items-start gap-3">
+            {features.map(({ icon: Icon, key }, index) => (
+              <div key={key} 
+                style={{ animationDelay: `${index * 100}ms` }}
+                className="flex animate-[fade-in-up_0.5s_ease-out_both] items-start gap-3"
+                >
+                
                 <Icon size={20} className="mt-0.5 flex-shrink-0 text-white" />
                 <div>
                   <p className="text-sm font-semibold text-white">{t(`${key}.title`)}</p>
