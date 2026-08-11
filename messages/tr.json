@@ -1,4 +1,13 @@
 {
+  "publicationsPage": {
+    "title": "YAYINLAR",
+    "subtitle": "Güncel hukuki konular hakkında paylaştığım makaleler.",
+    "searchPlaceholder": "Makalelerde ara...",
+    "noResults": "Aramanızla eşleşen bir makale bulunamadı.",
+    "readMore": "Devamını Oku",
+    "allCategories": "Tümü",
+    "backToList": "Tüm Yayınlara Dön"
+  },
   "nav": {
     "home": "Ana Sayfa",
     "about": "Hakkımda",
@@ -35,6 +44,7 @@
       "subtitle": "Müvekkillerime şeffaf iletişim, titiz çalışma ve kişiye özel hukuki çözümler sunuyorum.",
       "ctaPrimary": "Randevu Al",
       "ctaSecondary": "Uzmanlık Alanlarını İncele",
+      "ctaPublications": "Yayınları Gör",
       "feature1": { "title": "Şeffaf İletişim", "description": "Hukuki süreci anlaşılır bir dille aktarırım." },
       "feature2": { "title": "Kişiye Özel Yaklaşım", "description": "Her dosyanın kendine özgü koşullarını dikkate alırım." },
       "feature3": { "title": "Süreç Boyunca Takip", "description": "Dosyanızın her aşamasında düzenli bilgilendirme sağlarım." }
@@ -91,6 +101,9 @@
       "title": "Sözleşmeler Hukuku",
       "short": "Her tür sözleşmenin hazırlanması ve incelenmesinde profesyonel destek.",
       "description": "Sözleşmeler hukuku, taraflar arasındaki hak ve yükümlülükleri düzenleyen, ticari ve bireysel ilişkilerin temelini oluşturan bir alandır. Kira, satış, hizmet, danışmanlık ve iş birliği sözleşmeleri gibi çok çeşitli sözleşme türlerinin hazırlanması ve incelenmesi konusunda destek sağlıyorum. Mevcut bir sözleşmenin haklarınızı yeterince koruyup korumadığının değerlendirilmesi, olası risklerin tespiti ve gerekli revizyonların yapılması sürecinde titizlikle çalışıyorum. Sözleşmeden doğan ihtilaflarda, sözleşmenin feshi veya ifa edilmemesi durumlarında tazminat ve alacak davalarını da takip ediyorum. Her sözleşmenin, imzalandığı andan itibaren sizi koruyacak şekilde açık, dengeli ve hukuka uygun olmasını sağlamayı amaçlıyorum."
+    },
+    "other": {
+      "title": "Diğer"
     }
   },
   "practiceAreasPage": {

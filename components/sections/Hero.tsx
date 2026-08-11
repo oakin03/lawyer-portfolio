@@ -36,18 +36,25 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
+              href="/yayinlar"
+              className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
+            >
+              {t("ctaPublications")}
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="/uzmanlik-alanlari"
+              className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
+            >
+              {t("ctaSecondary")}
+              <ArrowRight size={16} />
+            </Link>
+            <Link
               href="/iletisim"
               className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
             >
               <CalendarDays size={18} />
               {t("ctaPrimary")}
-            </Link>
-            <Link
-              href="/uzmanlik-alanlari"
-              className="flex items-center justify-center gap-2 rounded-md border border-white px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              {t("ctaSecondary")}
-              <ArrowRight size={16} />
             </Link>
           </div>
 

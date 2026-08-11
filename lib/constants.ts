@@ -52,6 +52,13 @@ export const PRACTICE_AREAS = [
   { slug: "miras-hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
   { slug: "sozlesmeler-hukuku", image: "/images/practice-areas/sozlesmeler-hukuku.jpg" },
 ];
+// Extends PRACTICE_AREAS with an "Other" option — used only for publication
+// categorization (filter UI + future admin panel dropdown), not shown on the
+// homepage or Uzmanlık Alanları page since it isn't a real practice area.
+export const PUBLICATION_CATEGORIES = [
+  ...PRACTICE_AREAS,
+  { slug: "other", image: "/images/practice-areas/other.jpg" },
+];
 
 export const ABOUT_SECTIONS = [
   { key: "whoIAm", image: "/images/about-1.jpg" },

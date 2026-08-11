@@ -30,8 +30,6 @@ export default function Navbar() {
     { label: t("contact"), href: "/iletisim" },
   ];
 
-  const inactiveText = isScrolled ? "text-neutral-500 hover:text-neutral-800" : "text-neutral-300 hover:text-white";
-
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
@@ -39,7 +37,11 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
+        <Link
+          href="/"
+          className="flex items-center gap-3"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <Image
             src={isScrolled ? "/images/logo-black.png" : "/images/logo-white.png"}
             alt="Büşra Nur Karakoç — Avukat & Arabulucu"
@@ -77,6 +79,11 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                onClick={
+                  link.href === "/"
+                    ? () => window.scrollTo({ top: 0, behavior: "smooth" })
+                    : undefined
+                }
                 className={`group relative inline-block text-base transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px] ${
                   isScrolled ? "text-neutral-700" : "text-neutral-100"
                 }`}
@@ -89,7 +96,6 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-          {/* Language switcher — compact inline, color follows scroll state like nav links */}
           <div className="flex items-center gap-2 text-sm font-bold">
             <Link
               href={pathname}
@@ -140,7 +146,12 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false);
+                    if (link.href === "/") {
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
                   className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-burgundy"
                 >
                   {link.label}

@@ -1,4 +1,13 @@
 {
+  "publicationsPage": {
+    "title": "PUBLICATIONS",
+    "subtitle": "Articles I've shared on current legal topics.",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles matched your search.",
+    "readMore": "Read More",
+    "allCategories": "All",
+    "backToList": "Back to All Publications"
+  },
   "nav": {
     "home": "Home",
     "about": "About",
@@ -35,6 +44,7 @@
       "subtitle": "I offer my clients transparent communication, meticulous work, and personalized legal solutions.",
       "ctaPrimary": "Book a Consultation",
       "ctaSecondary": "Explore Practice Areas",
+      "ctaPublications": "View Publications",
       "feature1": { "title": "Transparent Communication", "description": "I explain the legal process in clear, understandable language." },
       "feature2": { "title": "Personalized Approach", "description": "I consider the unique circumstances of every case." },
       "feature3": { "title": "Ongoing Case Tracking", "description": "I provide regular updates at every stage of your case." }
@@ -91,6 +101,9 @@
       "title": "Contract Law",
       "short": "Professional support in drafting and reviewing all types of contracts.",
       "description": "Contract law governs the rights and obligations between parties, forming the foundation of both commercial and personal relationships. I provide support in drafting and reviewing a wide range of contracts, including lease, sale, service, consulting, and partnership agreements. I carefully assess whether an existing contract adequately protects your rights, identify potential risks, and make necessary revisions. I also handle compensation and debt collection cases arising from contract disputes, termination, or non-performance. My aim is to ensure every contract is clear, balanced, and legally sound from the moment it is signed, protecting you throughout its duration."
+    },
+    "other": {
+      "title": "Other"
     }
   },
   "practiceAreasPage": {
