@@ -9,13 +9,14 @@ export default function PracticeAreasGrid() {
 
   return (
     <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
-      {PRACTICE_AREAS.map((area) => {
+      {PRACTICE_AREAS.map((area, index) => {
         const title = tAreas(`${area.slug}.title`);
         return (
           <Link
             key={area.slug}
             href={`#${area.slug}`}
-            className="group relative aspect-square w-full overflow-hidden rounded-lg"
+            style={{ animationDelay: `${index * 60}ms` }}
+            className="group relative aspect-square w-full animate-[fade-in-up_0.5s_ease-out_both] overflow-hidden rounded-lg"
           >
             <Image
               src={area.image}

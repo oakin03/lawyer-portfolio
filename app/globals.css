@@ -6,7 +6,6 @@
   --color-burgundy-light: #b06774;
   --color-cream: #f5f1ec;
   --color-cream-light: #faf8f5;
-  --font-serif: var(--font-playfair);
 }
 
 html {
@@ -16,4 +15,15 @@ html {
 body {
   background-color: #ffffff;
   color: #1c1c1c;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

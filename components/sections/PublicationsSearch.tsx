@@ -73,13 +73,14 @@ export default function PublicationsSearch({ publications }: { publications: Pub
           <p className="text-center text-neutral-500">{t("noResults")}</p>
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {filtered.map((pub) => {
+            {filtered.map((pub, index) => {
               const categoryData = PUBLICATION_CATEGORIES.find((cat) => cat.slug === pub.category);
               const categoryLabel = tAreas(`${pub.category}.title`);
 
               return (
                 <article
                   key={pub.slug}
+                  style={{ animationDelay: `${index * 60}ms` }}
                   className="flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm"
                 >
                     <div className="relative h-44 w-full bg-neutral-100">
