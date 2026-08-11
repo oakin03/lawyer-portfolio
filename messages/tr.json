@@ -6,7 +6,10 @@
     "noResults": "Aramanızla eşleşen bir makale bulunamadı.",
     "readMore": "Devamını Oku",
     "allCategories": "Tümü",
-    "backToList": "Tüm Yayınlara Dön"
+    "backToList": "Tüm Yayınlara Dön",
+    "lastEdited": "Son Düzenleme Tarihi",
+    "previousArticle": "Önceki Makale",
+    "nextArticle": "Sonraki Makale"
   },
   "nav": {
     "home": "Ana Sayfa",

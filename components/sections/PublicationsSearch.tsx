@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
+import { useLocale } from "next-intl";
+import { formatPublicationDate } from "@/lib/formatDate";
 import { useTranslations } from "next-intl";
 import type { Publication } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
@@ -9,6 +11,7 @@ import { Link } from "@/lib/navigation";
 
 export default function PublicationsSearch({ publications }: { publications: Publication[] }) {
   const t = useTranslations("publicationsPage");
+  const locale = useLocale();
   const tAreas = useTranslations("practiceAreas");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string | null>(null);
@@ -96,9 +99,14 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <p className="text-xs uppercase tracking-wide text-neutral-400">
-                      {new Date(pub.date).toLocaleDateString()}
-                    </p>
+                  <div className="text-xs tracking-wide text-neutral-400">
+                    <p>{formatPublicationDate(pub.date, locale)}</p>
+                    {pub.updated_at !== pub.date && (
+                      <p className="mt-0.5">
+                        ({t("lastEdited")}: {formatPublicationDate(pub.updated_at, locale)})
+                      </p>
+                    )}
+                  </div>
                     <h3 className="mt-2 text-lg font-semibold text-neutral-900">{pub.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-600">{pub.excerpt}</p>
                     <span className="mt-4 text-sm font-medium text-burgundy">{t("readMore")} →</span>

@@ -6,7 +6,10 @@
     "noResults": "No articles matched your search.",
     "readMore": "Read More",
     "allCategories": "All",
-    "backToList": "Back to All Publications"
+    "backToList": "Back to All Publications",
+    "lastEdited": "Last Updated",
+    "previousArticle": "Previous Article",
+    "nextArticle": "Next Article"
   },
   "nav": {
     "home": "Home",

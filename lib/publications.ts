@@ -1,51 +1,87 @@
+import { createClient as createServerClient } from "@/lib/supabase/server";
+import { createClient as createBrowserClient } from "@/lib/supabase/client";
+
 export type Publication = {
+  id: string;
   slug: string;
   title: string;
   excerpt: string;
   content: string;
-  category: string; // matches a PRACTICE_AREAS slug — image is derived from there, not stored here
+  category: string;
   date: string;
+  updated_at: string;
+  author_id: string | null;
+  profiles: { display_name: string | null } | null;
 };
 
-// Placeholder data — this function will later be replaced with a Supabase query,
-// e.g. `const { data } = await supabase.from("publications").select("*")`.
-// The page components below only depend on this function's return shape,
-// so swapping the implementation won't require changing the UI code.
 export async function getPublications(): Promise<Publication[]> {
-  return [
-    {
-      slug: "bosanma-surecinde-bilinmesi-gerekenler",
-      title: "Boşanma Sürecinde Bilinmesi Gerekenler",
-      excerpt: "Anlaşmalı ve çekişmeli boşanma arasındaki farklar, süreç ve haklarınız.",
-      content:
-        "Boşanma süreci, taraflar için hem hukuki hem duygusal açıdan zorlu bir dönemdir. Anlaşmalı boşanmada taraflar mal paylaşımı, velayet ve nafaka konularında uzlaşmış olur ve süreç görece hızlı ilerler. Çekişmeli boşanmada ise mahkeme, tarafların sunduğu delillere göre karar verir ve süreç daha uzun sürebilir.",
-      category: "aile-hukuku",
-      date: "2026-03-15",
-    },
-    {
-      slug: "is-sozlesmesi-feshinde-haklariniz",
-      title: "İş Sözleşmesi Feshinde Haklarınız",
-      excerpt: "Haksız fesih durumunda kıdem, ihbar tazminatı ve işe iade süreci.",
-      content:
-        "İş sözleşmesinin işveren tarafından haksız şekilde feshedilmesi durumunda, çalışanın kıdem tazminatı, ihbar tazminatı ve işe iade davası açma hakları bulunmaktadır. Bu süreçte sürelerin kaçırılmaması büyük önem taşır.",
-      category: "is-hukuku",
-      date: "2026-02-02",
-    },
-    {
-      slug: "miras-paylasiminda-sik-yasanan-uyusmazliklar",
-      title: "Miras Paylaşımında Sık Yaşanan Uyuşmazlıklar",
-      excerpt: "Mirastan mal kaçırma iddiaları ve tenkis davası süreci.",
-      content:
-        "Miras paylaşımı sürecinde en sık karşılaşılan uyuşmazlıklardan biri, mirasbırakanın mal varlığını belirli mirasçılardan kaçırdığı iddiasıdır. Bu durumda tenkis davası açılarak, saklı paylı mirasçıların haklarının korunması sağlanabilir.",
-      category: "miras-hukuku",
-      date: "2026-01-10",
-    },
-  ];
+  const supabase = await createServerClient();
+  const { data, error } = await supabase
+    .from("publications")
+    .select("*, profiles(display_name)")
+    .order("date", { ascending: false });
+
+  if (error) {
+    console.error("Failed to fetch publications:", error.message);
+    return [];
+  }
+  return data ?? [];
 }
-// Will later become a direct DB query by slug (e.g. `.eq("slug", slug).single()`),
-// which is more efficient than fetching everything and filtering in memory —
-// but the function signature/return shape stays the same, so the page code won't change.
+
 export async function getPublicationBySlug(slug: string): Promise<Publication | null> {
+  const supabase = await createServerClient();
+  const { data, error } = await supabase
+    .from("publications")
+    .select("*, profiles(display_name)")
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Failed to fetch publication:", error.message);
+    return null;
+  }
+  return data;
+}
+
+export async function getPublicationsClient(): Promise<Publication[]> {
+  const supabase = createBrowserClient();
+  const { data, error } = await supabase
+    .from("publications")
+    .select("*, profiles(display_name)")
+    .order("date", { ascending: false });
+
+  if (error) {
+    console.error("Failed to fetch publications:", error.message);
+    return [];
+  }
+  return data ?? [];
+}
+
+export async function getPublicationByIdClient(id: string): Promise<Publication | null> {
+  const supabase = createBrowserClient();
+  const { data, error } = await supabase
+    .from("publications")
+    .select("*, profiles(display_name)")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Failed to fetch publication:", error.message);
+    return null;
+  }
+  return data;
+}
+
+export async function getAdjacentPublications(
+  currentId: string
+): Promise<{ prev: Publication | null; next: Publication | null }> {
   const all = await getPublications();
-  return all.find((p) => p.slug === slug) ?? null;
+  const index = all.findIndex((p) => p.id === currentId);
+
+  if (index === -1) return { prev: null, next: null };
+
+  return {
+    prev: index > 0 ? all[index - 1] : null,
+    next: index < all.length - 1 ? all[index + 1] : null,
+  };
 }

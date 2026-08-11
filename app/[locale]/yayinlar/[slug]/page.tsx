@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { getLocale } from "next-intl/server";
+import { formatPublicationDate } from "@/lib/formatDate";
+import { CornerUpLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "@/lib/navigation";
-import { getPublicationBySlug } from "@/lib/publications";
+import { getPublicationBySlug, getAdjacentPublications } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
 
 export async function generateMetadata({
@@ -41,9 +43,14 @@ export default async function PublicationDetailPage({
   }
 
   const t = await getTranslations("publicationsPage");
+  const locale = await getLocale();
   const tAreas = await getTranslations("practiceAreas");
   const categoryData = PUBLICATION_CATEGORIES.find((cat) => cat.slug === publication.category);
   const categoryLabel = tAreas(`${publication.category}.title`);
+  const { prev, next } = await getAdjacentPublications(publication.id);
+
+  const navButtonClass =
+    "flex items-center gap-1.5 rounded-md bg-burgundy px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark";
 
   return (
     <main>
@@ -63,26 +70,53 @@ export default async function PublicationDetailPage({
           <span className="inline-block rounded-full bg-burgundy px-3 py-1 text-xs font-semibold text-white">
             {categoryLabel}
           </span>
-          <h1 className="mt-4 font-serif text-3xl text-white sm:text-4xl">{publication.title}</h1>
-          <p className="mt-2 text-sm text-neutral-300">
-            {new Date(publication.date).toLocaleDateString()}
-          </p>
+
+          <h1 className="mt-4 font-serif text-2xl text-white sm:text-4xl">{publication.title}</h1>
+
+          <div className="mt-2 text-sm text-neutral-300">
+            <p>{formatPublicationDate(publication.date, locale)}</p>
+            {publication.updated_at !== publication.date && (
+              <p className="mt-0.5">
+                ({t("lastEdited")}: {formatPublicationDate(publication.updated_at, locale)})
+              </p>
+            )}
+          </div>
         </div>
       </section>
 
       <section className="bg-cream-light py-16">
         <div className="mx-auto max-w-3xl px-4">
-          <Link
-            href="/yayinlar"
-            className="inline-flex items-center gap-2 text-sm font-medium text-burgundy hover:underline"
-          >
-            <ArrowLeft size={16} />
-            {t("backToList")}
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/yayinlar" className={navButtonClass}>
+              <CornerUpLeft size={16} />
+              Geri
+            </Link>
 
-          <p className="mt-8 whitespace-pre-line text-lg leading-relaxed text-neutral-700">
-            {publication.content}
-          </p>
+            {prev && (
+              <Link href={`/yayinlar/${prev.slug}`} className={navButtonClass}>
+                <ChevronLeft size={16} />
+                {t("previousArticle")}
+              </Link>
+            )}
+
+            {next && (
+              <Link href={`/yayinlar/${next.slug}`} className={navButtonClass}>
+                {t("nextArticle")}
+                <ChevronRight size={16} />
+              </Link>
+            )}
+          </div>
+
+          <div
+            className="prose prose-lg mt-8 max-w-none text-neutral-700"
+            dangerouslySetInnerHTML={{ __html: publication.content }}
+          />
+
+          {publication.profiles?.display_name && (
+            <p className="mt-8 text-right text-sm text-neutral-500">
+              Yazar: {publication.profiles.display_name}
+            </p>
+          )}
         </div>
       </section>
 
