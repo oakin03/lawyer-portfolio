@@ -23,7 +23,7 @@
     "practiceAreas": "Faaliyet Alanları",
     "publications": "Makaleler",
     "contact": "İletişim",
-    "cta": "Randevu Al",
+    "cta": "Hemen Ara",
     "titleLine1": "Avukat",
     "titleLine2": "Arabulucu"
   },
@@ -50,10 +50,10 @@
   },
   "home": {
     "hero": {
-      "headlineLine1": "Hukuki süreçlerinizde",
-      "headlineLine2": "güvenilir bir yol arkadaşı.",
-      "subtitle": "Müvekkillerime şeffaf iletişim, titiz çalışma ve kişiye özel hukuki çözümler sunuyorum.",
-      "ctaPrimary": "Randevu Al",
+      "headlineLine1": "Adil olana giden her adım adaletin teminatıdır.",
+      "headlineLine2": "Biz bu yolda sizinleyiz!",
+      "subtitle": "Hukuki ihtiyaçlarınızı titizlikle değerlendiriyor, hak ve menfaatlerinizi korumak için güvenilir ve çözüm odaklı hukuki hizmet sunuyoruz.",
+      "ctaPrimary": "Hemen Ara",
       "ctaSecondary": "Uzmanlık Alanlarını İncele",
       "ctaPublications": "Yayınları Gör",
       "feature1": { "title": "Şeffaf İletişim", "description": "Hukuki süreci anlaşılır bir dille aktarırım." },
@@ -70,6 +70,41 @@
       "subtitle": "Ceza, aile, iş ve ticari uyuşmazlıklar başta olmak üzere geniş bir yelpazede müvekkillerime profesyonel hukuki destek sağlıyorum.",
       "viewAll": "Tüm Uzmanlık Alanlarını Gör",
       "hoverCta": "Detaylar için tıklayın"
+    },
+    "overview": {
+      "title": "Ankara'da Güvenilir ve Çözüm Odaklı Hukuki Destek",
+      "intro": "Ankara'da avukat desteğine mi ihtiyacınız var? Bireysel ve kurumsal müvekkillerime dava ve danışmanlık süreçlerinde stratejik, şeffaf ve sonuç odaklı hukuki hizmet sunuyorum. Ceza davalarından aile hukukuna, ticari uyuşmazlıklardan gayrimenkul süreçlerine kadar geniş bir alanda profesyonel destek sağlıyorum.",
+      "servicesTitle": "Hizmet Alanlarım",
+      "services": [
+        { "title": "İcra ve İflas Hukuku" },
+        { "title": "Ceza Hukuku" },
+        { "title": "Aile Hukuku" },
+        { "title": "İş ve Sosyal Güvenlik Hukuku" },
+        { "title": "Gayrimenkul Hukuku" },
+        { "title": "Miras Hukuku" },
+        { "title": "Tüketici Hukuku" },
+        { "title": "Milletlerarası Özel Hukuk" },
+        { "title": "Tazminat Hukuku" },
+        { "title": "Fikri Mülkiyet Hukuku" },
+        { "title": "Bilişim Hukuku" },
+        { "title": "Ticaret Hukuku" }
+      ],
+      "whyTitle": "Neden Beni Tercih Etmelisiniz?",
+      "why": [
+        { "title": "Deneyim ve Uzmanlık", "text": "Güncel içtihat ve mevzuatı yakından takip ederim." },
+        { "title": "Şeffaf Süreç", "text": "Aşamaları ve olası masrafları baştan netleştiririm." },
+        { "title": "Hızlı İletişim", "text": "Randevu ve dosya bilgilendirmelerinde hızlı geri dönüş sağlarım." },
+        { "title": "Kişiye Özel Yaklaşım", "text": "Her dosyaya özgü strateji belirler, yakından takip ederim." }
+      ],
+      "processTitle": "Süreç Nasıl İşliyor?",
+      "process": [
+        { "title": "Ön Görüşme", "text": "Talebinizi ve hedeflerinizi birlikte değerlendiririz." },
+        { "title": "Değerlendirme", "text": "Delil ve risk analizi yaparak bir yol haritası çıkarırım." },
+        { "title": "Eylem Planı", "text": "Dava ya da uzlaşma stratejisini, takvimi ve maliyeti netleştiririm." },
+        { "title": "Takip", "text": "Dilekçe, duruşma ve müzakere süreçlerini titizlikle yürütürüm." },
+        { "title": "Bilgilendirme", "text": "Süreç boyunca düzenli olarak sizi bilgilendiririm." }
+      ],
+      "disclaimer": "Bu içerik bilgilendirme amaçlıdır, hukuki danışmanlık niteliği taşımaz."
     }
   },
   "practiceAreas": {

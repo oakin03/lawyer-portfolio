@@ -57,13 +57,6 @@ export default function Footer() {
               <span>{ATTORNEY.phone}</span>
             </a>
           </div>
-
-          <Link
-            href="/iletisim"
-            className="mt-6 inline-block rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-          >
-            {tFooter("cta")}
-          </Link>
         </div>
 
         {/* Kurumsal / Corporate */}

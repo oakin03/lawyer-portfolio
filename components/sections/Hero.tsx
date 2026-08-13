@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { ATTORNEY } from "@/lib/constants";
-import { CalendarDays, ArrowRight, ArrowLeft, ShieldCheck, Users, Scale as ScaleIcon } from "lucide-react";
+import { Phone, CalendarDays, ArrowRight, ArrowLeft, ShieldCheck, Users, Scale as ScaleIcon } from "lucide-react";
 import { useLocale } from "next-intl";
 
 export default function Hero() {
@@ -21,16 +21,12 @@ export default function Hero() {
       <Image src={ATTORNEY.heroImage} alt="" fill priority className="object-cover" sizes="100vw" />
       <div className="absolute inset-0 bg-gradient-to-t from-cream-light via-black/40 to-black/60" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-72 sm:pt-72 lg:px-8">
-        <div className="max-w-2xl mt-10 text-left mr-auto">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
-            {ATTORNEY.name}
-          </p>
-
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-72 sm:pt-80 lg:px-8">
+        <div className="max-w-2xl mt-10 text-left mr-auto"> 
           <h1 className="mt-4 font-serif text-3xl leading-tight text-white sm:mt-4 sm:text-5xl">
             {t("headlineLine1")}
             <br />
-            {t("headlineLine2")}
+            <span className="font-bold">{t("headlineLine2")}</span>
           </h1>
 
           <p className="mt-6 max-w-lg text-base leading-relaxed text-neutral-200 sm:text-lg">
@@ -52,13 +48,13 @@ export default function Hero() {
               {t("ctaSecondary")}
               {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Link>
-            <Link
-              href="/iletisim"
+            <a
+              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
               className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
             >
-              <CalendarDays size={18} />
+              <Phone size={18} />
               {t("ctaPrimary")}
-            </Link>
+            </a>
           </div>
 
           <div className="mt-14 hidden grid-cols-1 gap-6 sm:grid sm:grid-cols-3">

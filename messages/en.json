@@ -23,7 +23,7 @@
     "practiceAreas": "Practice Areas",
     "publications": "Articles",
     "contact": "Contact",
-    "cta": "Book a Consultation",
+    "cta": "Call Now",
     "titleLine1": "Attorney",
     "titleLine2": "Mediator"
   },
@@ -36,7 +36,7 @@
     "follow": "Follow",
     "title": "Attorney",
     "tagline": "A reliable, transparent, and personalized legal partner for your legal matters.",
-    "cta": "Book a Consultation",
+    "cta": "Call Now",
     "rights": "All rights reserved.",
     "legal": {
       "kvkkLabel": "Data Protection Notice",
@@ -50,9 +50,9 @@
   },
   "home": {
     "hero": {
-      "headlineLine1": "A trusted partner",
-      "headlineLine2": "in your legal journey.",
-      "subtitle": "I offer my clients transparent communication, meticulous work, and personalized legal solutions.",
+      "headlineLine1": "Every step toward justice is a guarantee of what is fair.",
+      "headlineLine2": "We stand with you on this path!",
+      "subtitle": "We carefully assess your legal needs and provide reliable, solution-oriented legal services to protect your rights and interests.",
       "ctaPrimary": "Book a Consultation",
       "ctaSecondary": "Explore Practice Areas",
       "ctaPublications": "View Publications",
@@ -70,6 +70,41 @@
       "subtitle": "I provide professional legal support to my clients across a wide range of areas, particularly in criminal, family, labor, and commercial disputes.",
       "viewAll": "View All Practice Areas",
       "hoverCta": "Click for details"
+    },
+    "overview": {
+      "title": "Reliable, Solution-Oriented Legal Support in Ankara",
+      "intro": "Looking for legal support in Ankara? I provide individual and corporate clients with strategic, transparent, and results-oriented legal services in both litigation and advisory matters. I offer professional support across a wide range of areas, from criminal cases to family law, and from commercial disputes to real estate matters.",
+      "servicesTitle": "My Practice Areas",
+      "services": [
+        { "title": "Enforcement and Bankruptcy Law" },
+        { "title": "Criminal Law" },
+        { "title": "Family Law" },
+        { "title": "Labor and Social Security Law" },
+        { "title": "Real Estate Law" },
+        { "title": "Inheritance Law" },
+        { "title": "Consumer Law" },
+        { "title": "Private International Law" },
+        { "title": "Tort and Compensation Law" },
+        { "title": "Intellectual Property Law" },
+        { "title": "Information Technology Law" },
+        { "title": "Commercial Law" }
+      ],
+      "whyTitle": "Why Choose Me?",
+      "why": [
+        { "title": "Experience and Expertise", "text": "I closely follow current case law and legislation." },
+        { "title": "Transparent Process", "text": "I clarify the stages and potential costs from the outset." },
+        { "title": "Fast Communication", "text": "I provide prompt responses for appointments and case updates." },
+        { "title": "Personalized Approach", "text": "I define a strategy tailored to each case and follow it closely." }
+      ],
+      "processTitle": "How the Process Works",
+      "process": [
+        { "title": "Initial Consultation", "text": "We assess your request and goals together." },
+        { "title": "Assessment", "text": "I analyze the evidence and risks to chart a roadmap." },
+        { "title": "Action Plan", "text": "I clarify the litigation or settlement strategy, timeline, and cost." },
+        { "title": "Follow-Up", "text": "I carefully manage filings, hearings, and negotiations." },
+        { "title": "Updates", "text": "I keep you informed regularly throughout the process." }
+      ],
+      "disclaimer": "This content is for informational purposes only and does not constitute legal advice."
     }
   },
   "practiceAreas": {

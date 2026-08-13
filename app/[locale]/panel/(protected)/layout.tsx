@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import SessionGuard from "@/components/panel/SessionGuard";
 
 export default async function ProtectedPanelLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
@@ -9,5 +10,10 @@ export default async function ProtectedPanelLayout({ children }: { children: Rea
     redirect("/panel/login");
   }
 
-  return <>{children}</>;
-}
+  return (
+    <>
+      <SessionGuard />
+      {children}
+    </>
+  );
+} 

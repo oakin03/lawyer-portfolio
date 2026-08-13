@@ -6,6 +6,7 @@ import BackToTop from "@/components/ui/BackToTop";
 import "../globals.css";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { getTranslations } from "next-intl/server";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 
 const playfair = Playfair_Display({
@@ -49,6 +50,7 @@ export default async function LocaleLayout({
           <TopBar />
           {children}
           <BackToTop />
+          <WhatsAppButton />
         </NextIntlClientProvider>
       </body>
     </html>

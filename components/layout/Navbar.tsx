@@ -111,13 +111,12 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-
-          <Link
-            href="/iletisim"
+          <a
+            href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
             className="rounded-md bg-burgundy px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
           >
             {t("cta")}
-          </Link>
+          </a>
         </div>
 
         <button
@@ -181,13 +180,13 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <Link
-                href="/iletisim"
+              <a
+              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
                 onClick={() => setIsOpen(false)}
                 className="block rounded-md bg-burgundy px-3 py-2 text-center text-sm font-semibold text-white hover:bg-burgundy-dark"
               >
                 {t("cta")}
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

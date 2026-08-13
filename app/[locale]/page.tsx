@@ -4,6 +4,7 @@ import Hero from "@/components/sections/Hero";
 import AboutPreview from "@/components/sections/AboutPreview";
 import PracticeAreas from "@/components/sections/PracticeAreas";
 import SectionDivider from "@/components/ui/SectionDivider";
+import FirmOverview from "@/components/sections/FirmOverview";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
       <AboutPreview />
       <SectionDivider />
       <PracticeAreas />
+      <SectionDivider />
+      <FirmOverview />
       <Footer />
     </main>
   );
