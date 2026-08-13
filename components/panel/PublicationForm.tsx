@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { CornerUpLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { routing } from "@/i18n/routing";
 import { createClient } from "@/lib/supabase/client";
 import { slugify } from "@/lib/slugify";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
@@ -17,6 +18,7 @@ export default function PublicationForm({ existing }: { existing?: Publication }
   const [content, setContent] = useState(existing?.content ?? "");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [language, setLanguage] = useState(existing?.language ?? routing.defaultLocale);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,6 +31,7 @@ export default function PublicationForm({ existing }: { existing?: Publication }
       excerpt,
       content,
       category,
+      language,
       slug: existing ? existing.slug : slugify(title),
       ...(existing && { updated_at: new Date().toISOString() }),
     };
@@ -90,6 +93,20 @@ export default function PublicationForm({ existing }: { existing?: Publication }
               </option>
             ))}
           </select>
+          <div className="mt-4">
+            <label className="text-sm font-medium text-neutral-700">Dil</label>
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="mt-1 w-full rounded-md border border-neutral-300 px-4 py-2.5 outline-none focus:border-burgundy"
+            >
+              {routing.locales.map((code) => (
+                <option key={code} value={code}>
+                  {new Intl.DisplayNames(["tr"], { type: "language" }).of(code)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         <div className="mt-4">

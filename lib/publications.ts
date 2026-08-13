@@ -8,6 +8,7 @@ export type Publication = {
   excerpt: string;
   content: string;
   category: string;
+  language: string;
   date: string;
   updated_at: string;
   author_id: string | null;

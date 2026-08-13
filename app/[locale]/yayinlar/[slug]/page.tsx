@@ -69,7 +69,7 @@ export default async function PublicationDetailPage({
 
       <section className="relative flex h-64 w-full items-end overflow-hidden sm:h-80">
         <Image
-          src={categoryData?.image ?? "/images/practice-areas/other.jpg"}
+          src={`/images/practice-areas/${publication.category}-banner.jpg`}
           alt=""
           fill
           priority

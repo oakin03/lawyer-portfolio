@@ -9,7 +9,13 @@
     "backToList": "Tüm Yayınlara Dön",
     "lastEdited": "Son Düzenleme Tarihi",
     "previousArticle": "Önceki Makale",
-    "nextArticle": "Sonraki Makale"
+    "nextArticle": "Sonraki Makale",
+    "categoriesLabel": "Kategoriler",
+    "languageLabel": "Dil",
+    "allLanguages": "Tümü",
+    "yearLabel": "Yıl",
+    "allYears": "Tümü",
+    "resetFilters": "Filtreleri Sıfırla"
   },
   "nav": {
     "home": "Ana Sayfa",

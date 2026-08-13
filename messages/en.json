@@ -9,7 +9,13 @@
     "backToList": "Back to All Publications",
     "lastEdited": "Last Updated",
     "previousArticle": "Previous Article",
-    "nextArticle": "Next Article"
+    "nextArticle": "Next Article",
+    "categoriesLabel": "Categories",
+    "languageLabel": "Language",
+    "allLanguages": "All",
+    "yearLabel": "Year",
+    "allYears": "All",
+    "resetFilters": "Reset Filters"
   },
   "nav": {
     "home": "Home",

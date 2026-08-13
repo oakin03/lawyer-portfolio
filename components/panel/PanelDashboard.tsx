@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
-import { formatPanelDate } from "@/lib/formatDate";
-import { Settings } from "lucide-react";
 import NextLink from "next/link";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { formatPanelDate } from "@/lib/formatDate";
+import { Settings, Plus, CheckSquare, Square, Trash2, LogOut, X } from "lucide-react";
 import type { Publication } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
-import { Plus, CheckSquare, Square, Trash2, LogOut } from "lucide-react";
+import { routing } from "@/i18n/routing";
+import FilterDropdown from "@/components/ui/FilterDropdown";
 
 function ToolbarButton({
   icon: Icon,
@@ -44,10 +46,35 @@ function ToolbarButton({
 
 export default function PanelDashboard({ initialPublications }: { initialPublications: Publication[] }) {
   const router = useRouter();
+  const tAreas = useTranslations("practiceAreas");
   const [publications, setPublications] = useState(initialPublications);
   const [selected, setSelected] = useState<Set<string>>(new Set());
 
-  const allSelected = publications.length > 0 && selected.size === publications.length;
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState<string | null>(null);
+  const [language, setLanguage] = useState<string | null>(null);
+  const [year, setYear] = useState<string | null>(null);
+
+  const languageNames = useMemo(() => new Intl.DisplayNames(["tr"], { type: "language" }), []);
+
+  const availableYears = useMemo(() => {
+    const years = new Set(publications.map((pub) => new Date(pub.date).getFullYear().toString()));
+    return Array.from(years).sort((a, b) => Number(b) - Number(a));
+  }, [publications]);
+
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return publications.filter((pub) => {
+      if (category && pub.category !== category) return false;
+      if (language && pub.language !== language) return false;
+      if (year && new Date(pub.date).getFullYear().toString() !== year) return false;
+      if (!q) return true;
+      const haystack = `${pub.title} ${pub.excerpt} ${pub.content}`.toLowerCase();
+      return haystack.includes(q);
+    });
+  }, [query, category, language, year, publications]);
+
+  const allSelected = filtered.length > 0 && filtered.every((pub) => selected.has(pub.id));
 
   function toggleSelect(id: string) {
     setSelected((prev) => {
@@ -62,7 +89,7 @@ export default function PanelDashboard({ initialPublications }: { initialPublica
   }
 
   function toggleSelectAll() {
-    setSelected(allSelected ? new Set() : new Set(publications.map((p) => p.id)));
+    setSelected(allSelected ? new Set() : new Set(filtered.map((p) => p.id)));
   }
 
   async function handleBulkDelete() {
@@ -98,22 +125,76 @@ export default function PanelDashboard({ initialPublications }: { initialPublica
           <h1 className="text-2xl font-semibold text-neutral-900">Makaleler</h1>
           <div className="flex gap-2">
             <NextLink
-                href="/"
-                className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
+              href="/"
+              className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
             >
-                Anasayfa
+              Anasayfa
             </NextLink>
             <NextLink
-                href="/yayinlar"
-                className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
+              href="/yayinlar"
+              className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
             >
-                Yayınlar
+              Yayınlar
             </NextLink>
           </div>
         </div>
 
+        {/* Search + filters — mirrors the public Yayınlar page */}
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Makalelerde ara..."
+            className="w-64 rounded-md border border-neutral-300 bg-white px-4 py-3 text-sm text-neutral-900 outline-none transition-colors focus:border-burgundy"
+          />
+
+          <FilterDropdown
+            label="Kategoriler"
+            activeLabel={category ? tAreas(`${category}.title`) : "Tümü"}
+            activeValue={category}
+            onSelect={setCategory}
+            options={[
+              { value: null, label: "Tümü" },
+              ...PUBLICATION_CATEGORIES.map((cat) => ({ value: cat.slug, label: tAreas(`${cat.slug}.title`) })),
+            ]}
+          />
+
+          <FilterDropdown
+            label="Dil"
+            activeLabel={language ? languageNames.of(language) ?? language : "Tümü"}
+            activeValue={language}
+            onSelect={setLanguage}
+            options={[
+              { value: null, label: "Tümü" },
+              ...routing.locales.map((code) => ({ value: code, label: languageNames.of(code) ?? code })),
+            ]}
+          />
+
+          <FilterDropdown
+            label="Yıl"
+            activeLabel={year ?? "Tümü"}
+            activeValue={year}
+            onSelect={setYear}
+            options={[{ value: null, label: "Tümü" }, ...availableYears.map((y) => ({ value: y, label: y }))]}
+          />
+
+          <button
+            type="button"
+            onClick={() => {
+              setQuery("");
+              setCategory(null);
+              setLanguage(null);
+              setYear(null);
+            }}
+            className="flex flex-shrink-0 items-center gap-1.5 rounded-md bg-burgundy px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
+          >
+            <X size={14} />
+            Filtreleri Sıfırla
+          </button>
+        </div>
+
         <div className="mt-10">
-          {/* Toolbar — Outlook-style action bar */}
           <div className="flex flex-wrap items-center gap-1 rounded-t-lg border border-neutral-200 bg-white px-2 py-1.5">
             <ToolbarButton icon={Plus} label="Yeni Makale" onClick={() => router.push("/panel/new")} primary />
             <div className="mx-1 h-6 w-px bg-neutral-200" />
@@ -139,77 +220,76 @@ export default function PanelDashboard({ initialPublications }: { initialPublica
             </div>
           </div>
 
-          {/* Table */}
           <div className="overflow-x-auto rounded-b-lg border border-t-0 border-neutral-200 bg-white">
-            {publications.length === 0 ? (
-              <p className="p-6 text-center text-neutral-500">Henüz hiç makale eklenmemiş.</p>
+            {filtered.length === 0 ? (
+              <p className="p-6 text-center text-neutral-500">Eşleşen makale bulunamadı.</p>
             ) : (
-                <table className="w-full min-w-[820px]">
+              <table className="w-full min-w-[900px]">
                 <thead>
-                    <tr className="border-b border-neutral-200 bg-neutral-50 text-left text-xs font-medium uppercase tracking-wide text-neutral-500">
-                        <th className="w-10 px-4 py-3"></th>
-                        <th className="w-20 px-4 py-3">Görsel</th>
-                        <th className="px-4 py-3">Makale Başlığı</th>
-                        <th className="px-4 py-3">Kategori</th>
-                        <th className="px-4 py-3">Yazar</th>
-                        <th className="px-4 py-3">Paylaşım Tarihi</th>
-                        <th className="px-4 py-3">Son Düzenleme Tarihi</th>
-                        <th className="w-24 px-4 py-3"></th>
-                    </tr>
+                  <tr className="border-b border-neutral-200 bg-neutral-50 text-left text-xs font-medium uppercase tracking-wide text-neutral-500">
+                    <th className="w-10 px-4 py-3"></th>
+                    <th className="w-20 px-4 py-3">Görsel</th>
+                    <th className="px-4 py-3">Makale Başlığı</th>
+                    <th className="px-4 py-3">Kategori</th>
+                    <th className="px-4 py-3">Dil</th>
+                    <th className="px-4 py-3">Yazar</th>
+                    <th className="px-4 py-3">Paylaşım Tarihi</th>
+                    <th className="px-4 py-3">Son Düzenleme Tarihi</th>
+                    <th className="w-24 px-4 py-3"></th>
+                  </tr>
                 </thead>
                 <tbody>
-                    {publications.map((pub) => {
+                  {filtered.map((pub) => {
                     const categoryData = PUBLICATION_CATEGORIES.find((c) => c.slug === pub.category);
 
                     return (
-                        <tr
+                      <tr
                         key={pub.id}
                         onClick={() => toggleSelect(pub.id)}
                         className="cursor-pointer border-b border-neutral-100 transition-colors last:border-0 hover:bg-neutral-50"
-                        >
+                      >
                         <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                            <input
+                          <input
                             type="checkbox"
                             checked={selected.has(pub.id)}
                             onChange={() => toggleSelect(pub.id)}
                             className="h-4 w-4 rounded border-neutral-300"
-                            />
+                          />
                         </td>
                         <td className="px-4 py-3">
-                            <div className="relative h-12 w-16 overflow-hidden rounded">
+                          <div className="relative h-12 w-16 overflow-hidden rounded">
                             <Image
-                                src={categoryData?.image ?? "/images/practice-areas/other.jpg"}
-                                alt={pub.title}
-                                fill
-                                className="object-cover"
-                                sizes="64px"
+                              src={categoryData?.image ?? "/images/practice-areas/other.jpg"}
+                              alt={pub.title}
+                              fill
+                              className="object-cover"
+                              sizes="64px"
                             />
-                            </div>
+                          </div>
                         </td>
                         <td className="px-4 py-3 font-medium text-neutral-900">{pub.title}</td>
                         <td className="px-4 py-3 text-neutral-600">{categoryData?.slug ?? pub.category}</td>
                         <td className="px-4 py-3 text-neutral-600">
-                            {pub.profiles?.display_name ?? "—"}
+                          {languageNames.of(pub.language) ?? pub.language}
                         </td>
-                        <td className="px-4 py-3 text-sm text-neutral-500">
-                        {formatPanelDate(pub.date)}
+                        <td className="px-4 py-3 text-neutral-600">
+                          {pub.profiles?.display_name ?? "—"}
                         </td>
-                        <td className="px-4 py-3 text-sm text-neutral-500">
-                        {formatPanelDate(pub.updated_at)}
-                        </td>
+                        <td className="px-4 py-3 text-sm text-neutral-500">{formatPanelDate(pub.date)}</td>
+                        <td className="px-4 py-3 text-sm text-neutral-500">{formatPanelDate(pub.updated_at)}</td>
                         <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
-                            <NextLink
+                          <NextLink
                             href={`/panel/edit/${pub.id}`}
                             className="rounded-md bg-burgundy px-3 py-1.5 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
-                            >
+                          >
                             Düzenle
-                            </NextLink>
+                          </NextLink>
                         </td>
-                        </tr>
+                      </tr>
                     );
-                    })}
+                  })}
                 </tbody>
-                </table>
+              </table>
             )}
           </div>
         </div>

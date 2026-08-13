@@ -189,6 +189,12 @@
     "backToList": "العودة إلى جميع المنشورات",
     "lastEdited": "آخر تعديل",
     "previousArticle": "المقال السابق",
-    "nextArticle": "المقال التالي"
+    "nextArticle": "المقال التالي",
+    "categoriesLabel": "الفئات",
+    "languageLabel": "اللغة",
+    "allLanguages": "الكل",
+    "yearLabel": "السنة",
+    "allYears": "الكل",
+    "resetFilters": "إعادة تعيين الفلاتر"
   }
 }

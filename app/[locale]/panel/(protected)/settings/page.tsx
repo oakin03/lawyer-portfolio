@@ -11,6 +11,13 @@ export default function SettingsPage() {
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordSaving, setPasswordSaving] = useState(false);
+  const [passwordError, setPasswordError] = useState("");
+  const [passwordMessage, setPasswordMessage] = useState("");
+
   useEffect(() => {
     async function loadProfile() {
       const supabase = createClient();
@@ -32,9 +39,7 @@ export default function SettingsPage() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return;
 
-    const { error } = await supabase
-      .from("profiles")
-      .upsert({ id: user.id, display_name: name });
+    const { error } = await supabase.from("profiles").upsert({ id: user.id, display_name: name });
 
     setSaving(false);
 
@@ -45,9 +50,60 @@ export default function SettingsPage() {
     setMessage("Kaydedildi.");
   }
 
+  async function handlePasswordSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setPasswordError("");
+    setPasswordMessage("");
+
+    if (newPassword !== confirmPassword) {
+      setPasswordError("Yeni şifreler birbiriyle eşleşmiyor.");
+      return;
+    }
+    if (newPassword.length < 6) {
+      setPasswordError("Yeni şifre en az 6 karakter olmalıdır.");
+      return;
+    }
+
+    setPasswordSaving(true);
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user?.email) {
+      setPasswordSaving(false);
+      setPasswordError("Kullanıcı bilgisi alınamadı.");
+      return;
+    }
+
+    // Verify the current password by attempting to re-authenticate with it
+    const { error: verifyError } = await supabase.auth.signInWithPassword({
+      email: user.email,
+      password: oldPassword,
+    });
+
+    if (verifyError) {
+      setPasswordSaving(false);
+      setPasswordError("Mevcut şifre hatalı.");
+      return;
+    }
+
+    const { error: updateError } = await supabase.auth.updateUser({ password: newPassword });
+
+    setPasswordSaving(false);
+
+    if (updateError) {
+      setPasswordError("Şifre güncellenemedi: " + updateError.message);
+      return;
+    }
+
+    setPasswordMessage("Şifreniz başarıyla güncellendi.");
+    setOldPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+  }
+
   return (
     <main className="min-h-screen bg-cream-light px-4 py-10">
-      <form onSubmit={handleSubmit} className="mx-auto max-w-md rounded-lg border border-neutral-200 bg-white p-8 shadow-sm">
+      <div className="mx-auto flex max-w-md flex-col gap-6">
         <div className="flex items-center gap-3">
           <button
             type="button"
@@ -60,9 +116,9 @@ export default function SettingsPage() {
           <h1 className="text-xl font-semibold text-neutral-900">Profil Ayarları</h1>
         </div>
 
-        {message && <p className="mt-4 text-sm text-neutral-600">{message}</p>}
+        <form onSubmit={handleSubmit} className="rounded-lg border border-neutral-200 bg-white p-8 shadow-sm">
+          {message && <p className="mb-4 text-sm text-neutral-600">{message}</p>}
 
-        <div className="mt-6">
           <label className="text-sm font-medium text-neutral-700">Görünen Ad (Yazar Adı)</label>
           <input
             type="text"
@@ -75,16 +131,64 @@ export default function SettingsPage() {
           <p className="mt-2 text-xs text-neutral-500">
             Bu isim, yayınladığınız makalelerin altında &ldquo;Yazar: [isim]&rdquo; olarak görünecek.
           </p>
-        </div>
 
-        <button
-          type="submit"
-          disabled={saving}
-          className="mt-6 w-full rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white hover:bg-burgundy-dark disabled:opacity-60"
-        >
-          {saving ? "Kaydediliyor..." : "Kaydet"}
-        </button>
-      </form>
+          <button
+            type="submit"
+            disabled={saving}
+            className="mt-6 w-full rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white hover:bg-burgundy-dark disabled:opacity-60"
+          >
+            {saving ? "Kaydediliyor..." : "Kaydet"}
+          </button>
+        </form>
+
+        <form onSubmit={handlePasswordSubmit} className="rounded-lg border border-neutral-200 bg-white p-8 shadow-sm">
+          <h2 className="text-lg font-semibold text-neutral-900">Şifre Değiştir</h2>
+
+          {passwordError && <p className="mt-4 text-sm text-red-600">{passwordError}</p>}
+          {passwordMessage && <p className="mt-4 text-sm text-green-600">{passwordMessage}</p>}
+
+          <div className="mt-4">
+            <label className="text-sm font-medium text-neutral-700">Eski Şifre</label>
+            <input
+              type="password"
+              required
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+              className="mt-1 w-full rounded-md border border-neutral-300 px-4 py-2.5 outline-none focus:border-burgundy"
+            />
+          </div>
+
+          <div className="mt-4">
+            <label className="text-sm font-medium text-neutral-700">Yeni Şifre</label>
+            <input
+              type="password"
+              required
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              className="mt-1 w-full rounded-md border border-neutral-300 px-4 py-2.5 outline-none focus:border-burgundy"
+            />
+          </div>
+
+          <div className="mt-4">
+            <label className="text-sm font-medium text-neutral-700">Yeni Şifre (Tekrar)</label>
+            <input
+              type="password"
+              required
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="mt-1 w-full rounded-md border border-neutral-300 px-4 py-2.5 outline-none focus:border-burgundy"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={passwordSaving}
+            className="mt-6 w-full rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white hover:bg-burgundy-dark disabled:opacity-60"
+          >
+            {passwordSaving ? "Güncelleniyor..." : "Şifreyi Güncelle"}
+          </button>
+        </form>
+      </div>
     </main>
   );
 }

@@ -2,74 +2,103 @@
 
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import { useLocale } from "next-intl";
-import { formatPublicationDate } from "@/lib/formatDate";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/lib/navigation";
 import type { Publication } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
-import { Link } from "@/lib/navigation";
+import { routing } from "@/i18n/routing";
+import { formatPublicationDate } from "@/lib/formatDate";
+import FilterDropdown from "@/components/ui/FilterDropdown";
+import { X } from "lucide-react";
 
 export default function PublicationsSearch({ publications }: { publications: Publication[] }) {
   const t = useTranslations("publicationsPage");
-  const locale = useLocale();
   const tAreas = useTranslations("practiceAreas");
+  const locale = useLocale();
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string | null>(null);
-  const arrow = locale === "ar" ? "←" : "→";
+  const [language, setLanguage] = useState<string | null>(null);
+  const [year, setYear] = useState<string | null>(null);
+
+  const languageNames = useMemo(() => new Intl.DisplayNames([locale], { type: "language" }), [locale]);
+
+  const availableYears = useMemo(() => {
+    const years = new Set(publications.map((pub) => new Date(pub.date).getFullYear().toString()));
+    return Array.from(years).sort((a, b) => Number(b) - Number(a));
+  }, [publications]);
 
   const filtered = useMemo(() => {
-  const q = query.trim().toLowerCase();
+    const q = query.trim().toLowerCase();
 
     return publications.filter((pub) => {
-      const matchesCategory = !category || pub.category === category;
-      if (!matchesCategory) return false;
-
+      if (category && pub.category !== category) return false;
+      if (language && pub.language !== language) return false;
+      if (year && new Date(pub.date).getFullYear().toString() !== year) return false;
       if (!q) return true;
       const haystack = `${pub.title} ${pub.excerpt} ${pub.content}`.toLowerCase();
       return haystack.includes(q);
     });
-  }, [query, category, publications]);
+  }, [query, category, language, year, publications]);
 
   return (
     <div>
-      <div className="mx-auto max-w-xl">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-3">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t("searchPlaceholder")}
-          className="w-full rounded-md border border-neutral-300 bg-white px-5 py-3 text-neutral-900 outline-none transition-colors focus:border-burgundy"
+          className="min-w-[200px] flex-1 rounded-md border border-neutral-300 bg-white px-5 py-3 text-neutral-900 outline-none transition-colors focus:border-burgundy"
         />
-      </div>
 
-      <div className="mt-6 flex flex-wrap justify-center gap-2">
-        <button
-          type="button"
-          onClick={() => setCategory(null)}
-          className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-            category === null
-              ? "border-burgundy bg-burgundy text-white"
-              : "border-neutral-300 text-neutral-600 hover:border-burgundy hover:text-burgundy"
-          }`}
-        >
-          {t("allCategories")}
-        </button>
+        <FilterDropdown
+          label={t("categoriesLabel")}
+          activeLabel={category ? tAreas(`${category}.title`) : t("allCategories")}
+          activeValue={category}
+          onSelect={setCategory}
+          options={[
+            { value: null, label: t("allCategories") },
+            ...PUBLICATION_CATEGORIES.map((cat) => ({ value: cat.slug, label: tAreas(`${cat.slug}.title`) })),
+          ]}
+        />
 
-        {PUBLICATION_CATEGORIES.map((cat) => (
-          <button
-            key={cat.slug}
-            type="button"
-            onClick={() => setCategory(cat.slug)}
-            className={`rounded-full border px-4 py-1.5 text-sm font-medium transition-colors ${
-              category === cat.slug
-                ? "border-burgundy bg-burgundy text-white"
-                : "border-neutral-300 text-neutral-600 hover:border-burgundy hover:text-burgundy"
-            }`}
-          >
-            {tAreas(`${cat.slug}.title`)}
-          </button>
-        ))}
-      </div>
+        <FilterDropdown
+          label={t("languageLabel")}
+          activeLabel={language ? languageNames.of(language) ?? language : t("allLanguages")}
+          activeValue={language}
+          onSelect={setLanguage}
+          options={[
+            { value: null, label: t("allLanguages") },
+            ...routing.locales.map((code) => ({ value: code, label: languageNames.of(code) ?? code })),
+          ]}
+        />
+
+        <FilterDropdown
+          label={t("yearLabel")}
+          activeLabel={year ?? t("allYears")}
+          activeValue={year}
+          onSelect={setYear}
+          options={[
+            { value: null, label: t("allYears") },
+            ...availableYears.map((y) => ({ value: y, label: y })),
+          ]}
+        />
+
+      <button
+        type="button"
+        onClick={() => {
+          setQuery("");
+          setCategory(null);
+          setLanguage(null);
+          setYear(null);
+        }}
+        className="flex flex-shrink-0 items-center gap-1.5 rounded-md bg-burgundy px-4 py-3 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
+      >
+        <X size={14} />
+        {t("resetFilters")}
+      </button>
+
+    </div>
 
       <div className="mt-12">
         {filtered.length === 0 ? (
@@ -77,7 +106,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
         ) : (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((pub, index) => {
-              const categoryData = PUBLICATION_CATEGORIES.find((cat) => cat.slug === pub.category);
+              const categoryData = PUBLICATION_CATEGORIES.find((c) => c.slug === pub.category);
               const categoryLabel = tAreas(`${pub.category}.title`);
 
               return (
@@ -100,17 +129,17 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                     </span>
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                  <div className="text-xs tracking-wide text-neutral-400">
-                    <p>{formatPublicationDate(pub.date, locale)}</p>
-                    {pub.updated_at !== pub.date && (
-                      <p className="mt-0.5">
-                        ({t("lastEdited")}: {formatPublicationDate(pub.updated_at, locale)})
-                      </p>
-                    )}
-                  </div>
+                    <div className="text-xs tracking-wide text-neutral-400">
+                      <p>{formatPublicationDate(pub.date, locale)}</p>
+                      {pub.updated_at !== pub.date && (
+                        <p className="mt-0.5">
+                          ({t("lastEdited")}: {formatPublicationDate(pub.updated_at, locale)})
+                        </p>
+                      )}
+                    </div>
                     <h3 className="mt-2 text-lg font-semibold text-neutral-900">{pub.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-600">{pub.excerpt}</p>
-                    <span className="mt-4 self-end text-sm font-medium text-burgundy">{t("readMore")} {arrow}</span>
+                    <span className="mt-4 self-end text-sm font-medium text-burgundy">{t("readMore")} →</span>
                   </div>
                 </Link>
               );

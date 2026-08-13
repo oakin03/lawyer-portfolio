@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-cream-light via-black/40 to-black/60" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-72 sm:pt-72 lg:px-8">
-        <div className="max-w-2xl mt-10">
+        <div className="max-w-2xl mt-10 text-left mr-auto">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">
             {ATTORNEY.name}
           </p>
