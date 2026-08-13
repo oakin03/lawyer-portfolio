@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { ArrowRight } from "lucide-react";
 import { PRACTICE_AREAS } from "@/lib/constants";
+import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useLocale } from "next-intl";
 
 export default function PracticeAreas() {
   const t = useTranslations("home.practiceAreas");
   const tAreas = useTranslations("practiceAreas");
+  const locale = useLocale();
+  const isRtl = locale === "ar";
 
   return (
     <section className="bg-cream-light py-20">
@@ -50,7 +53,7 @@ export default function PracticeAreas() {
             className="flex items-center gap-2 rounded-md border border-burgundy px-6 py-3 text-sm font-semibold text-burgundy transition-colors hover:bg-burgundy hover:text-white"
           >
             {t("viewAll")}
-            <ArrowRight size={16} />
+            {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
           </Link>
         </div>
       </div>

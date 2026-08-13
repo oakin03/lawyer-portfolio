@@ -1,6 +1,6 @@
 {
   "publicationsPage": {
-    "title": "YAYINLAR",
+    "title": "MAKALELER",
     "subtitle": "Güncel hukuki konular hakkında paylaştığım makaleler.",
     "searchPlaceholder": "Makalelerde ara...",
     "noResults": "Aramanızla eşleşen bir makale bulunamadı.",
@@ -13,11 +13,13 @@
   },
   "nav": {
     "home": "Ana Sayfa",
-    "about": "Hakkımda",
-    "practiceAreas": "Uzmanlık Alanları",
-    "publications": "Yayınlar",
+    "about": "Kurumsal",
+    "practiceAreas": "Faaliyet Alanları",
+    "publications": "Makaleler",
     "contact": "İletişim",
-    "cta": "Randevu Al"
+    "cta": "Randevu Al",
+    "titleLine1": "Avukat",
+    "titleLine2": "Arabulucu"
   },
   "meta": {
   "siteTitle": "Büşra Nur Karakoç | Avukat & Arabulucu"
@@ -81,9 +83,9 @@
       "description": "İcra ve iflas hukuku, alacaklıların alacaklarını tahsil etmesi ve borçluların hukuki süreçler içinde borçlarını yapılandırması ile ilgili işlemleri düzenler. Alacaklı tarafında icra takibi başlatılması, haciz işlemlerinin yürütülmesi ve alacağın en kısa sürede tahsil edilmesi için gerekli tüm hukuki adımları sizin adınıza takip ediyorum. Borçlu tarafında ise itiraz süreçleri, ödeme planları ve konkordato gibi çözüm yollarıyla mağduriyetlerin en aza indirilmesine yardımcı oluyorum. Ticari işletmelerin finansal zorluk yaşadığı durumlarda iflas erteleme ve yeniden yapılandırma süreçlerinde de danışmanlık sağlıyorum. Bu alandaki süreçler sıkı zaman sınırlarına tabi olduğundan, hızlı ve doğru hukuki müdahale büyük önem taşır."
     },
     "is-hukuku": {
-      "title": "İş Hukuku",
-      "short": "İşçi ve işveren uyuşmazlıklarında çözüm odaklı danışmanlık ve temsil.",
-      "description": "İş hukuku, işçi ve işveren arasındaki ilişkiyi düzenleyen, çalışma hayatının neredeyse her aşamasını kapsayan geniş bir alandır. İşe iade davaları, haksız fesih, kıdem ve ihbar tazminatı talepleri, fazla mesai ve izin hakları gibi konularda hem işçi hem işveren tarafında danışmanlık ve dava takibi sağlıyorum. İş kazası ve meslek hastalığından kaynaklanan tazminat davalarında, mobbing iddialarında ve toplu iş sözleşmesi süreçlerinde de deneyimli bir yaklaşımla hareket ediyorum. İşverenler için iş sözleşmelerinin ve şirket içi yönetmeliklerin mevzuata uygun şekilde hazırlanması konusunda da destek veriyorum. Çalışma hayatındaki haklarınızın korunması ve olası uyuşmazlıkların önlenmesi için proaktif bir hukuki danışmanlık anlayışını benimsiyorum."
+      "title": "İş ve Sosyal Güvenlik Hukuku",
+      "short": "İşçi-işveren uyuşmazlıkları ile SGK ve sosyal güvenlik süreçlerinde danışmanlık.",
+      "description": "İş ve sosyal güvenlik hukuku, çalışma hayatını ve buna bağlı sosyal güvenlik haklarını bir arada ele alan geniş bir alandır. İşe iade davaları, haksız fesih, kıdem ve ihbar tazminatı talepleri, fazla mesai ve izin hakları gibi konularda hem işçi hem işveren tarafında danışmanlık ve dava takibi sağlıyorum. İş kazası ve meslek hastalığından kaynaklanan tazminat davalarında, mobbing iddialarında ve toplu iş sözleşmesi süreçlerinde de deneyimli bir yaklaşımla hareket ediyorum. Bunun yanında, SGK işlemleri, sigortalılık tespiti davaları, malullük/yaşlılık/ölüm aylığı talepleri ve hizmet tespiti davaları gibi sosyal güvenlik hukukuna özgü konularda da destek veriyorum. İşverenler için iş sözleşmelerinin ve şirket içi yönetmeliklerin mevzuata uygun şekilde hazırlanması konusunda da danışmanlık sunuyorum. Amacım, çalışma hayatınızdaki ve sosyal güvenlik süreçlerinizdeki haklarınızın korunmasını, proaktif bir hukuki yaklaşımla sağlamaktır."
     },
     "ticaret-hukuku": {
       "title": "Ticaret Hukuku",
@@ -105,17 +107,42 @@
       "short": "Her tür sözleşmenin hazırlanması ve incelenmesinde profesyonel destek.",
       "description": "Sözleşmeler hukuku, taraflar arasındaki hak ve yükümlülükleri düzenleyen, ticari ve bireysel ilişkilerin temelini oluşturan bir alandır. Kira, satış, hizmet, danışmanlık ve iş birliği sözleşmeleri gibi çok çeşitli sözleşme türlerinin hazırlanması ve incelenmesi konusunda destek sağlıyorum. Mevcut bir sözleşmenin haklarınızı yeterince koruyup korumadığının değerlendirilmesi, olası risklerin tespiti ve gerekli revizyonların yapılması sürecinde titizlikle çalışıyorum. Sözleşmeden doğan ihtilaflarda, sözleşmenin feshi veya ifa edilmemesi durumlarında tazminat ve alacak davalarını da takip ediyorum. Her sözleşmenin, imzalandığı andan itibaren sizi koruyacak şekilde açık, dengeli ve hukuka uygun olmasını sağlamayı amaçlıyorum."
     },
+    "tuketici-hukuku": {
+      "title": "Tüketici Hukuku",
+      "short": "Ayıplı mal/hizmet, cayma hakkı ve tüketici uyuşmazlıklarında danışmanlık.",
+      "description": "Tüketici hukuku, mal veya hizmet satın alan bireylerin haklarını korumayı amaçlayan, günlük hayatta en sık karşılaşılan hukuk alanlarından biridir. Ayıplı mal ve hizmetlerden doğan talepler, cayma hakkının kullanılması, kapıdan satış ve mesafeli sözleşmelerden kaynaklanan uyuşmazlıklarda müvekkillerimin haklarını korumak için çalışıyorum. Tüketici hakem heyeti ve tüketici mahkemesi süreçlerinde etkin bir temsil sağlıyorum. Abonelik sözleşmeleri, kredi kartı ve banka işlemlerinden doğan uyuşmazlıklarda da danışmanlık veriyorum. Amacım, tüketicilerin güçlü tarafın (satıcı/sağlayıcı) karşısında haklarını eksiksiz kullanabilmelerini sağlamaktır."
+    },
+    "milletlerarasi-ozel-hukuk": {
+      "title": "Milletlerarası Özel Hukuk",
+      "short": "Yabancılık unsuru taşıyan uyuşmazlıklarda hukuki danışmanlık ve temsil.",
+      "description": "Milletlerarası özel hukuk, taraflardan en az birinin yabancı olduğu veya olayın yabancı bir unsur içerdiği hukuki ilişkileri düzenleyen özel bir alandır. Yabancı mahkeme kararlarının tanınması ve tenfizi, milletlerarası aile hukuku uyuşmazlıkları, yabancılık unsurlu miras ve ticaret davalarında danışmanlık ve temsil sağlıyorum. Uygulanacak hukukun tespiti ve yetkili mahkemenin belirlenmesi gibi teknik konularda deneyimli bir yaklaşımla hareket ediyorum. Yurt dışında yaşayan Türk vatandaşlarının ve Türkiye'deki yabancı uyruklu kişilerin hukuki süreçlerinde de destek veriyorum. Amacım, sınır ötesi hukuki meselelerde de haklarınızın eksiksiz korunmasını sağlamaktır."
+    },
+    "tazminat-hukuku": {
+      "title": "Tazminat Hukuku",
+      "short": "Maddi ve manevi tazminat davalarında hak ve alacaklarınızı takip ederim.",
+      "description": "Tazminat hukuku, bir kişinin haksız bir fiil veya sözleşmeye aykırılık nedeniyle uğradığı zararın giderilmesini konu alır. Trafik kazaları, iş kazaları, malpraktis (hekim hatası) ve haksız fiillerden doğan maddi ve manevi tazminat davalarında müvekkillerimin haklarını takip ediyorum. Zararın tespiti, kusur oranının belirlenmesi ve tazminat miktarının hesaplanması süreçlerinde titizlikle çalışıyorum. Sigorta şirketleriyle olan uyuşmazlıklarda da etkin bir temsil sağlıyorum. Amacım, yaşadığınız maddi ve manevi kaybın karşılığını hukuki yollarla en adil şekilde tazmin etmenizi sağlamaktır."
+    },
+    "fikri-mulkiyet-hukuku": {
+      "title": "Fikri Mülkiyet Hukuku",
+      "short": "Marka, patent, tasarım ve telif haklarının korunmasında danışmanlık.",
+      "description": "Fikri mülkiyet hukuku, marka, patent, tasarım ve telif hakları gibi soyut değerlerin korunmasını konu alan, günümüzde giderek önem kazanan bir alandır. Marka ve patent tescil süreçlerinde danışmanlık, marka ihlali ve haksız rekabet davalarında temsil sağlıyorum. Telif hakkı ihlallerinde hak sahiplerinin korunması ve lisans sözleşmelerinin hazırlanması konularında da destek veriyorum. Girişimciler ve içerik üreticileri için fikri mülkiyet varlıklarının korunmasına yönelik önleyici hukuki danışmanlık sunuyorum. Amacım, yaratıcı ve yenilikçi çalışmalarınızın hukuki güvence altında olmasını sağlamaktır."
+    },
+    "bilisim-hukuku": {
+      "title": "Bilişim Hukuku",
+      "short": "Veri koruma, siber güvenlik ve dijital platform uyuşmazlıklarında destek.",
+      "description": "Bilişim hukuku, teknolojinin hızla gelişmesiyle birlikte önemi artan, kişisel verilerin korunması, siber suçlar ve dijital platformlardan doğan uyuşmazlıkları kapsayan bir alandır. KVKK uyum süreçleri, veri ihlali bildirimleri ve kişisel verilerin korunmasına ilişkin danışmanlık sağlıyorum. Siber dolandırıcılık, kimlik hırsızlığı ve dijital ortamda işlenen suçlarla ilgili hukuki süreçlerde destek veriyorum. E-ticaret platformları ve dijital hizmet sağlayıcıları için sözleşme ve uyum danışmanlığı sunuyorum. Amacım, dijital dünyada karşılaştığınız hukuki risklere karşı sizi güvence altına almaktır."
+    },
     "other": {
       "title": "Diğer"
     }
   },
   "practiceAreasPage": {
-    "title": "UZMANLIK ALANLARI",
+    "title": "FAALİYET ALANLARI",
     "subtitle": "Hukuki danışmanlık ve dava takibi sunduğumuz alanlar."
   },
   "about": {
     "banner": {
-      "title": "HAKKIMDA",
+      "title": "KURUMSAL",
       "subtitle": "Deneyimim, çalışma prensiplerim ve size nasıl yardımcı olabileceğim hakkında."
     },
     "sections": {

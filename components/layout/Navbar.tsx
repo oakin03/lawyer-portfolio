@@ -32,7 +32,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
+      className={`fixed top-0 z-50 w-full transition-colors duration-300 sm:top-9 ${
         isScrolled ? "border-b border-neutral-200 bg-cream/95 backdrop-blur" : "bg-transparent"
       }`}
     >
@@ -72,6 +72,21 @@ export default function Navbar() {
               <span className="h-px w-5 bg-current opacity-60" />
             </div>
           </div>
+
+          <div
+            className={`h-8 w-px transition-colors duration-300 ${
+              isScrolled ? "bg-neutral-300" : "bg-white/40"
+            }`}
+          />
+
+          <div
+            className={`flex flex-col text-xs font-medium leading-tight transition-colors duration-300 ${
+              isScrolled ? "text-neutral-700" : "text-neutral-100"
+            }`}
+          >
+            <span>{t("titleLine1")}</span>
+            <span>{t("titleLine2")}</span>
+          </div>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
@@ -89,36 +104,13 @@ export default function Navbar() {
                 }`}
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
+                <span className="absolute -bottom-1 start-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
               </Link>
             </li>
           ))}
         </ul>
 
         <div className="hidden items-center gap-4 md:flex">
-          <div className="flex items-center gap-2 text-sm font-bold">
-            <Link
-              href={pathname}
-              locale="tr"
-              className={`flex items-center gap-1.5 transition-colors ${
-                isScrolled ? "text-neutral-800 hover:text-burgundy" : "text-white hover:text-neutral-200"
-              }`}
-            >
-              <img src="https://flagcdn.com/24x18/tr.png" alt="Türkçe" className="h-[14px] w-5 rounded-sm object-cover" />
-              TR
-            </Link>
-            <span className={isScrolled ? "text-neutral-300" : "text-white/40"}>/</span>
-            <Link
-              href={pathname}
-              locale="en"
-              className={`flex items-center gap-1.5 transition-colors ${
-                isScrolled ? "text-neutral-800 hover:text-burgundy" : "text-white hover:text-neutral-200"
-              }`}
-            >
-              <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[14px] w-5 rounded-sm object-cover" />
-              EN
-            </Link>
-          </div>
 
           <Link
             href="/iletisim"
@@ -159,7 +151,7 @@ export default function Navbar() {
               </li>
             ))}
 
-            <li className="flex items-center gap-5 px-3 pt-2">
+            <li className="flex flex-wrap items-center gap-4 px-3 pt-2">
               <Link
                 href={pathname}
                 locale="tr"
@@ -177,6 +169,15 @@ export default function Navbar() {
               >
                 <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[18px] w-6 rounded-sm object-cover" />
                 EN
+              </Link>
+              <Link
+                href={pathname}
+                locale="ar"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-base font-bold text-neutral-900"
+              >
+                <img src="https://flagcdn.com/24x18/sa.png" alt="العربية" className="h-[18px] w-6 rounded-sm object-cover" />
+                AR
               </Link>
             </li>
             <li>

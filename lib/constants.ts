@@ -10,47 +10,52 @@ export const ATTORNEY = {
   bio: "Bireyler ve işletmeler için kişiye özel, sonuç odaklı hukuki temsil sunuyorum. Bağımsız bir avukat olarak, her müvekkilimin tam ilgimi ve özverili uzmanlığımı almasını sağlıyorum.",
   photo: "/images/attorney-photo.jpg",
   heroImage: "/images/hero-background.jpg",
-  address: "Atatürk Bulvarı No: 123, Çankaya / Ankara",
-  phone: "+90 500 000 00 00",
+  address: "Mehmet Akif Ersoy Mah. 324 Cad. No: 2/B/37 Anadolu 1919 Plaza Yenimahalle/ANKARA",
+  phone: "+90 531 662 66 76",
   barNumber: "Ankara Barosu - 12345",
+  shortLocation: "Ankara, Atatürk Bulvarı",
 };
 
 export const NAV_LINKS = [
   { label: "Ana Sayfa", href: "/" },
-  { label: "Hakkımda", href: "/hakkimda" },
-  { label: "Uzmanlık Alanları", href: "/uzmanlik-alanlari" },
-  { label: "Yayınlar", href: "/yayinlar" },
+  { label: "Kurumsal", href: "/hakkimda" },
+  { label: "Faaliyet Alanları", href: "/uzmanlik-alanlari" },
+  { label: "Makaleler", href: "/yayinlar" },
   { label: "İletişim", href: "/iletisim" },
 ];
 
 // Footer link groups — split into personal/contact pages and content pages
 export const FOOTER_LINKS_PERSONAL = [
   { label: "Ana Sayfa", href: "/" },
-  { label: "Hakkımda", href: "/hakkimda" },
+  { label: "Kurumsal", href: "/hakkimda" },
   { label: "İletişim", href: "/iletisim" },
 ];
 
 export const FOOTER_LINKS_CONTENT = [
-  { label: "Uzmanlık Alanları", href: "/uzmanlik-alanlari" },
-  { label: "Yayınlar", href: "/yayinlar" },
+  { label: "Faaliyet Alanları", href: "/uzmanlik-alanlari" },
+  { label: "Makaleler", href: "/yayinlar" },
 ];
 
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/eithan03",
+  instagram: "https://instagram.com/eithan5",
   linkedin: "https://linkedin.com/in/burkay-orkun-akin",
-  email: "oakin03@gmail.com",
-  whatsapp: "https://wa.me/905000000000",
+  email: "av.busranurkarakoc@gmail.com",
+  whatsapp: "https://wa.me/905316626676",
 };
 
 export const PRACTICE_AREAS = [
+  { slug: "icra-iflas-hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
   { slug: "ceza-hukuku", image: "/images/practice-areas/ceza-hukuku.jpg" },
   { slug: "aile-hukuku", image: "/images/practice-areas/aile-hukuku.jpg" },
-  { slug: "icra-iflas-hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
   { slug: "is-hukuku", image: "/images/practice-areas/is-hukuku.jpg" },
-  { slug: "ticaret-hukuku", image: "/images/practice-areas/ticaret-hukuku.jpg" },
   { slug: "gayrimenkul-hukuku", image: "/images/practice-areas/gayrimenkul-hukuku.jpg" },
   { slug: "miras-hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
-  { slug: "sozlesmeler-hukuku", image: "/images/practice-areas/sozlesmeler-hukuku.jpg" },
+  { slug: "tuketici-hukuku", image: "/images/practice-areas/tuketici-hukuku.jpg" },
+  { slug: "milletlerarasi-ozel-hukuk", image: "/images/practice-areas/milletlerarasi-ozel-hukuk.jpg" },
+  { slug: "tazminat-hukuku", image: "/images/practice-areas/tazminat-hukuku.jpg" },
+  { slug: "fikri-mulkiyet-hukuku", image: "/images/practice-areas/fikri-mulkiyet-hukuku.jpg" },
+  { slug: "bilisim-hukuku", image: "/images/practice-areas/bilisim-hukuku.jpg" },
+  { slug: "ticaret-hukuku", image: "/images/practice-areas/ticaret-hukuku.jpg" },
 ];
 // Extends PRACTICE_AREAS with an "Other" option — used only for publication
 // categorization (filter UI + future admin panel dropdown), not shown on the

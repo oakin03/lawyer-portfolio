@@ -1,6 +1,6 @@
 {
   "publicationsPage": {
-    "title": "PUBLICATIONS",
+    "title": "ARTICLES",
     "subtitle": "Articles I've shared on current legal topics.",
     "searchPlaceholder": "Search articles...",
     "noResults": "No articles matched your search.",
@@ -13,11 +13,13 @@
   },
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "Corporate",
     "practiceAreas": "Practice Areas",
-    "publications": "Publications",
+    "publications": "Articles",
     "contact": "Contact",
-    "cta": "Book a Consultation"
+    "cta": "Book a Consultation",
+    "titleLine1": "Attorney",
+    "titleLine2": "Mediator"
   },
   "meta": {
   "siteTitle": "Büşra Nur Karakoç | Attorney & Mediator"
@@ -81,9 +83,9 @@
       "description": "Enforcement and bankruptcy law governs the processes through which creditors collect their claims and debtors restructure their debts within a legal framework. On the creditor side, I handle the initiation of enforcement proceedings, execution of attachments, and pursue the fastest possible collection of your claims. On the debtor side, I help minimize hardship through objection processes, payment plans, and solutions such as concordat. I also provide advisory services on bankruptcy postponement and restructuring for businesses facing financial difficulty. As matters in this area are subject to strict deadlines, swift and accurate legal intervention is essential."
     },
     "is-hukuku": {
-      "title": "Labor Law",
-      "short": "Solution-focused advisory and representation in employer-employee disputes.",
-      "description": "Labor law regulates the relationship between employees and employers, covering nearly every stage of working life. I provide advisory services and litigation support for both employees and employers in reinstatement cases, wrongful termination, severance and notice pay claims, and disputes over overtime and leave entitlements. I also handle compensation cases arising from workplace accidents and occupational illnesses, mobbing claims, and collective bargaining processes. For employers, I assist in drafting employment contracts and internal policies in compliance with legislation. I take a proactive approach to legal counsel, aiming to protect your rights in the workplace and prevent potential disputes before they arise."
+      "title": "Labor and Social Security Law",
+      "short": "Advisory on employer-employee disputes as well as social security (SGK) matters.",
+      "description": "Labor and social security law is a broad field that addresses working life alongside the related social security rights. I provide advisory services and litigation support for both employees and employers in reinstatement cases, wrongful termination, severance and notice pay claims, and disputes over overtime and leave entitlements. I also handle compensation cases arising from workplace accidents and occupational illnesses, mobbing claims, and collective bargaining processes with an experienced approach. In addition, I provide support on social security-specific matters such as social security (SGK) procedures, insured status determination cases, disability/old-age/survivor's pension claims, and service determination lawsuits. For employers, I offer advisory services on drafting employment contracts and internal policies in compliance with legislation. My goal is to protect your rights in both your working life and your social security processes through a proactive legal approach."
     },
     "ticaret-hukuku": {
       "title": "Commercial Law",
@@ -105,6 +107,31 @@
       "short": "Professional support in drafting and reviewing all types of contracts.",
       "description": "Contract law governs the rights and obligations between parties, forming the foundation of both commercial and personal relationships. I provide support in drafting and reviewing a wide range of contracts, including lease, sale, service, consulting, and partnership agreements. I carefully assess whether an existing contract adequately protects your rights, identify potential risks, and make necessary revisions. I also handle compensation and debt collection cases arising from contract disputes, termination, or non-performance. My aim is to ensure every contract is clear, balanced, and legally sound from the moment it is signed, protecting you throughout its duration."
     },
+    "tuketici-hukuku": {
+      "title": "Consumer Law",
+      "short": "Advisory on defective goods/services, right of withdrawal, and consumer disputes.",
+      "description": "Consumer law aims to protect the rights of individuals who purchase goods or services — one of the most commonly encountered areas of law in daily life. I work to protect my clients' rights in claims arising from defective goods and services, the exercise of the right of withdrawal, and disputes arising from doorstep sales and distance contracts. I provide effective representation before consumer arbitration committees and consumer courts. I also offer advisory services on disputes arising from subscription agreements, credit card, and banking transactions. My goal is to ensure consumers can fully exercise their rights against the stronger party (seller/provider)."
+    },
+    "milletlerarasi-ozel-hukuk": {
+      "title": "Private International Law",
+      "short": "Legal advisory and representation in disputes involving a foreign element.",
+      "description": "Private international law is a specialized field governing legal relationships in which at least one party is foreign, or the matter otherwise involves a foreign element. I provide advisory and representation services in the recognition and enforcement of foreign court judgments, international family law disputes, and inheritance and commercial cases involving a foreign element. I handle technical matters such as determining the applicable law and the competent court with an experienced approach. I also support Turkish citizens living abroad and foreign nationals in Turkey in their legal processes. My goal is to ensure your rights are fully protected even in cross-border legal matters."
+    },
+    "tazminat-hukuku": {
+      "title": "Tort and Compensation Law",
+      "short": "Pursuing your rights and claims in material and moral compensation cases.",
+      "description": "Tort and compensation law concerns the remedy of damages suffered by a person due to a wrongful act or breach of contract. I pursue my clients' rights in material and moral compensation cases arising from traffic accidents, workplace accidents, medical malpractice, and other wrongful acts. I work meticulously in determining the damage, establishing the degree of fault, and calculating the compensation amount. I also provide effective representation in disputes with insurance companies. My goal is to help you obtain the fairest possible legal remedy for the material and moral loss you have suffered."
+    },
+    "fikri-mulkiyet-hukuku": {
+      "title": "Intellectual Property Law",
+      "short": "Advisory on protecting trademarks, patents, designs, and copyrights.",
+      "description": "Intellectual property law, an increasingly important field today, concerns the protection of intangible assets such as trademarks, patents, designs, and copyrights. I provide advisory services during trademark and patent registration processes and representation in trademark infringement and unfair competition cases. I also support rights holders in copyright infringement matters and in drafting licensing agreements. I offer preventive legal advisory services to entrepreneurs and content creators to protect their intellectual property assets. My goal is to ensure your creative and innovative work is legally safeguarded."
+    },
+    "bilisim-hukuku": {
+      "title": "Information Technology Law",
+      "short": "Support in data protection, cybersecurity, and digital platform disputes.",
+      "description": "Information technology law, growing in importance alongside rapid technological development, covers personal data protection, cybercrimes, and disputes arising from digital platforms. I provide advisory services on data protection compliance processes and personal data protection matters. I offer support in legal processes related to cyber fraud, identity theft, and crimes committed in digital environments. I provide contract and compliance advisory services for e-commerce platforms and digital service providers. My goal is to safeguard you against the legal risks you may encounter in the digital world."
+    },
     "other": {
       "title": "Other"
     }
@@ -115,7 +142,7 @@
   },
   "about": {
     "banner": {
-      "title": "ABOUT ME",
+      "title": "CORPORATE",
       "subtitle": "My experience, working principles, and how I can help you."
     },
     "sections": {

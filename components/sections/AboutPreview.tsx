@@ -2,9 +2,12 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { ATTORNEY } from "@/lib/constants";
+import { useLocale } from "next-intl";
 
 export default function AboutPreview() {
   const t = useTranslations("home.about");
+  const locale = useLocale();
+    const arrow = locale === "ar" ? "←" : "→";
 
   return (
     <section className="bg-cream-light py-20">
@@ -17,7 +20,7 @@ export default function AboutPreview() {
           <h2 className="text-2xl font-semibold text-neutral-900">{ATTORNEY.name}</h2>
           <p className="mt-3 leading-relaxed text-neutral-600">{t("tagline")}</p>
           <Link href="/hakkimda" className="mt-4 inline-block text-sm font-medium text-burgundy hover:underline">
-            {t("cta")} →
+            {t("cta")} {arrow}
           </Link>
         </div>
       </div>

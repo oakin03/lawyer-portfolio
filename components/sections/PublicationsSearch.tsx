@@ -15,9 +15,10 @@ export default function PublicationsSearch({ publications }: { publications: Pub
   const tAreas = useTranslations("practiceAreas");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string | null>(null);
+  const arrow = locale === "ar" ? "←" : "→";
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
+  const q = query.trim().toLowerCase();
 
     return publications.filter((pub) => {
       const matchesCategory = !category || pub.category === category;
@@ -94,7 +95,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                       className="object-cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <span className="absolute left-3 top-3 rounded-full bg-burgundy px-3 py-1 text-xs font-semibold text-white">
+                    <span className="absolute start-3 top-3 rounded-full bg-burgundy px-3 py-1 text-xs font-semibold text-white">
                       {categoryLabel}
                     </span>
                   </div>
@@ -109,7 +110,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                   </div>
                     <h3 className="mt-2 text-lg font-semibold text-neutral-900">{pub.title}</h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-neutral-600">{pub.excerpt}</p>
-                    <span className="mt-4 self-end text-sm font-medium text-burgundy">{t("readMore")} →</span>
+                    <span className="mt-4 self-end text-sm font-medium text-burgundy">{t("readMore")} {arrow}</span>
                   </div>
                 </Link>
               );

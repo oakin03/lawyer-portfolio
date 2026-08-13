@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import LegalLinkModal from "@/components/ui/LegalLinkModal";
 import { Link } from "@/lib/navigation";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon, LinkedinIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
 import { ATTORNEY, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -39,9 +39,23 @@ export default function Footer() {
 
           <p className="mt-4 text-neutral-600">{tFooter("tagline")}</p>
 
-          <div className="mt-4 flex items-start gap-2 text-sm text-neutral-500">
-            <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-            <span>{ATTORNEY.address}</span>
+          <div className="mt-4 space-y-2 text-sm text-neutral-500">
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2 transition-colors hover:text-burgundy"
+            >
+              <MapPin size={16} className="mt-0.5 flex-shrink-0" />
+              <span>{ATTORNEY.address}</span>
+            </a>
+            <a
+              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
+              className="flex items-center gap-2 transition-colors hover:text-burgundy"
+            >
+              <Phone size={16} className="flex-shrink-0" />
+              <span>{ATTORNEY.phone}</span>
+            </a>
           </div>
 
           <Link
@@ -65,7 +79,7 @@ export default function Footer() {
                   className="group relative inline-block text-neutral-700 transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px]"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
+                  <span className="absolute -bottom-1 start-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -85,7 +99,7 @@ export default function Footer() {
                   className="group relative inline-block text-neutral-700 transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px]"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
+                  <span className="absolute -bottom-1 start-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -162,7 +176,7 @@ export default function Footer() {
           />
         </div>
 
-        <p className="text-sm italic text-neutral-500">
+        <p className="text-end text-sm italic text-neutral-500">
           {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. {tFooter("rights")}
         </p>
       </div>

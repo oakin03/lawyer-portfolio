@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getLocale } from "next-intl/server";
 import { formatPublicationDate } from "@/lib/formatDate";
-import { CornerUpLeft, ChevronLeft, ChevronRight } from "lucide-react";
+import { CornerUpLeft, CornerUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import Navbar from "@/components/layout/Navbar";
@@ -19,6 +19,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const publication = await getPublicationBySlug(slug);
   const tMeta = await getTranslations("meta");
+  const locale = await getLocale();
+  const isRtl = locale === "ar";
+
+  // Geri butonundaki ikonu:
+  {isRtl ? <CornerUpRight size={16} /> : <CornerUpLeft size={16} />}
+
+  // Önceki Makale butonundaki ikonu:
+  {isRtl ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+
+  // Sonraki Makale butonundaki ikonu:
+  {isRtl ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
 
   if (!publication) {
     return { title: tMeta("siteTitle") };
@@ -113,7 +124,7 @@ export default async function PublicationDetailPage({
           />
 
           {publication.profiles?.display_name && (
-            <p className="mt-8 text-right text-sm text-neutral-500">
+            <p className="mt-8 text-end text-sm text-neutral-500">
               Yazar: {publication.profiles.display_name}
             </p>
           )}
