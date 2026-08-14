@@ -23,7 +23,7 @@ export default async function YayinlarPage() {
     <main>
       <Navbar />
 
-      <PageBanner image="/images/about-banner.jpg" title={t("title")} subtitle={t("subtitle")} />
+      <PageBanner image="/images/publications-banner.jpg" title={t("title")} subtitle={t("subtitle")} />
 
       <section className="bg-cream-light py-20">
         <div className="mx-auto max-w-7xl px-4">
