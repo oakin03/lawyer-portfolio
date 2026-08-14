@@ -14,6 +14,7 @@ export const ATTORNEY = {
   phone: "+90 531 662 66 76",
   barNumber: "Ankara Barosu - 12345",
   shortLocation: "Ankara, Atatürk Bulvarı",
+  workingHours: "Pzt - Cum: 09:00 - 18:00",
 };
 
 export const NAV_LINKS = [

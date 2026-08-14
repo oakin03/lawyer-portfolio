@@ -227,8 +227,11 @@
       "address": "Address",
       "phone": "Phone",
       "email": "Email",
-      "whatsapp": "Message on WhatsApp",
-      "mapTitle": "Office location"
+      "whatsapp": "WhatsApp",
+      "workingHours": "Working Hours",
+      "mapTitle": "Office location",
+      "intro": "You can contact our office for legal advice and case follow-up, and schedule an appointment at a convenient time.",
+      "callCta": "Call us for information"
     }
   }
 }

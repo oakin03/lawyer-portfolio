@@ -71,9 +71,10 @@ export default function ContactForm() {
         </div>
 
         <div>
-          <label className="text-sm font-medium text-neutral-700">{t("phone")}</label>
+          <RequiredLabel text={t("phone")} />
           <input
             type="tel"
+            required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="mt-1 w-full rounded-md border border-neutral-300 px-4 py-2.5 text-neutral-900 outline-none transition-colors focus:border-burgundy"

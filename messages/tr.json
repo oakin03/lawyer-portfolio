@@ -227,8 +227,11 @@
       "address": "Adres",
       "phone": "Telefon",
       "email": "E-posta",
-      "whatsapp": "WhatsApp'tan Yazın",
-      "mapTitle": "Ofis konumu"
+      "whatsapp": "WhatsApp",
+      "workingHours": "Çalışma Saatleri",
+      "mapTitle": "Ofis konumu",
+      "intro": "Hukuki danışmanlık ve dava takibi için ofisimizle iletişime geçebilir, uygun görüşme saati için randevu oluşturabilirsiniz.",
+      "callCta": "Bilgi almak için bizi arayın"
     }
   }
 }
