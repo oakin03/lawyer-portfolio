@@ -46,10 +46,6 @@ export default function FirmOverview() {
         <InfoColumn heading={t("whyTitle")} items={why} />
         <InfoColumn heading={t("processTitle")} items={process} />
       </div>
-
-      <p className="mx-auto mt-12 max-w-3xl px-4 text-center text-xs italic text-neutral-400">
-        {t("disclaimer")}
-      </p>
     </section>
   );
 }
