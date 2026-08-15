@@ -46,28 +46,12 @@ export default function Navbar() {
           className="flex items-center gap-3"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <Image
-            src={isScrolled ? "/images/logo-black.png" : "/images/logo-white.png"}
-            alt="Büşra Nur Karakoç — Avukat & Arabulucu"
-            width={64}
-            height={64}
-            priority
-            className={`transition-all duration-300 ${
-              isScrolled ? "h-11 w-11" : "h-11 w-11 sm:h-14 sm:w-14"
-            }`}
-          />
 
           <div
             className={`flex flex-col items-center transition-colors duration-300 ${
               isScrolled ? "text-neutral-900" : "text-white"
             }`}
           >
-            <div className="flex items-center gap-1.5">
-              <span className="h-px w-5 bg-current opacity-60" />
-              <span className="h-1 w-1 rotate-45 bg-current" />
-              <span className="h-px w-5 bg-current opacity-60" />
-            </div>
-
             <span
               className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 ${
                 isScrolled ? "text-base" : "text-base sm:text-lg"
@@ -75,12 +59,6 @@ export default function Navbar() {
             >
               {ATTORNEY.name}
             </span>
-
-            <div className="flex items-center gap-1.5">
-              <span className="h-px w-5 bg-current opacity-60" />
-              <span className="h-1 w-1 rotate-45 bg-current" />
-              <span className="h-px w-5 bg-current opacity-60" />
-            </div>
           </div>
 
           <div
