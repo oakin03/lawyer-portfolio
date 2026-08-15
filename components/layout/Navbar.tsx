@@ -36,7 +36,11 @@ export default function Navbar() {
         isScrolled ? "border-b border-neutral-200 bg-cream/95 backdrop-blur" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-[1400px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav
+        className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
+          isScrolled ? "h-16" : "h-16 sm:h-24"
+        }`}
+      >
         <Link
           href="/"
           className="flex items-center gap-3"
@@ -45,10 +49,12 @@ export default function Navbar() {
           <Image
             src={isScrolled ? "/images/logo-black.png" : "/images/logo-white.png"}
             alt="Büşra Nur Karakoç — Avukat & Arabulucu"
-            width={48}
-            height={48}
+            width={64}
+            height={64}
             priority
-            className="h-11 w-11 transition-opacity duration-300"
+            className={`transition-all duration-300 ${
+              isScrolled ? "h-11 w-11" : "h-11 w-11 sm:h-14 sm:w-14"
+            }`}
           />
 
           <div
@@ -62,7 +68,11 @@ export default function Navbar() {
               <span className="h-px w-5 bg-current opacity-60" />
             </div>
 
-            <span className="font-serif text-base tracking-wide whitespace-nowrap">
+            <span
+              className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 ${
+                isScrolled ? "text-base" : "text-base sm:text-lg"
+              }`}
+            >
               {ATTORNEY.name}
             </span>
 
@@ -74,15 +84,15 @@ export default function Navbar() {
           </div>
 
           <div
-            className={`h-8 w-px transition-colors duration-300 ${
-              isScrolled ? "bg-neutral-300" : "bg-white/40"
-            }`}
+            className={`transition-colors duration-300 ${isScrolled ? "bg-neutral-300" : "bg-white/40"} ${
+              isScrolled ? "h-8" : "h-8 sm:h-10"
+            } w-px`}
           />
 
           <div
-            className={`flex flex-col text-xs font-medium leading-tight transition-colors duration-300 ${
+            className={`flex flex-col font-medium leading-tight transition-all duration-300 ${
               isScrolled ? "text-neutral-700" : "text-neutral-100"
-            }`}
+            } ${isScrolled ? "text-xs" : "text-xs sm:text-sm"}`}
           >
             <span>{t("titleLine1")}</span>
             <span>{t("titleLine2")}</span>
@@ -99,9 +109,9 @@ export default function Navbar() {
                     ? () => window.scrollTo({ top: 0, behavior: "smooth" })
                     : undefined
                 }
-                className={`group relative inline-block text-base transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px] ${
+                className={`group relative inline-block transition-all duration-300 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px] ${
                   isScrolled ? "text-neutral-700" : "text-neutral-100"
-                }`}
+                } ${isScrolled ? "text-base" : "text-base sm:text-lg"}`}
               >
                 {link.label}
                 <span className="absolute -bottom-1 start-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
@@ -110,14 +120,14 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-4 md:flex">
-          <a
-            href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-            className="rounded-md bg-burgundy px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-          >
-            {t("cta")}
-          </a>
-        </div>
+        <a
+          href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
+          className={`hidden rounded-md bg-burgundy font-semibold text-white transition-all duration-300 hover:bg-burgundy-dark md:inline-block ${
+            isScrolled ? "px-5 py-2 text-sm" : "px-5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base"
+          }`}
+        >
+          {t("cta")}
+        </a>
 
         <button
           type="button"
@@ -150,7 +160,7 @@ export default function Navbar() {
               </li>
             ))}
 
-            <li className="flex flex-wrap items-center gap-4 px-3 pt-2">
+            <li className="flex items-center gap-5 px-3 pt-2">
               <Link
                 href={pathname}
                 locale="tr"
@@ -181,7 +191,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
+                href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
                 onClick={() => setIsOpen(false)}
                 className="block rounded-md bg-burgundy px-3 py-2 text-center text-sm font-semibold text-white hover:bg-burgundy-dark"
               >

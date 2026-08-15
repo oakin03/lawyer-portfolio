@@ -9,6 +9,7 @@ import ExperienceTimeline from "@/components/sections/ExperienceTimeline";
 import ZigzagRow from "@/components/sections/ZigzagRow";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { ATTORNEY, ABOUT_SECTIONS } from "@/lib/constants";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("about.banner");
@@ -31,25 +32,31 @@ export default async function HakkimdaPage() {
 
       <section className="bg-cream-light py-20">
         <div className="mx-auto flex max-w-7xl flex-col gap-20 px-4">
-          <AboutSection
-            translationKey={ABOUT_SECTIONS[0].key}
-            image={ABOUT_SECTIONS[0].image}
-            imagePosition="right"
-          />
+          <ScrollReveal>
+            <AboutSection
+              translationKey={ABOUT_SECTIONS[0].key}
+              image={ABOUT_SECTIONS[0].image}
+              imagePosition="right"
+            />
+          </ScrollReveal>
 
           <SectionDivider />
 
-          <ZigzagRow image="/images/about-2.jpg" imageAlt="" imagePosition="left">
-            <ExperienceTimeline />
-          </ZigzagRow>
+          <ScrollReveal>
+            <ZigzagRow image="/images/about-2.jpg" imageAlt="" imagePosition="left">
+              <ExperienceTimeline />
+            </ZigzagRow>
+          </ScrollReveal>
 
           <SectionDivider />
 
-          <AboutSection
-            translationKey={ABOUT_SECTIONS[1].key}
-            image={ABOUT_SECTIONS[1].image}
-            imagePosition="right"
-          />
+          <ScrollReveal>
+            <AboutSection
+              translationKey={ABOUT_SECTIONS[1].key}
+              image={ABOUT_SECTIONS[1].image}
+              imagePosition="right"
+            />
+          </ScrollReveal>
         </div>
       </section>
 

@@ -11,7 +11,7 @@ export default function AboutPreview() {
 
   return (
     <section className="bg-cream-light py-20">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-32 px-4 text-center sm:flex-row sm:items-start sm:text-left">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-32 px-4 text-center sm:flex-row-reverse sm:items-start sm:text-left">
         <div className="relative h-72 w-56 flex-shrink-0 overflow-hidden rounded-lg border-2 border-burgundy/30 shadow-md sm:h-80 sm:w-64">
           <Image src={ATTORNEY.photo} alt={ATTORNEY.name} fill className="object-cover" sizes="(max-width: 640px) 224px, 256px" />
         </div>

@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { PRACTICE_AREAS } from "@/lib/constants";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { useLocale } from "next-intl";
+import { PRACTICE_AREAS } from "@/lib/constants";
+import StaggerGroup from "@/components/ui/StaggerGroup";
 
 export default function PracticeAreas() {
   const t = useTranslations("home.practiceAreas");
@@ -20,32 +21,33 @@ export default function PracticeAreas() {
           <p className="mt-4 leading-relaxed text-neutral-600">{t("subtitle")}</p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {PRACTICE_AREAS.map((area, index) => (
-            <Link
-              key={area.slug}
-              href={`/uzmanlik-alanlari#${area.slug}`}
-              style={{ animationDelay: `${index * 60}ms` }}
-              className="group flex flex-col rounded-lg border border-neutral-200 bg-white p-5 transition-shadow hover:shadow-md"
-            >
-              <div className="relative h-36 w-full overflow-hidden rounded-md">
-                <Image
-                  src={area.image}
-                  alt={tAreas(`${area.slug}.title`)}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-neutral-900">
-                {tAreas(`${area.slug}.title`)}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                {tAreas(`${area.slug}.short`)}
-              </p>
-            </Link>
-          ))}
-        </div>
+        <StaggerGroup className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {PRACTICE_AREAS.map((area, index) => {
+            const title = tAreas(`${area.slug}.title`);
+            return (
+              <Link
+                key={area.slug}
+                href={`/uzmanlik-alanlari#${area.slug}`}
+                style={{ animationDelay: `${index * 60}ms` }}
+                className="group/card flex flex-col rounded-lg border border-neutral-200 bg-white p-5 opacity-0 transition-shadow group-[.is-visible]:animate-[fade-in-up_0.5s_ease-out_both] hover:shadow-md"
+              >
+                <div className="relative h-36 w-full overflow-hidden rounded-md">
+                  <Image
+                    src={area.image}
+                    alt={title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover/card:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-neutral-900">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
+                  {tAreas(`${area.slug}.short`)}
+                </p>
+              </Link>
+            );
+          })}
+        </StaggerGroup>
 
         <div className="mt-12 flex justify-center">
           <Link

@@ -28,7 +28,8 @@
     "titleLine2": "Mediator"
   },
   "meta": {
-  "siteTitle": "Büşra Nur Karakoç | Attorney & Mediator"
+    "siteTitle": "Büşra Nur Karakoç | Attorney & Mediator",
+    "description": "A law office in Ankara providing transparent, solution-oriented legal advisory and litigation services to individual and corporate clients."
   },
   "footer": {
     "corporate": "Corporate",
@@ -50,6 +51,7 @@
   },
   "home": {
     "hero": {
+      "locationTag": "ATTORNEY & MEDIATOR IN ANKARA",
       "headlineLine1": "Every step toward justice is a guarantee of what is fair.",
       "headlineLine2": "We stand with you on this path!",
       "subtitle": "We carefully assess your legal needs and provide reliable, solution-oriented legal services to protect your rights and interests.",
@@ -109,68 +111,68 @@
   "practiceAreas": {
     "ceza-hukuku": {
       "title": "Criminal Law",
-      "short": "Effective defense during investigation and prosecution processes.",
-      "description": "Criminal law covers the investigation and prosecution processes that begin with an alleged offense, directly affecting personal liberty. Anyone involved in this process — as a suspect, defendant, or victim — needs qualified legal representation to protect their rights. I stand by you at every stage, from detention and questioning to the drafting of the indictment, hearings, and, if necessary, appellate proceedings, carefully preparing your defense strategy. I also handle technical matters such as judicial control, objections to detention, and mediation processes with an experienced approach. My goal is to safeguard your legal security at every stage and ensure a fair trial process."
+      "short": "Effective and rights-oriented defense during investigation and prosecution.",
+      "description": "Criminal law is a critical legal branch covering acts defined as crimes, applicable sanctions, and the investigation and prosecution phases. Since it directly impacts personal freedom and rights, obtaining professional legal support from the very beginning prevents loss of rights.\n\n**Core Legal Processes Covered:**\n• **Investigation Phase:** Statements, police/prosecutor interrogations, custody, search, seizure, and appeals against detention or judicial control.\n• **Prosecution Phase:** Evaluation of indictments, trial representation, and defense in Criminal Courts.\n• **Victim & Complainant Representation:** Filing complaints, collecting and submitting evidence, and joining criminal proceedings.\n• **Legal Remedies:** Appeals to higher courts and Supreme Court proceedings.\n\n**Common Case Types:**\n• Intentional or negligent injury / homicide\n• Crimes against property (Theft, fraud, breach of trust)\n• Crimes against personal rights (Threats, insult, blackmail, violation of privacy)"
     },
     "aile-hukuku": {
       "title": "Family Law",
-      "short": "Legal support in divorce, custody, alimony, and family disputes.",
-      "description": "Family law covers all legal matters arising from the formation of a marriage to its dissolution; divorce, custody, alimony, and division of marital property are among the main topics in this field. As these processes are often emotionally taxing, they require both legal knowledge and an empathetic approach. I work to best protect my clients' rights in contested and uncontested divorce cases, custody and visitation arrangements, and claims for spousal or child support. I also provide support with prenuptial and postnuptial agreements and protective measures for victims of domestic violence. My goal is to help you conclude these sensitive processes fairly and efficiently, with as little strain as possible."
+      "short": "Attentive legal guidance in divorce, custody, alimony, and domestic disputes.",
+      "description": "Family law regulates marriage, divorce, lineage, and financial relations within the family. It must be managed with utmost care, prioritizing the best interests of all parties and especially children.\n\n**Practice Areas & Services:**\n• **Divorce Cases:** Drafting uncontested divorce agreements; managing fault determination, compensation, and proceedings in contested divorces.\n• **Custody & Alimony:** Child custody, visitation schedules, and claims or adjustments for child and spousal support.\n• **Property Regime & Division:** Pre/post-nuptial agreements, division of marital assets, and liquidation lawsuits.\n• **Protective Measures:** Injunctions and protection orders under domestic violence prevention laws.\n• **Other Disputes:** Paternity claims, adoption, and compensation claims arising from broken engagements."
     },
     "icra-iflas-hukuku": {
       "title": "Enforcement and Bankruptcy Law",
-      "short": "Protecting your rights in debt collection, attachment, and bankruptcy processes.",
-      "description": "Enforcement and bankruptcy law governs the processes through which creditors collect their claims and debtors restructure their debts within a legal framework. On the creditor side, I handle the initiation of enforcement proceedings, execution of attachments, and pursue the fastest possible collection of your claims. On the debtor side, I help minimize hardship through objection processes, payment plans, and solutions such as concordat. I also provide advisory services on bankruptcy postponement and restructuring for businesses facing financial difficulty. As matters in this area are subject to strict deadlines, swift and accurate legal intervention is essential."
+      "short": "Debt collection, execution proceedings, foreclosure, and debt restructuring.",
+      "description": "Enforcement and bankruptcy law governs the legal collection of individual and commercial receivables and the resolution of debt relations. Rapid action is essential due to strict statutory deadlines.\n\n**Services for Creditors:**\n• Execution proceedings based on court judgments, contracts, or negotiable instruments (cheques, promissory notes).\n• Asset tracing, attachment (garnishment), and liquidation of seized assets.\n• Prosecution of bad cheque cases and enforcement offense claims.\n\n**Services for Debtors:**\n• Appeals against unlawful execution proceedings, debts, and signatures.\n• Negative clearance (non-indebtedness) and restitution lawsuits.\n• Complaints against non-attachability and execution officer actions.\n\n**Corporate Services:**\n• Concordat proceedings, bankruptcy, debt restructuring, and creditors' meeting management."
     },
     "is-hukuku": {
       "title": "Labor and Social Security Law",
-      "short": "Advisory on employer-employee disputes as well as social security (SGK) matters.",
-      "description": "Labor and social security law is a broad field that addresses working life alongside the related social security rights. I provide advisory services and litigation support for both employees and employers in reinstatement cases, wrongful termination, severance and notice pay claims, and disputes over overtime and leave entitlements. I also handle compensation cases arising from workplace accidents and occupational illnesses, mobbing claims, and collective bargaining processes with an experienced approach. In addition, I provide support on social security-specific matters such as social security (SGK) procedures, insured status determination cases, disability/old-age/survivor's pension claims, and service determination lawsuits. For employers, I offer advisory services on drafting employment contracts and internal policies in compliance with legislation. My goal is to protect your rights in both your working life and your social security processes through a proactive legal approach."
+      "short": "Counseling on employee-employer disputes, employment contracts, and SSI processes.",
+      "description": "Labor law regulates rights and duties in working life. We provide legal counsel to both employees and employers, from mandatory mediation to litigation.\n\n**Employee Rights & Claims:**\n• Severance, notice pay, overtime, annual leave, and public holiday pay.\n• Reinstatement lawsuits and management of mobbing (psychological harassment) cases.\n• Compensation claims arising from work accidents and occupational diseases.\n\n**Corporate Employer Counseling:**\n• Drafting employment contracts, HR files, and internal company policies.\n• Managing termination notices, warnings, and legally compliant dismissals.\n\n**Social Security (SSI) Disputes:**\n• Service determination (unregistered work) lawsuits, insurance premium days, and retirement disputes."
     },
     "ticaret-hukuku": {
       "title": "Commercial Law",
-      "short": "Legal support in corporate matters, commercial contracts, and disputes.",
-      "description": "Commercial law covers the entire legal lifecycle of a business, from incorporation and day-to-day operations to partnership relations and dispute resolution. I provide advisory services on structural matters such as company formation, drafting articles of association, and partnership or shareholder agreements. I work to minimize your business's legal risks in the drafting and negotiation of commercial contracts, supply and distribution relationships, and competition law compliance. I also offer effective litigation support in disputes between partners, debt collection cases, and disputes arising from commercial contracts. My goal is to ensure your commercial activities proceed on a solid, predictable, and secure legal foundation."
+      "short": "Corporate law, commercial contracts, and resolution of business disputes.",
+      "description": "Commercial law safeguards business operations and corporate transactions. Preventive legal counseling is essential to eliminate risks before they arise.\n\n**Core Practice Areas:**\n• **Corporate Law:** Company formation, articles of association, general assembly and board management, share transfers, mergers and acquisitions.\n• **Commercial Contracts:** Drafting and reviewing distribution, agency, sales, supply, NDA, and consultancy contracts.\n• **Dispute Resolution:** Commercial debt recovery, unfair competition lawsuits, shareholder disputes, and board liability litigation.\n• **Alternative Dispute Resolution:** Mandatory commercial mediation and arbitration representation."
     },
     "gayrimenkul-hukuku": {
       "title": "Real Estate Law",
-      "short": "Advisory on title deeds, leases, condominium ownership, and property disputes.",
-      "description": "Real estate law covers a broad range of matters, from acquiring and leasing property to zoning processes and dispute resolution. I protect my clients' rights in title deed cancellation and registration cases, as well as in claims for expropriation compensation and de facto expropriation. I also provide legal support in eviction and rent disputes arising from lease agreements, and in conflicts stemming from condominium ownership and management plans. I offer advisory services in drafting contracts and safely conducting title deed transactions during property purchase and sale processes. My goal is to give you all the information and support you need to make your real estate investment decisions on solid legal ground."
+      "short": "Legal assurance in title deed, lease, condominium, and property projects.",
+      "description": "Analyzing the legal status of high-value real estate before executing contracts or title registrations prevents potential financial losses.\n\n**Key Services:**\n• **Title Deed & Property Litigation:** Cancellation and registration of title deeds, pre-emption rights, prevention of trespass, and mesne profits (unlawful occupation compensation).\n• **Lease Law:** Eviction lawsuits, rent determination, lease adjustments, and drafting lease agreements.\n• **Condominium Law:** Apartment/site management disputes, common expense (dues) recovery, and management plan drafting.\n• **Expropriation:** Determination and increase of expropriation compensation, and unlawful seizure without expropriation."
     },
     "miras-hukuku": {
       "title": "Inheritance Law",
-      "short": "Legal support in estate distribution, wills, and inheritance disputes.",
-      "description": "Inheritance law governs how a deceased person's estate is distributed among heirs — a field that often involves sensitive family dynamics. I guide my clients through obtaining certificates of inheritance, renunciation of inheritance, and heirship documentation processes. I work diligently to protect your rights in estate distribution disputes, claims of asset concealment from heirs, and reduction (tenkis) lawsuits. I also provide advisory services on preventive legal tools such as drafting wills and inheritance agreements. Recognizing that inheritance matters often involve delicate family dynamics, I work toward a fair outcome with both a legal and a human approach."
+      "short": "Guidance on estate division, wills, reduction claims, and inheritance disputes.",
+      "description": "Inheritance law governs the fair and lawful distribution of a deceased person's estate among legal and appointed heirs.\n\n**Services Offered:**\n• **Planning & Preparation:** Drafting wills, inheritance contracts, and agreement for care until death.\n• **Transfer & Division:** Certificate of inheritance, estate determination, disclaimer of inheritance, and dissolution of co-ownership lawsuits.\n• **Inheritance Disputes:** Collusive estate transfers (muris muvazaası), reduction lawsuits for reserved shares, and equalization claims."
     },
     "sozlesmeler-hukuku": {
       "title": "Contract Law",
-      "short": "Professional support in drafting and reviewing all types of contracts.",
-      "description": "Contract law governs the rights and obligations between parties, forming the foundation of both commercial and personal relationships. I provide support in drafting and reviewing a wide range of contracts, including lease, sale, service, consulting, and partnership agreements. I carefully assess whether an existing contract adequately protects your rights, identify potential risks, and make necessary revisions. I also handle compensation and debt collection cases arising from contract disputes, termination, or non-performance. My aim is to ensure every contract is clear, balanced, and legally sound from the moment it is signed, protecting you throughout its duration."
+      "short": "Drafting, reviewing, risk analysis, and termination of all types of contracts.",
+      "description": "Well-drafted contracts convert oral agreements into enforceable rules, acting as the strongest defense against future disputes.\n\n**Service Details:**\n• **Contract Drafting:** Custom contracts containing penal clauses, termination conditions, force majeure, and jurisdiction clauses.\n• **Contract Review:** Identifying adverse clauses and providing risk analysis reports for third-party contracts.\n• **Performance & Termination:** Issuing default notices, managing breach of contract, contract termination, and penalty claims."
     },
     "tuketici-hukuku": {
       "title": "Consumer Law",
-      "short": "Advisory on defective goods/services, right of withdrawal, and consumer disputes.",
-      "description": "Consumer law aims to protect the rights of individuals who purchase goods or services — one of the most commonly encountered areas of law in daily life. I work to protect my clients' rights in claims arising from defective goods and services, the exercise of the right of withdrawal, and disputes arising from doorstep sales and distance contracts. I provide effective representation before consumer arbitration committees and consumer courts. I also offer advisory services on disputes arising from subscription agreements, credit card, and banking transactions. My goal is to ensure consumers can fully exercise their rights against the stronger party (seller/provider)."
+      "short": "Legal support for defective goods/services, right of withdrawal, and consumer claims.",
+      "description": "Consumer law protects buyers against unfair practices, defective goods, and service failures while ensuring seller compliance with regulations.\n\n**Legal Support Areas:**\n• Exercising optional rights (refund, replacement, free repair) for defective goods and services.\n• Applications to Consumer Arbitration Committees and appeals against decisions.\n• Compensation and refund litigation in Consumer Courts.\n• Legal protection regarding distance sales, subscription contracts, and unfair bank terms."
     },
     "milletlerarasi-ozel-hukuk": {
       "title": "Private International Law",
-      "short": "Legal advisory and representation in disputes involving a foreign element.",
-      "description": "Private international law is a specialized field governing legal relationships in which at least one party is foreign, or the matter otherwise involves a foreign element. I provide advisory and representation services in the recognition and enforcement of foreign court judgments, international family law disputes, and inheritance and commercial cases involving a foreign element. I handle technical matters such as determining the applicable law and the competent court with an experienced approach. I also support Turkish citizens living abroad and foreign nationals in Turkey in their legal processes. My goal is to ensure your rights are fully protected even in cross-border legal matters."
+      "short": "Counseling on cross-border disputes, recognition-enforcement, and citizenship.",
+      "description": "Disputes involving foreign elements, international jurisdiction, and applicable foreign laws require specialized cross-border legal expertise.\n\n**Practice Areas:**\n• **Recognition & Enforcement:** Enforcing foreign court judgments (divorce, commercial, compensation) within local jurisdiction.\n• **International Family & Estate:** Cross-border divorce, custody, alimony, and inheritance of international assets.\n• **Foreigners Law:** Work and residence permits, citizenship by investment applications, and real estate acquisitions for foreigners."
     },
     "tazminat-hukuku": {
-      "title": "Tort and Compensation Law",
-      "short": "Pursuing your rights and claims in material and moral compensation cases.",
-      "description": "Tort and compensation law concerns the remedy of damages suffered by a person due to a wrongful act or breach of contract. I pursue my clients' rights in material and moral compensation cases arising from traffic accidents, workplace accidents, medical malpractice, and other wrongful acts. I work meticulously in determining the damage, establishing the degree of fault, and calculating the compensation amount. I also provide effective representation in disputes with insurance companies. My goal is to help you obtain the fairest possible legal remedy for the material and moral loss you have suffered."
+      "title": "Compensation Law",
+      "short": "Claiming material and moral damages, bodily injury, and insurance litigation.",
+      "description": "Compensation law aims to remedy financial and emotional distress caused by torts, breach of contract, or statutory liability.\n\n**Compensation Claim Types:**\n• **Traffic & Work Accidents:** Death, disability, loss of earning capacity, medical expenses, loss of support, and vehicle depreciation.\n• **Violation of Personal Rights:** Moral damages for defamation, libel, or online privacy violations.\n• **Medical Malpractice:** Compensation claims for damages resulting from medical negligence.\n• **Insurance Claims:** Resolving disputes with insurance companies and handling Insurance Arbitration cases."
     },
     "fikri-mulkiyet-hukuku": {
       "title": "Intellectual Property Law",
-      "short": "Advisory on protecting trademarks, patents, designs, and copyrights.",
-      "description": "Intellectual property law, an increasingly important field today, concerns the protection of intangible assets such as trademarks, patents, designs, and copyrights. I provide advisory services during trademark and patent registration processes and representation in trademark infringement and unfair competition cases. I also support rights holders in copyright infringement matters and in drafting licensing agreements. I offer preventive legal advisory services to entrepreneurs and content creators to protect their intellectual property assets. My goal is to ensure your creative and innovative work is legally safeguarded."
+      "short": "Protection of trademarks, patents, designs, copyrights, and trade secrets.",
+      "description": "Covers the registration, protection, licensing, and enforcement of creative, technical, and commercial intangible assets.\n\n**Scope of Services:**\n• Trademark, patent, and industrial design applications, oppositions, and renewals.\n• Litigation against trademark/patent infringement, cease and desist notices, and damage claims.\n• Copyright protection, software licensing, digital asset protection, and transfer agreements.\n• Domain name disputes and unfair competition litigation."
     },
     "bilisim-hukuku": {
-      "title": "Information Technology Law",
-      "short": "Support in data protection, cybersecurity, and digital platform disputes.",
-      "description": "Information technology law, growing in importance alongside rapid technological development, covers personal data protection, cybercrimes, and disputes arising from digital platforms. I provide advisory services on data protection compliance processes and personal data protection matters. I offer support in legal processes related to cyber fraud, identity theft, and crimes committed in digital environments. I provide contract and compliance advisory services for e-commerce platforms and digital service providers. My goal is to safeguard you against the legal risks you may encounter in the digital world."
+      "title": "IT & Cyber Law",
+      "short": "GDPR/KVKK compliance, cybercrime, e-commerce, and digital business law.",
+      "description": "Addresses legal relations, data privacy, e-commerce regulations, and digital offenses arising from computer systems and the internet.\n\n**Core Activities:**\n• **Data Protection Compliance:** GDPR/KVKK compliance, privacy notices, consent forms, and data security consulting.\n• **Cybercrimes:** Legal prosecution for hacked accounts, online banking fraud, and unauthorized system access.\n• **Digital Content & Privacy:** Removal of online content (right to be forgotten) and obtaining access blocking orders.\n• **E-Commerce Legal Support:** Drafting distance sales contracts, membership terms, and privacy policies for websites."
     },
     "other": {
       "title": "Other"

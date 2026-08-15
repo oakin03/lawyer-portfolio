@@ -10,6 +10,7 @@ import { routing } from "@/i18n/routing";
 import { formatPublicationDate } from "@/lib/formatDate";
 import FilterDropdown from "@/components/ui/FilterDropdown";
 import { X } from "lucide-react";
+import StaggerGroup from "@/components/ui/StaggerGroup";
 
 export default function PublicationsSearch({ publications }: { publications: Publication[] }) {
   const t = useTranslations("publicationsPage");
@@ -104,7 +105,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
         {filtered.length === 0 ? (
           <p className="text-center text-neutral-500">{t("noResults")}</p>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <StaggerGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((pub, index) => {
               const categoryData = PUBLICATION_CATEGORIES.find((c) => c.slug === pub.category);
               const categoryLabel = tAreas(`${pub.category}.title`);
@@ -114,7 +115,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                   key={pub.slug}
                   href={`/yayinlar/${pub.slug}`}
                   style={{ animationDelay: `${index * 60}ms` }}
-                  className="flex animate-[fade-in-up_0.5s_ease-out_both] flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                  className="flex flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white opacity-0 shadow-sm transition-shadow group-[.is-visible]:animate-[fade-in-up_0.5s_ease-out_both] hover:shadow-md"
                 >
                   <div className="relative h-44 w-full bg-neutral-100">
                     <Image
@@ -144,7 +145,7 @@ export default function PublicationsSearch({ publications }: { publications: Pub
                 </Link>
               );
             })}
-          </div>
+          </StaggerGroup>
         )}
       </div>
     </div>
