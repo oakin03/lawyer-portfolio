@@ -4,8 +4,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { Phone, ArrowRight, ArrowLeft, ShieldCheck, Users, Scale as ScaleIcon } from "lucide-react";
+import { ArrowRight, ArrowLeft, ShieldCheck, Users, Scale as ScaleIcon } from "lucide-react";
 import { ATTORNEY } from "@/lib/constants";
+import AppointmentModal from "@/components/ui/AppointmentModal";
 
 export default function Hero() {
   const t = useTranslations("home.hero");
@@ -101,13 +102,7 @@ export default function Hero() {
               {t("ctaSecondary")}
               {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Link>
-            <a
-              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-              className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-            >
-              <Phone size={18} />
-              {t("ctaPrimary")}
-            </a>
+            <AppointmentModal className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark" />
           </div>
 
           <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-3">

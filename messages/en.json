@@ -233,7 +233,23 @@
       "workingHours": "Working Hours",
       "mapTitle": "Office location",
       "intro": "You can contact our office for legal advice and case follow-up, and schedule an appointment at a convenient time.",
-      "callCta": "Call us for information"
+      "callCta": "Call us for information",
+      "appointmentCta": "Book an Appointment"
     }
+  },
+  "appointment": {
+    "title": "Appointment Request",
+    "fullName": "Full Name",
+    "phone": "Phone",
+    "date": "Date",
+    "time": "Time",
+    "subject": "Subject",
+    "required": "Required",
+    "selectTime": "Select Time",
+    "submit": "Send",
+    "close": "Close",
+    "successMessage": "Your appointment request has been received. We will contact you shortly.",
+    "errorMessage": "Something went wrong, please try again.",
+    "conflictMessage": "This date and time is already booked. Please choose a different time."
   }
 }

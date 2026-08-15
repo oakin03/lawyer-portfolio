@@ -12,6 +12,7 @@ import type { Publication } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
 import { routing } from "@/i18n/routing";
 import FilterDropdown from "@/components/ui/FilterDropdown";
+import PanelNav from "@/components/panel/PanelNav";
 
 function ToolbarButton({
   icon: Icon,
@@ -123,20 +124,7 @@ export default function PanelDashboard({ initialPublications }: { initialPublica
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <h1 className="text-2xl font-semibold text-neutral-900">Makaleler</h1>
-          <div className="flex gap-2">
-            <NextLink
-              href="/"
-              className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
-            >
-              Anasayfa
-            </NextLink>
-            <NextLink
-              href="/yayinlar"
-              className="rounded-md bg-burgundy px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-burgundy-dark"
-            >
-              Yayınlar
-            </NextLink>
-          </div>
+          <PanelNav />
         </div>
 
         {/* Search + filters — mirrors the public Yayınlar page */}

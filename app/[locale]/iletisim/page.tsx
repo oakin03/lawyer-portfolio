@@ -4,7 +4,6 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PageBanner from "@/components/sections/PageBanner";
 import ContactIntro from "@/components/sections/ContactIntro";
-import ContactForm from "@/components/sections/ContactForm";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { ATTORNEY } from "@/lib/constants";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -29,20 +28,6 @@ export default async function IletisimPage() {
 
       <ScrollReveal>
         <ContactIntro />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <SectionDivider />
-      </ScrollReveal>
-
-      <ScrollReveal>
-        <section className="bg-cream-light py-20">
-          <div className="mx-auto max-w-3xl px-4">
-            <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-8 shadow-sm">
-              <ContactForm />
-            </div>
-          </div>
-        </section>
       </ScrollReveal>
 
       <Footer />

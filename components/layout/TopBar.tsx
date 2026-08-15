@@ -14,6 +14,9 @@ const LANGUAGES = [
 export default function TopBar() {
   const locale = useLocale();
   const pathname = usePathname();
+  if (pathname.startsWith("/panel")) {
+    return null;
+  }
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`;
   const telHref = `tel:${ATTORNEY.phone.replace(/\s/g, "")}`;
 

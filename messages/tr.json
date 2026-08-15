@@ -233,7 +233,23 @@
       "workingHours": "Çalışma Saatleri",
       "mapTitle": "Ofis konumu",
       "intro": "Hukuki danışmanlık ve dava takibi için ofisimizle iletişime geçebilir, uygun görüşme saati için randevu oluşturabilirsiniz.",
-      "callCta": "Bilgi almak için bizi arayın"
+      "callCta": "Bilgi almak için bizi arayın",
+      "appointmentCta": "Randevu Al"
     }
+  },
+  "appointment": {
+    "title": "Randevu Talebi",
+    "fullName": "Ad Soyad",
+    "phone": "Telefon",
+    "date": "Tarih",
+    "time": "Saat",
+    "subject": "Konu",
+    "required": "Gerekli",
+    "selectTime": "Saat Seçin",
+    "submit": "Gönder",
+    "close": "Kapat",
+    "successMessage": "Randevu talebiniz alınmıştır. En kısa sürede sizinle iletişime geçeceğiz.",
+    "errorMessage": "Bir hata oluştu, lütfen tekrar deneyin.",
+    "conflictMessage": "Bu tarih ve saat için zaten bir randevu var. Lütfen başka bir saat seçin."
   }
 }

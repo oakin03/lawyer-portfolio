@@ -2,6 +2,7 @@ import { MapPin, Phone, Clock, Mail } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { WhatsAppIcon } from "@/components/icons/SocialIcons";
 import { ATTORNEY, SOCIAL_LINKS } from "@/lib/constants";
+import AppointmentModal from "@/components/ui/AppointmentModal";
 
 export default function ContactIntro() {
   const t = useTranslations("contact.info");
@@ -87,13 +88,16 @@ export default function ContactIntro() {
                 </div>
               </div>
 
-              <a
-                href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-                className="mt-10 inline-flex w-fit items-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-              >
-                <Phone size={18} />
-                {t("callCta")}
-              </a>
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
+                  className="inline-flex w-fit items-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
+                >
+                  <Phone size={18} />
+                  {t("callCta")}
+                </a>
+                <AppointmentModal />
+              </div>
             </div>
 
             <div className="h-[400px] overflow-hidden rounded-lg border border-neutral-200 md:h-full">
