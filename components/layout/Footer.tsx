@@ -42,16 +42,16 @@ export default function Footer() {
           <div className="mt-4 space-y-2 text-sm text-neutral-500">
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-2 transition-colors hover:text-burgundy"
-            >
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"
+              >
               <MapPin size={16} className="mt-0.5 flex-shrink-0" />
               <span>{ATTORNEY.address}</span>
             </a>
             <a
               href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-              className="flex items-center gap-2 transition-colors hover:text-burgundy"
+              className="flex items-center gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"
             >
               <Phone size={16} className="flex-shrink-0" />
               <span>{ATTORNEY.phone}</span>
@@ -133,14 +133,13 @@ export default function Footer() {
 
       <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center gap-4 border-t border-neutral-200 px-4 pt-4 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-4">
-          <Image src="/images/logo-black.png" alt="" width={24} height={24} className="h-6 w-6 opacity-70" />
           <LegalLinkModal
             label={tFooter("legal.kvkkLabel")}
             title={tFooter("legal.kvkkTitle")}
             content={tFooter("legal.kvkkContent")}
             closeLabel={tFooter("legal.close")}
           />
-          <span className="text-neutral-300">|</span>
+          <span className="text-neutral-700">|</span>
           <LegalLinkModal
             label={tFooter("legal.privacyLabel")}
             title={tFooter("legal.privacyTitle")}
@@ -149,7 +148,7 @@ export default function Footer() {
           />
         </div>
 
-        <p className="text-end text-sm italic text-neutral-500">
+        <p className="text-end text-sm italic text-neutral-700">
           {"\u00A9"} {new Date().getFullYear()} {ATTORNEY.name}. {tFooter("rights")}
         </p>
       </div>

@@ -74,7 +74,16 @@ export default function Hero() {
         className="absolute inset-0"
         style={{ transformOrigin: "center top", willChange: "transform, opacity" }}
       >
-        <Image src={ATTORNEY.heroImage} alt="" fill priority quality={65} className="object-cover" sizes="100vw" />
+        <Image
+          src={ATTORNEY.heroImage}
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          quality={65}
+          className="object-cover"
+          sizes="100vw"
+        />
       </div>
 
       <div ref={overlayRef} className="absolute inset-0 bg-black" />
