@@ -14,7 +14,7 @@ export default function PageBanner({ image, title, subtitle }: PageBannerProps) 
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-8 sm:px-10 sm:pb-12">
         <h1 className="font-bold uppercase tracking-[0.15em] text-white text-xs sm:text-sm">{title}</h1>
-        <p className="mt-3 max-w-3xl text-neutral-200 text-3xl sm:text-4xl">{subtitle}</p>
+        <p className="mt-3 max-w-xl text-neutral-200 text-xs sm:text-4xl">{subtitle}</p>
       </div>
     </section>
   );

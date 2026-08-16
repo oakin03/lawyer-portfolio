@@ -20,7 +20,16 @@ export default function ScrollReveal({ children }: { children: React.ReactNode }
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+
+    // Safety net: some mobile browsers don't fire IntersectionObserver
+    // reliably in edge cases. If the element hasn't revealed itself after
+    // a short delay, force it visible so content is never permanently hidden.
+    const fallback = window.setTimeout(() => setIsVisible(true), 1200);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (

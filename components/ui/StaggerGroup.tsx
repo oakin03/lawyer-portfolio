@@ -24,7 +24,15 @@ export default function StaggerGroup({
     );
 
     observer.observe(node);
-    return () => observer.disconnect();
+
+    // Same safety net as ScrollReveal — guarantees cards never stay stuck
+    // invisible if the observer misbehaves on a particular browser/device.
+    const fallback = window.setTimeout(() => setIsVisible(true), 1200);
+
+    return () => {
+      observer.disconnect();
+      window.clearTimeout(fallback);
+    };
   }, []);
 
   return (
