@@ -119,7 +119,7 @@ export default async function PublicationDetailPage({
           </div>
 
           <div
-            className="prose prose-lg mt-8 max-w-none text-neutral-700 [&_table]:border-collapse [&_table]:w-full [&_td]:border [&_td]:border-neutral-300 [&_td]:p-2 [&_th]:border [&_th]:border-neutral-300 [&_th]:bg-neutral-100 [&_th]:p-2"
+            className="prose prose-lg mt-8 max-w-none text-neutral-700 max-sm:prose-h1:text-xl max-sm:prose-h2:text-lg max-sm:prose-h3:text-base [&_table]:border-collapse [&_table]:w-full [&_td]:border [&_td]:border-neutral-300 [&_td]:p-2 [&_th]:border [&_th]:border-neutral-300 [&_th]:bg-neutral-100 [&_th]:p-2"
             dangerouslySetInnerHTML={{ __html: publication.content }}
           />
 

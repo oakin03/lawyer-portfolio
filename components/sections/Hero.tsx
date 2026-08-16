@@ -40,8 +40,6 @@ export default function Hero() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Image fades out well before it would visually reach the fixed Navbar's
-  // territory, so the two transparency effects never overlap/compound.
   const imageScale = 1 - progress * 0.15;
   const imageOpacity = 1 - Math.min(progress * 1.6, 1);
 
@@ -50,6 +48,9 @@ export default function Hero() {
     { icon: Users, key: "feature2" },
     { icon: ScaleIcon, key: "feature3" },
   ];
+
+  const buttonClass =
+    "flex items-center justify-center gap-2 rounded-md bg-burgundy px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-burgundy-dark sm:px-6 sm:py-3 sm:text-sm";
 
   return (
     <section
@@ -70,52 +71,54 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-black" style={{ opacity: imageOpacity * 0.48 }} />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 sm:pt-72 lg:px-8">
-        <div className="max-w-3xl mt-10 text-left mr-auto">
-          <div className="flex flex-col gap-2.5">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#D4AF37]">{ATTORNEY.name}</p>
-            <p className="text-xs font-medium uppercase tracking-[0.15em] text-[#D4AF37]">{t("locationTag")}</p>
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-32 sm:pt-72 lg:px-8">
+        <div className="max-w-2xl mt-4 text-left mr-auto sm:mt-10">
+          <div className="flex flex-col gap-1">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] sm:text-sm">
+              {ATTORNEY.name}
+            </p>
+            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/70 sm:text-xs">
+              {t("locationTag")}
+            </p>
           </div>
 
-          <h1 className="mt-6 font-serif text-3xl leading-tight text-white sm:mt-8 sm:text-5xl">
+          <h1 className="mt-3 font-serif text-2xl leading-tight text-white sm:mt-4 sm:text-5xl">
             {t("headlineLine1")}
             <br />
             <span className="font-bold">{t("headlineLine2")}</span>
           </h1>
 
-          <p className="mt-6 max-w-lg text-base leading-relaxed text-neutral-200 sm:text-lg">
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-neutral-200 sm:mt-6 sm:text-lg">
             {t("subtitle")}
           </p>
 
-          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/yayinlar"
-              className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-            >
+          <div className="mt-4 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-4">
+            <Link href="/yayinlar" className={buttonClass}>
               {t("ctaPublications")}
               {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Link>
-            <Link
-              href="/uzmanlik-alanlari"
-              className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark"
-            >
+            <Link href="/uzmanlik-alanlari" className={buttonClass}>
               {t("ctaSecondary")}
               {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Link>
-            <AppointmentModal className="flex items-center justify-center gap-2 rounded-md bg-burgundy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-burgundy-dark" />
+            <AppointmentModal className={buttonClass} />
           </div>
 
-          <div className="mt-20 grid grid-cols-1 gap-6 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-6">
             {features.map(({ icon: Icon, key }, index) => (
               <div
                 key={key}
                 style={{ animationDelay: `${index * 100}ms` }}
-                className="flex animate-[fade-in-up_0.5s_ease-out_both] items-start gap-3"
+                className="flex animate-[fade-in-up_0.5s_ease-out_both] items-start gap-2 sm:gap-3"
               >
-                <Icon size={20} className="mt-0.5 flex-shrink-0 text-white" />
+                <span className="mt-0.5 flex-shrink-0 scale-75 origin-left sm:scale-100">
+                  <Icon size={20} className="text-white" />
+                </span>
                 <div>
-                  <p className="text-sm font-semibold text-white">{t(`${key}.title`)}</p>
-                  <p className="mt-1 text-sm font-semibold text-neutral-300">{t(`${key}.description`)}</p>
+                  <p className="text-xs font-semibold text-white sm:text-sm">{t(`${key}.title`)}</p>
+                  <p className="mt-1 text-xs font-semibold text-neutral-300 sm:text-sm">
+                    {t(`${key}.description`)}
+                  </p>
                 </div>
               </div>
             ))}

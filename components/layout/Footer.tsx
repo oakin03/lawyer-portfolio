@@ -23,7 +23,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-neutral-200 bg-cream py-10">
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 sm:flex-row sm:flex-wrap sm:justify-between">
 
         {/* Brand */}
         <div className="max-w-sm">
@@ -59,33 +59,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Kurumsal / Corporate */}
+        {/* Sayfalar */}
         <div>
           <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
             {tFooter("corporate")}
           </h3>
           <ul className="mt-4 space-y-3">
-            {corporateLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="group relative inline-block text-neutral-700 transition-all duration-500 ease-out [-webkit-text-stroke-width:0px] hover:-translate-y-0.5 hover:text-burgundy hover:[-webkit-text-stroke-width:0.6px]"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 start-0 h-px w-0 bg-burgundy transition-all duration-500 ease-out group-hover:w-full" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Hizmetlerimiz / Services */}
-        <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
-            {tFooter("services")}
-          </h3>
-          <ul className="mt-4 space-y-3">
-            {serviceLinks.map((link) => (
+            {[...corporateLinks, ...serviceLinks].map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -151,7 +131,7 @@ export default function Footer() {
 
       </div>
 
-      <div className="mx-auto mt-8 flex max-w-[1400px] flex-col items-center gap-4 border-t border-neutral-200 px-4 pt-4 sm:flex-row sm:justify-between">
+      <div className="mx-auto mt-8 flex max-w-6xl flex-col items-center gap-4 border-t border-neutral-200 px-4 pt-4 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-4">
           <Image src="/images/logo-black.png" alt="" width={24} height={24} className="h-6 w-6 opacity-70" />
           <LegalLinkModal
