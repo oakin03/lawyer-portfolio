@@ -61,7 +61,7 @@ export default function Footer() {
 
         {/* Sayfalar */}
         <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+          <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-neutral-400">
             {tFooter("corporate")}
           </h3>
           <ul className="mt-4 space-y-3">
@@ -81,7 +81,7 @@ export default function Footer() {
 
         {/* Takip Et / Follow */}
         <div>
-          <h3 className="text-sm font-medium uppercase tracking-[0.15em] text-neutral-400">
+          <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-neutral-400">
             {tFooter("follow")}
           </h3>
           <div className="mt-4 grid grid-cols-2 gap-3">

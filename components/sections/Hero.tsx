@@ -14,17 +14,32 @@ export default function Hero() {
   const isRtl = locale === "ar";
 
   const sectionRef = useRef<HTMLElement>(null);
-  const [progress, setProgress] = useState(0);
+  const imageWrapperRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ticking = false;
 
     function updateProgress() {
       const section = sectionRef.current;
-      if (!section) return;
+      const imageWrapper = imageWrapperRef.current;
+      const overlay = overlayRef.current;
+      if (!section || !imageWrapper || !overlay) return;
+
       const heroHeight = section.offsetHeight;
       const raw = window.scrollY / heroHeight;
-      setProgress(Math.min(Math.max(raw, 0), 1));
+      const progress = Math.min(Math.max(raw, 0), 1);
+
+      const scale = 1 - progress * 0.15;
+      const opacity = 1 - Math.min(progress * 1.6, 1);
+
+      // Writing directly to the DOM here (instead of React state) skips a
+      // re-render on every scroll frame — the browser only has to composite
+      // a transform/opacity change, which stays smooth even on lower-end phones.
+      imageWrapper.style.transform = `scale(${scale})`;
+      imageWrapper.style.opacity = String(opacity);
+      overlay.style.opacity = String(opacity * 0.48);
+
       ticking = false;
     }
 
@@ -39,9 +54,6 @@ export default function Hero() {
     updateProgress();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const imageScale = 1 - progress * 0.15;
-  const imageOpacity = 1 - Math.min(progress * 1.6, 1);
 
   const features = [
     { icon: ShieldCheck, key: "feature1" },
@@ -58,18 +70,14 @@ export default function Hero() {
       className="relative flex h-screen min-h-[600px] w-full items-end overflow-hidden bg-cream-light"
     >
       <div
+        ref={imageWrapperRef}
         className="absolute inset-0"
-        style={{
-          transform: `scale(${imageScale})`,
-          opacity: imageOpacity,
-          transformOrigin: "center top",
-          willChange: "transform, opacity",
-        }}
+        style={{ transformOrigin: "center top", willChange: "transform, opacity" }}
       >
-        <Image src={ATTORNEY.heroImage} alt="" fill priority className="object-cover" sizes="100vw" />
+        <Image src={ATTORNEY.heroImage} alt="" fill priority quality={65} className="object-cover" sizes="100vw" />
       </div>
 
-      <div className="absolute inset-0 bg-black" style={{ opacity: imageOpacity * 0.48 }} />
+      <div ref={overlayRef} className="absolute inset-0 bg-black" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-32 sm:pt-72 lg:px-8">
         <div className="max-w-2xl mt-4 text-left mr-auto sm:mt-10">

@@ -22,7 +22,7 @@ export default function TopBar() {
 
   return (
     <div className="fixed top-0 z-50 hidden h-9 w-full bg-neutral-100 sm:block">
-      <div className="mx-auto flex h-full max-w-[1400px] items-center justify-end gap-6 px-4 text-xs text-neutral-600 sm:px-6 lg:px-8">
+      <div className="mx-auto flex h-full max-w-[1400px] items-center justify-end gap-6 px-4 text-xs font-semibold text-neutral-800 sm:px-6 lg:px-8">
         <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 transition-colors hover:text-burgundy">
           <MapPin size={13} />
           {ATTORNEY.shortLocation}
@@ -34,14 +34,14 @@ export default function TopBar() {
 
         <div className="h-4 w-px bg-neutral-300" />
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1">
           {LANGUAGES.map((lang) => (
             <Link
               key={lang.code}
               href={pathname}
               locale={lang.code}
-              className={`flex items-center gap-1 transition-opacity ${
-                locale === lang.code ? "opacity-100" : "opacity-50 hover:opacity-100"
+              className={`flex items-center gap-1 rounded px-2 py-1 transition-colors ${
+                locale === lang.code ? "bg-burgundy text-white" : "text-neutral-800 hover:bg-neutral-200"
               }`}
             >
               <img src={lang.flag} alt={lang.label} className="h-[12px] w-4 rounded-sm object-cover" />
