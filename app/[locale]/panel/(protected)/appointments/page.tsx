@@ -2,7 +2,12 @@ import { getAppointments } from "@/lib/appointments";
 import AppointmentsCalendar from "@/components/panel/AppointmentsCalendar";
 import PanelNav from "@/components/panel/PanelNav";
 
-export default async function AppointmentsPage() {
+export default async function AppointmentsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ highlight?: string }>;
+}) {
+  const { highlight } = await searchParams;
   const appointments = await getAppointments();
 
   return (
@@ -14,7 +19,7 @@ export default async function AppointmentsPage() {
         </div>
 
         <div className="mt-8">
-          <AppointmentsCalendar appointments={appointments} />
+          <AppointmentsCalendar appointments={appointments} highlightId={highlight} />
         </div>
       </div>
     </main>

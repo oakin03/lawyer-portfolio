@@ -27,9 +27,21 @@ function toISODate(date: Date): string {
   return `${year}-${month}-${day}`;
 }
 
-export default function AppointmentsCalendar({ appointments }: { appointments: Appointment[] }) {
+export default function AppointmentsCalendar({
+  appointments,
+  highlightId,
+}: {
+  appointments: Appointment[];
+  highlightId?: string;
+}) {
   const router = useRouter();
-  const [weekStart, setWeekStart] = useState(() => getMonday(new Date()));
+  const [weekStart, setWeekStart] = useState(() => {
+    if (highlightId) {
+      const target = appointments.find((a) => a.id === highlightId);
+      if (target) return getMonday(new Date(target.appointment_date));
+    }
+    return getMonday(new Date());
+  });
   const timeSlots = generateTimeSlots();
 
   const weekDays = useMemo(
@@ -117,12 +129,21 @@ export default function AppointmentsCalendar({ appointments }: { appointments: A
               {weekDays.map((day, i) => {
                 const dayISO = toISODate(day);
                 const appt = findAppointment(dayISO, slot);
+                const isHighlighted = appt && appt.id === highlightId;
                 return (
                   <div key={i} className="group relative min-h-[52px] border-b border-l border-neutral-100 p-1">
                     {appt && (
                       <>
-                        <div className="rounded-md border border-burgundy/30 bg-burgundy/10 p-1.5 text-xs">
-                          <p className="truncate font-semibold text-burgundy">{appt.full_name}</p>
+                        <div
+                          className={`rounded-md border p-1.5 text-xs ${
+                            isHighlighted
+                              ? "border-[#D4AF37] bg-[#D4AF37]/25"
+                              : "border-burgundy/30 bg-burgundy/10"
+                          }`}
+                        >
+                          <p className={`truncate font-semibold ${isHighlighted ? "text-[#8a6d1f]" : "text-burgundy"}`}>
+                            {appt.full_name}
+                          </p>
                           <p className="truncate text-neutral-600">{appt.phone}</p>
                         </div>
                         <button
