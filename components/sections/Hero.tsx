@@ -33,9 +33,6 @@ export default function Hero() {
       const scale = 1 - progress * 0.15;
       const opacity = 1 - Math.min(progress * 1.6, 1);
 
-      // Writing directly to the DOM here (instead of React state) skips a
-      // re-render on every scroll frame — the browser only has to composite
-      // a transform/opacity change, which stays smooth even on lower-end phones.
       imageWrapper.style.transform = `scale(${scale})`;
       imageWrapper.style.opacity = String(opacity);
       overlay.style.opacity = String(opacity * 0.48);
@@ -62,12 +59,12 @@ export default function Hero() {
   ];
 
   const buttonClass =
-    "flex items-center justify-center gap-2 rounded-md bg-burgundy px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-burgundy-dark sm:px-6 sm:py-3 sm:text-sm";
+    "flex items-center justify-center gap-2 rounded-md bg-burgundy px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-burgundy-dark sm:px-6 sm:py-3 sm:text-sm [@media(max-height:500px)]:!px-3 [@media(max-height:500px)]:!py-1.5";
 
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-screen min-h-[600px] w-full items-end overflow-hidden bg-cream-light"
+      className="relative flex min-h-screen w-full items-end overflow-hidden bg-cream-light"
     >
       <div
         ref={imageWrapperRef}
@@ -88,28 +85,28 @@ export default function Hero() {
 
       <div ref={overlayRef} className="absolute inset-0 bg-black" />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-32 sm:pt-72 lg:px-8">
-        <div className="max-w-2xl mt-4 text-left mr-auto sm:mt-10">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-32 sm:pt-40 lg:px-8">
+        <div className="max-w-2xl mt-4 text-left mr-auto sm:mt-10 [@media(max-height:500px)]:!mt-2">
           <div className="flex flex-col gap-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] sm:text-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] sm:text-sm [@media(max-height:500px)]:!text-[10px]">
               {ATTORNEY.name}
             </p>
-            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/70 sm:text-xs">
+            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/70 sm:text-xs [@media(max-height:500px)]:!text-[9px]">
               {t("locationTag")}
             </p>
           </div>
 
-          <h1 className="mt-3 font-serif text-2xl leading-tight text-white sm:mt-4 sm:text-5xl">
+          <h1 className="mt-3 font-serif text-2xl leading-tight text-white sm:mt-4 sm:text-5xl [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-lg">
             {t("headlineLine1")}
             <br />
             <span className="font-bold">{t("headlineLine2")}</span>
           </h1>
 
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-neutral-200 sm:mt-6 sm:text-lg">
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-neutral-200 sm:mt-6 sm:text-lg [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-xs">
             {t("subtitle")}
           </p>
 
-          <div className="mt-4 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-4">
+          <div className="mt-4 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-4 [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!flex-row [@media(max-height:500px)]:!gap-2">
             <Link href="/yayinlar" className={buttonClass}>
               {t("ctaPublications")}
               {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
@@ -121,19 +118,21 @@ export default function Hero() {
             <AppointmentModal className={buttonClass} />
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-6">
+          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-6 [@media(max-height:500px)]:!mt-3 [@media(max-height:500px)]:!grid-cols-3 [@media(max-height:500px)]:!gap-2">
             {features.map(({ icon: Icon, key }, index) => (
               <div
                 key={key}
                 style={{ animationDelay: `${index * 100}ms` }}
                 className="flex animate-[fade-in-up_0.5s_ease-out_both] items-start gap-2 sm:gap-3"
               >
-                <span className="mt-0.5 flex-shrink-0 scale-75 origin-left sm:scale-100">
+                <span className="mt-0.5 flex-shrink-0 scale-75 origin-left sm:scale-100 [@media(max-height:500px)]:!scale-50">
                   <Icon size={20} className="text-white" />
                 </span>
                 <div>
-                  <p className="text-xs font-semibold text-white sm:text-sm">{t(`${key}.title`)}</p>
-                  <p className="mt-1 text-xs font-semibold text-neutral-300 sm:text-sm">
+                  <p className="text-xs font-semibold text-white sm:text-sm [@media(max-height:500px)]:!text-[10px]">
+                    {t(`${key}.title`)}
+                  </p>
+                  <p className="mt-1 text-xs font-semibold text-neutral-300 sm:text-sm [@media(max-height:500px)]:!hidden">
                     {t(`${key}.description`)}
                   </p>
                 </div>

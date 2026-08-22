@@ -37,23 +37,22 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
+        className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 [@media(max-height:500px)]:!h-12 [@media(max-height:500px)]:!px-3 ${
           isScrolled ? "h-16" : "h-16 sm:h-24"
         }`}
       >
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="flex items-center gap-2 [@media(max-height:500px)]:!gap-2"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-
           <div
             className={`flex flex-col items-center transition-colors duration-300 ${
               isScrolled ? "text-neutral-900" : "text-white"
             }`}
           >
             <span
-              className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 ${
+              className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 [@media(max-height:500px)]:!text-xs ${
                 isScrolled ? "text-base" : "text-base sm:text-lg"
               }`}
             >
@@ -62,13 +61,13 @@ export default function Navbar() {
           </div>
 
           <div
-            className={`transition-colors duration-300 ${isScrolled ? "bg-neutral-300" : "bg-white/40"} ${
-              isScrolled ? "h-8" : "h-8 sm:h-10"
-            } w-px`}
+            className={`transition-colors duration-300 [@media(max-height:500px)]:!h-5 ${
+              isScrolled ? "bg-neutral-300" : "bg-white/40"
+            } ${isScrolled ? "h-8" : "h-8 sm:h-10"} w-px`}
           />
 
           <div
-            className={`flex flex-col font-medium leading-tight transition-all duration-300 ${
+            className={`flex flex-col font-medium leading-tight transition-all duration-300 [@media(max-height:500px)]:!text-[9px] ${
               isScrolled ? "text-neutral-700" : "text-neutral-100"
             } ${isScrolled ? "text-xs" : "text-xs sm:text-sm"}`}
           >
@@ -100,7 +99,7 @@ export default function Navbar() {
 
         <a
           href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-          className={`hidden rounded-md bg-burgundy font-semibold text-white transition-all duration-300 hover:bg-burgundy-dark md:inline-block ${
+          className={`hidden rounded-md bg-burgundy font-semibold text-white transition-all duration-300 hover:bg-burgundy-dark md:inline-block [@media(max-height:500px)]:!px-3 [@media(max-height:500px)]:!py-1.5 [@media(max-height:500px)]:!text-xs ${
             isScrolled ? "px-5 py-2 text-sm" : "px-5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base"
           }`}
         >
@@ -110,7 +109,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`md:hidden ${isScrolled ? "text-neutral-900" : "text-white"}`}
+          className={`md:hidden [@media(max-height:500px)]:scale-90 ${isScrolled ? "text-neutral-900" : "text-white"}`}
           aria-label="Menu"
           aria-expanded={isOpen}
         >
@@ -119,7 +118,7 @@ export default function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="border-t border-neutral-200 bg-cream md:hidden">
+        <div className="max-h-[70vh] overflow-y-auto border-t border-neutral-200 bg-cream md:hidden">
           <ul className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>

@@ -8,7 +8,7 @@ export default function PracticeAreasGrid() {
   const tAreas = useTranslations("practiceAreas");
 
   return (
-    <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4 [@media(max-height:500px)]:!grid-cols-4 [@media(max-height:500px)]:!gap-3">
       {PRACTICE_AREAS.map((area, index) => {
         const title = tAreas(`${area.slug}.title`);
         return (
@@ -29,8 +29,10 @@ export default function PracticeAreasGrid() {
             <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/60 group-hover:opacity-100">
               <p className="px-4 text-center text-sm font-medium text-white">{t("hoverCta")}</p>
             </div>
-            <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-white/20 py-3 text-center backdrop-blur-md">
-              <p className="text-sm font-semibold text-white sm:text-base">{title}</p>
+            <div className="absolute inset-x-0 bottom-0 border-t border-white/30 bg-white/20 py-3 text-center backdrop-blur-md [@media(max-height:500px)]:!py-1">
+              <p className="text-sm font-semibold text-white sm:text-base [@media(max-height:500px)]:!text-[10px]">
+                {title}
+              </p>
             </div>
           </Link>
         );
