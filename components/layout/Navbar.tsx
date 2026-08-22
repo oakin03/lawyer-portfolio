@@ -125,7 +125,7 @@ export default function Navbar() {
       )}
 
       {isOpen && (
-        <div className="fixed inset-y-0 end-0 z-50 flex max-h-screen w-64 flex-col overflow-y-auto border-s border-neutral-200 bg-cream shadow-xl md:hidden">
+        <div className="fixed top-0 end-0 z-50 flex max-h-screen w-64 flex-col overflow-y-auto border-s border-neutral-200 bg-cream shadow-xl md:hidden">
           <ul className="flex flex-col gap-1 px-4 py-4">
             {navLinks.map((link) => (
               <li key={link.href}>
