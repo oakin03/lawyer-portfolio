@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/lib/navigation";
@@ -13,6 +13,11 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     function handleScroll() {
@@ -30,6 +35,77 @@ export default function Navbar() {
     { label: t("contact"), href: "/iletisim" },
   ];
 
+  const mobileMenu = isOpen ? (
+    <>
+      <div
+        className="fixed inset-0 z-40 bg-black/40 md:hidden"
+        onClick={() => setIsOpen(false)}
+      />
+      <div
+        className="fixed top-0 end-0 z-50 flex max-h-screen w-64 flex-col overflow-y-auto border-s border-neutral-200 bg-cream shadow-xl md:hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <ul className="flex flex-col gap-1 px-4 py-4">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                onClick={() => {
+                  setIsOpen(false);
+                  if (link.href === "/") {
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                }}
+                className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-burgundy"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+
+          <li className="flex items-center gap-5 px-3 pt-2">
+            <Link
+              href={pathname}
+              locale="tr"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-base font-bold text-neutral-900"
+            >
+              <img src="https://flagcdn.com/24x18/tr.png" alt="Türkçe" className="h-[18px] w-6 rounded-sm object-cover" />
+              TR
+            </Link>
+            <Link
+              href={pathname}
+              locale="en"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-base font-bold text-neutral-900"
+            >
+              <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[18px] w-6 rounded-sm object-cover" />
+              EN
+            </Link>
+            <Link
+              href={pathname}
+              locale="ar"
+              onClick={() => setIsOpen(false)}
+              className="flex items-center gap-2 text-base font-bold text-neutral-900"
+            >
+              <img src="https://flagcdn.com/24x18/sa.png" alt="العربية" className="h-[18px] w-6 rounded-sm object-cover" />
+              AR
+            </Link>
+          </li>
+          <li>
+            <a
+              href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
+              onClick={() => setIsOpen(false)}
+              className="block rounded-md bg-burgundy px-3 py-2 text-center text-sm font-semibold text-white hover:bg-burgundy-dark"
+            >
+              {t("cta")}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </>
+  ) : null;
+
   return (
     <header
       className={`fixed top-0 z-50 w-full transition-colors duration-300 sm:top-9 ${
@@ -37,13 +113,13 @@ export default function Navbar() {
       }`}
     >
       <nav
-        className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 [@media(max-height:500px)]:!h-12 [@media(max-height:500px)]:!px-3 ${
+        className={`mx-auto flex max-w-[1400px] items-center justify-between px-4 transition-all duration-300 sm:px-6 lg:px-8 ${
           isScrolled ? "h-16" : "h-16 sm:h-24"
         }`}
       >
         <Link
           href="/"
-          className="flex items-center gap-2 [@media(max-height:500px)]:!gap-2"
+          className="flex items-center gap-3"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
           <div
@@ -52,7 +128,7 @@ export default function Navbar() {
             }`}
           >
             <span
-              className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 [@media(max-height:500px)]:!text-xs ${
+              className={`font-serif tracking-wide whitespace-nowrap transition-all duration-300 ${
                 isScrolled ? "text-base" : "text-base sm:text-lg"
               }`}
             >
@@ -61,13 +137,13 @@ export default function Navbar() {
           </div>
 
           <div
-            className={`transition-colors duration-300 [@media(max-height:500px)]:!h-5 ${
-              isScrolled ? "bg-neutral-300" : "bg-white/40"
-            } ${isScrolled ? "h-8" : "h-8 sm:h-10"} w-px`}
+            className={`transition-colors duration-300 ${isScrolled ? "bg-neutral-300" : "bg-white/40"} ${
+              isScrolled ? "h-8" : "h-8 sm:h-10"
+            } w-px`}
           />
 
           <div
-            className={`flex flex-col font-medium leading-tight transition-all duration-300 [@media(max-height:500px)]:!text-[9px] ${
+            className={`flex flex-col font-medium leading-tight transition-all duration-300 ${
               isScrolled ? "text-neutral-700" : "text-neutral-100"
             } ${isScrolled ? "text-xs" : "text-xs sm:text-sm"}`}
           >
@@ -99,7 +175,7 @@ export default function Navbar() {
 
         <a
           href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-          className={`hidden rounded-md bg-burgundy font-semibold text-white transition-all duration-300 hover:bg-burgundy-dark md:inline-block [@media(max-height:500px)]:!px-3 [@media(max-height:500px)]:!py-1.5 [@media(max-height:500px)]:!text-xs ${
+          className={`hidden rounded-md bg-burgundy font-semibold text-white transition-all duration-300 hover:bg-burgundy-dark md:inline-block ${
             isScrolled ? "px-5 py-2 text-sm" : "px-5 py-2 text-sm sm:px-6 sm:py-3 sm:text-base"
           }`}
         >
@@ -109,7 +185,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className={`md:hidden [@media(max-height:500px)]:scale-90 ${isScrolled ? "text-neutral-900" : "text-white"}`}
+          className={`md:hidden ${isScrolled ? "text-neutral-900" : "text-white"}`}
           aria-label="Menu"
           aria-expanded={isOpen}
         >
@@ -117,77 +193,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/40 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {isOpen && (
-        <div
-          className="fixed top-0 end-0 z-50 flex max-h-screen w-64 flex-col overflow-y-auto border-s border-neutral-200 bg-cream shadow-xl md:hidden"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <ul className="flex flex-col gap-1 px-4 py-4">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  onClick={() => {
-                    setIsOpen(false);
-                    if (link.href === "/") {
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    }
-                  }}
-                  className="block rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-burgundy"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-
-            <li className="flex items-center gap-5 px-3 pt-2">
-              <Link
-                href={pathname}
-                locale="tr"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 text-base font-bold text-neutral-900"
-              >
-                <img src="https://flagcdn.com/24x18/tr.png" alt="Türkçe" className="h-[18px] w-6 rounded-sm object-cover" />
-                TR
-              </Link>
-              <Link
-                href={pathname}
-                locale="en"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 text-base font-bold text-neutral-900"
-              >
-                <img src="https://flagcdn.com/24x18/gb.png" alt="English" className="h-[18px] w-6 rounded-sm object-cover" />
-                EN
-              </Link>
-              <Link
-                href={pathname}
-                locale="ar"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 text-base font-bold text-neutral-900"
-              >
-                <img src="https://flagcdn.com/24x18/sa.png" alt="العربية" className="h-[18px] w-6 rounded-sm object-cover" />
-                AR
-              </Link>
-            </li>
-            <li>
-              <a
-                href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
-                onClick={() => setIsOpen(false)}
-                className="block rounded-md bg-burgundy px-3 py-2 text-center text-sm font-semibold text-white hover:bg-burgundy-dark"
-              >
-                {t("cta")}
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
+      {mounted && mobileMenu ? createPortal(mobileMenu, document.body) : null}
     </header>
   );
 }
