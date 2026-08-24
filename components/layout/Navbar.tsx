@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/lib/navigation";
@@ -122,6 +123,16 @@ export default function Navbar() {
           className="flex items-center gap-2 [@media(max-height:500px)]:!gap-2"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
+          <Image
+            src={isScrolled ? "/images/logo-black.png" : "/images/logo-white.png"}
+            alt="Büşra Nur Karakoç — Avukat & Arabulucu"
+            width={482}
+            height={288}
+            priority
+            className={`w-auto transition-all duration-300 [@media(max-height:500px)]:!h-6 ${
+              isScrolled ? "h-8" : "h-8 sm:h-10"
+            }`}
+          />
           <div
             className={`flex flex-col items-center transition-colors duration-300 ${
               isScrolled ? "text-neutral-900" : "text-white"
