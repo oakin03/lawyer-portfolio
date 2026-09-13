@@ -180,7 +180,11 @@
   },
   "practiceAreasPage": {
     "title": "PRACTICE AREAS",
-    "subtitle": "The areas in which we provide legal counsel and litigation support."
+    "subtitle": "Areas in which we provide legal consultancy and litigation services.",
+    "back": "Back",
+    "previousArea": "Previous Practice Area",
+    "nextArea": "Next Practice Area",
+    "menuTitle": "Practice Areas"
   },
   "about": {
     "banner": {
