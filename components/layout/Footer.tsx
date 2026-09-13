@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import LegalLinkModal from "@/components/ui/LegalLinkModal";
 import { Link } from "@/lib/navigation";
+import AddressHoverPreview from "@/components/ui/AddressHoverPreview";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { InstagramIcon, LinkedinIcon, WhatsAppIcon } from "@/components/icons/SocialIcons";
 import { ATTORNEY, SOCIAL_LINKS } from "@/lib/constants";
@@ -40,15 +41,13 @@ export default function Footer() {
           <p className="mt-4 text-neutral-600">{tFooter("tagline")}</p>
 
           <div className="mt-4 space-y-2 text-sm text-neutral-500">
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-start gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"
-            >
-              <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-              <span className="whitespace-pre-line">{ATTORNEY.address}</span>
-            </a>
+            <AddressHoverPreview
+              address={ATTORNEY.address}
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                ATTORNEY.address
+              )}`}
+              imageSrc="/images/office-building.jpg"
+            />
             <a
               href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}
               className="flex items-center gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"

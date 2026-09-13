@@ -7,12 +7,20 @@ export default function ContactInfo() {
   const t = useTranslations("contact.info");
 
   const items = [
-    { icon: ScrollText, label: t("barNumber"), value: ATTORNEY.barNumber, href: undefined, external: false },
+    {
+      icon: ScrollText,
+      label: t("barNumber"),
+      value: ATTORNEY.barNumber,
+      href: undefined,
+      external: false,
+    },
     {
       icon: MapPin,
       label: t("address"),
       value: ATTORNEY.address,
-      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`,
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+        ATTORNEY.address
+      )}`,
       external: true,
     },
     {
@@ -22,7 +30,13 @@ export default function ContactInfo() {
       href: `tel:${ATTORNEY.phone.replace(/\s/g, "")}`,
       external: false,
     },
-    { icon: Mail, label: t("email"), value: SOCIAL_LINKS.email, href: `mailto:${SOCIAL_LINKS.email}`, external: false },
+    {
+      icon: Mail,
+      label: t("email"),
+      value: SOCIAL_LINKS.email,
+      href: `mailto:${SOCIAL_LINKS.email}`,
+      external: false,
+    },
   ];
 
   return (
@@ -30,17 +44,25 @@ export default function ContactInfo() {
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item) => {
           const Icon = item.icon;
+
           const content = (
             <div className="flex flex-col items-center gap-3 text-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-full border border-burgundy/30 text-burgundy">
                 <Icon size={22} />
               </div>
+
               <div>
-                <p className="text-sm font-medium uppercase tracking-wide text-neutral-400">{item.label}</p>
-                <p className="mt-1 text-neutral-800">{item.value}</p>
+                <p className="text-sm font-medium uppercase tracking-wide text-neutral-400">
+                  {item.label}
+                </p>
+
+                <p className="mt-1 text-neutral-800">
+                  {item.value}
+                </p>
               </div>
             </div>
           );
+
           return item.href ? (
             <a
               key={item.label}
@@ -52,7 +74,9 @@ export default function ContactInfo() {
               {content}
             </a>
           ) : (
-            <div key={item.label}>{content}</div>
+            <div key={item.label}>
+              {content}
+            </div>
           );
         })}
       </div>

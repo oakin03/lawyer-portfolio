@@ -45,18 +45,19 @@ export const SOCIAL_LINKS = {
 };
 
 export const PRACTICE_AREAS = [
-  { slug: "icra-iflas-hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
-  { slug: "ceza-hukuku", image: "/images/practice-areas/ceza-hukuku.jpg" },
-  { slug: "aile-hukuku", image: "/images/practice-areas/aile-hukuku.jpg" },
   { slug: "is-hukuku", image: "/images/practice-areas/is-hukuku.jpg" },
+  { slug: "icra-iflas-hukuku", image: "/images/practice-areas/icra-iflas-hukuku.jpg" },
   { slug: "gayrimenkul-hukuku", image: "/images/practice-areas/gayrimenkul-hukuku.jpg" },
+  { slug: "kira-hukuku", image: "/images/practice-areas/kira-hukuku.jpg" },
   { slug: "miras-hukuku", image: "/images/practice-areas/miras-hukuku.jpg" },
-  { slug: "tuketici-hukuku", image: "/images/practice-areas/tuketici-hukuku.jpg" },
-  { slug: "milletlerarasi-ozel-hukuk", image: "/images/practice-areas/milletlerarasi-ozel-hukuk.jpg" },
-  { slug: "tazminat-hukuku", image: "/images/practice-areas/tazminat-hukuku.jpg" },
-  { slug: "fikri-mulkiyet-hukuku", image: "/images/practice-areas/fikri-mulkiyet-hukuku.jpg" },
-  { slug: "bilisim-hukuku", image: "/images/practice-areas/bilisim-hukuku.jpg" },
+  { slug: "ceza-hukuku", image: "/images/practice-areas/ceza-hukuku.jpg" },
   { slug: "ticaret-hukuku", image: "/images/practice-areas/ticaret-hukuku.jpg" },
+  { slug: "bilisim-hukuku", image: "/images/practice-areas/bilisim-hukuku.jpg" },
+  { slug: "tuketici-hukuku", image: "/images/practice-areas/tuketici-hukuku.jpg" },
+  { slug: "aile-hukuku", image: "/images/practice-areas/aile-hukuku.jpg" },
+  { slug: "sigorta-hukuku", image: "/images/practice-areas/sigorta-hukuku.jpg" },
+  { slug: "yabancilar-hukuku", image: "/images/practice-areas/yabancilar-hukuku.jpg" },
+  { slug: "arabuluculuk", image: "/images/practice-areas/arabuluculuk.jpg" },
 ];
 // Extends PRACTICE_AREAS with an "Other" option — used only for publication
 // categorization (filter UI + future admin panel dropdown), not shown on the

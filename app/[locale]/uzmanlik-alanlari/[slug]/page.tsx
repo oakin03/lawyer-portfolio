@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import PageBanner from "@/components/sections/PageBanner";
 import ReactMarkdown from "react-markdown";
 import {
   CornerUpLeft,
@@ -131,29 +131,11 @@ export default async function PracticeAreaDetailPage({
     <main>
       <Navbar />
 
-      {/* BANNER - Yayın detay sayfasıyla aynı ölçüler */}
-      <section className="relative flex h-64 w-full items-end overflow-hidden sm:h-80">
-        <Image
-          src={`/images/practice-areas/${currentArea.slug}-banner.jpg`}
-          alt=""
-          fill
-          priority
-          className="object-cover"
-          sizes="100vw"
-        />
-
-        <div className="absolute inset-0 bg-[#2a1f1a]/70" />
-
-        <div className="relative z-10 mx-auto w-full max-w-4xl px-6 pb-10 lg:px-8">
-          <h1 className="text-2xl text-white sm:text-4xl">
-            {currentData.title}
-          </h1>
-
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-neutral-300">
-            {currentData.short}
-          </p>
-        </div>
-      </section>
+      <PageBanner
+        image={`/images/practice-areas/${currentArea.slug}-banner.jpg`}
+        title={currentData.title}
+        subtitle={currentData.short}
+      />
 
       {/* İÇERİK */}
       <section className="bg-cream-light py-16">

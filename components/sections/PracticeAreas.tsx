@@ -27,7 +27,7 @@ export default function PracticeAreas() {
             return (
               <Link
                 key={area.slug}
-                href={`/uzmanlik-alanlari#${area.slug}`}
+                href={`/uzmanlik-alanlari/${area.slug}`}
                 style={{ animationDelay: `${index * 60}ms` }}
                 className="group/card flex flex-col rounded-lg border border-neutral-200 bg-white p-5 opacity-0 transition-shadow group-[.is-visible]:animate-[fade-in-up_0.5s_ease-out_both] hover:shadow-md"
               >

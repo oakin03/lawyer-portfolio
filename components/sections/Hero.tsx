@@ -1,10 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { ArrowRight, ArrowLeft, ShieldCheck, Users, Scale as ScaleIcon } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowLeft,
+  ShieldCheck,
+  Users,
+  Scale as ScaleIcon,
+} from "lucide-react";
 import { ATTORNEY } from "@/lib/constants";
 import AppointmentModal from "@/components/ui/AppointmentModal";
 
@@ -24,6 +30,7 @@ export default function Hero() {
       const section = sectionRef.current;
       const imageWrapper = imageWrapperRef.current;
       const overlay = overlayRef.current;
+
       if (!section || !imageWrapper || !overlay) return;
 
       const heroHeight = section.offsetHeight;
@@ -48,8 +55,12 @@ export default function Hero() {
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+
     updateProgress();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const features = [
@@ -64,12 +75,15 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen w-full items-end overflow-hidden bg-cream-light"
+      className="relative flex min-h-screen w-full items-center overflow-hidden bg-cream-light"
     >
       <div
         ref={imageWrapperRef}
         className="absolute inset-0"
-        style={{ transformOrigin: "center top", willChange: "transform, opacity" }}
+        style={{
+          transformOrigin: "center top",
+          willChange: "transform, opacity",
+        }}
       >
         <Image
           src={ATTORNEY.heroImage}
@@ -83,55 +97,89 @@ export default function Hero() {
         />
       </div>
 
-      <div ref={overlayRef} className="absolute inset-0 bg-black" />
+      <div
+        ref={overlayRef}
+        className="absolute inset-0 bg-black"
+      />
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-32 sm:pt-40 lg:px-8">
-        <div className="max-w-2xl mt-4 text-left mr-auto sm:mt-10 [@media(max-height:500px)]:!mt-2">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-20 sm:pt-24 lg:px-8 lg:pt-28">
+        <div className="mr-auto max-w-3xl text-left">
+
+          {/* İSİM + ETİKET */}
           <div className="flex flex-col gap-1">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] sm:text-sm [@media(max-height:500px)]:!text-[10px]">
               {ATTORNEY.name}
             </p>
+
             <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/70 sm:text-xs [@media(max-height:500px)]:!text-[9px]">
               {t("locationTag")}
             </p>
           </div>
 
-          <h1 className="mt-3 font-serif text-2xl leading-tight text-white sm:mt-4 sm:text-5xl [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-lg">
-            {t("headlineLine1")}
-            <br />
-            <span className="font-bold">{t("headlineLine2")}</span>
+          {/* ANA SLOGAN */}
+          <h1 className="mt-6 font-serif text-2xl leading-[1.15] text-white sm:mt-8 sm:text-4xl lg:text-[40px] [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-lg">
+            <span className="block">
+              {t("headlineLine1")}
+            </span>
+
+            <span className="mt-1 block font-bold">
+              {t("headlineLine2")}
+            </span>
           </h1>
 
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-neutral-200 sm:mt-6 sm:text-lg [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-xs">
-            {t("subtitle")}
-          </p>
-
-          <div className="mt-4 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:gap-4 [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!flex-row [@media(max-height:500px)]:!gap-2">
-            <Link href="/yayinlar" className={buttonClass}>
+          {/* BUTONLAR */}
+          <div className="mt-9 flex flex-col gap-2 sm:mt-10 sm:flex-row sm:gap-4 [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!flex-row [@media(max-height:500px)]:!gap-2">
+            <Link
+              href="/yayinlar"
+              className={buttonClass}
+            >
               {t("ctaPublications")}
-              {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
+
+              {isRtl ? (
+                <ArrowLeft size={16} />
+              ) : (
+                <ArrowRight size={16} />
+              )}
             </Link>
-            <Link href="/uzmanlik-alanlari" className={buttonClass}>
+
+            <Link
+              href="/uzmanlik-alanlari"
+              className={buttonClass}
+            >
               {t("ctaSecondary")}
-              {isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
+
+              {isRtl ? (
+                <ArrowLeft size={16} />
+              ) : (
+                <ArrowRight size={16} />
+              )}
             </Link>
+
             <AppointmentModal className={buttonClass} />
           </div>
 
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-6 [@media(max-height:500px)]:!mt-3 [@media(max-height:500px)]:!grid-cols-3 [@media(max-height:500px)]:!gap-2">
+          {/* ÖZELLİKLER */}
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:mt-12 sm:grid-cols-3 sm:gap-6 [@media(max-height:500px)]:!mt-3 [@media(max-height:500px)]:!grid-cols-3 [@media(max-height:500px)]:!gap-2">
             {features.map(({ icon: Icon, key }, index) => (
               <div
                 key={key}
-                style={{ animationDelay: `${index * 100}ms` }}
+                style={{
+                  animationDelay: `${index * 100}ms`,
+                }}
                 className="flex animate-[fade-in-up_0.5s_ease-out_both] items-start gap-2 sm:gap-3"
               >
-                <span className="mt-0.5 flex-shrink-0 scale-75 origin-left sm:scale-100 [@media(max-height:500px)]:!scale-50">
-                  <Icon size={20} className="text-white" />
+                <span className="mt-0.5 flex-shrink-0 origin-left scale-75 sm:scale-100 [@media(max-height:500px)]:!scale-50">
+                  <Icon
+                    size={20}
+                    className="text-white"
+                  />
                 </span>
+
                 <div>
                   <p className="text-xs font-semibold text-white sm:text-sm [@media(max-height:500px)]:!text-[10px]">
                     {t(`${key}.title`)}
                   </p>
+
                   <p className="mt-1 text-xs font-semibold text-neutral-300 sm:text-sm [@media(max-height:500px)]:!hidden">
                     {t(`${key}.description`)}
                   </p>
@@ -139,6 +187,7 @@ export default function Hero() {
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
