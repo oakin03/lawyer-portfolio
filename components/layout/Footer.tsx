@@ -42,12 +42,12 @@ export default function Footer() {
           <div className="mt-4 space-y-2 text-sm text-neutral-500">
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ATTORNEY.address)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"
-              >
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-2 text-sm text-neutral-700 transition-colors hover:text-burgundy"
+            >
               <MapPin size={16} className="mt-0.5 flex-shrink-0" />
-              <span>{ATTORNEY.address}</span>
+              <span className="whitespace-pre-line">{ATTORNEY.address}</span>
             </a>
             <a
               href={`tel:${ATTORNEY.phone.replace(/\s/g, "")}`}

@@ -8,13 +8,21 @@ import FirmOverview from "@/components/sections/FirmOverview";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { buildMetadata } from "@/lib/seo";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const tMeta = await getTranslations("meta");
-  return {
+  return buildMetadata({
+    locale,
+    path: "",
     title: tMeta("siteTitle"),
     description: tMeta("description"),
-  };
+  });
 }
 
 export default function Home() {

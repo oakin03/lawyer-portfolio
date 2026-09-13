@@ -10,6 +10,7 @@ import Footer from "@/components/layout/Footer";
 import { Link } from "@/lib/navigation";
 import { getPublicationBySlug, getAdjacentPublications } from "@/lib/publications";
 import { PUBLICATION_CATEGORIES } from "@/lib/constants";
+import { buildMetadata } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -35,10 +36,12 @@ export async function generateMetadata({
     return { title: tMeta("siteTitle") };
   }
 
-  return {
-    title: `${publication.title} | ${tMeta("siteTitle")}`,
-    description: publication.excerpt,
-  };
+  return buildMetadata({
+    locale,
+    path: `/yayinlar/${slug}`,
+    title: tMeta("siteTitle"),
+    description: tMeta("description"),
+  });
 }
 
 export default async function PublicationDetailPage({

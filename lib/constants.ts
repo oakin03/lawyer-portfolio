@@ -10,10 +10,10 @@ export const ATTORNEY = {
   bio: "Bireyler ve işletmeler için kişiye özel, sonuç odaklı hukuki temsil sunuyorum. Bağımsız bir avukat olarak, her müvekkilimin tam ilgimi ve özverili uzmanlığımı almasını sağlıyorum.",
   photo: "/images/attorney-photo.jpg",
   heroImage: "/images/hero-background.jpg",
-  address: "Mehmet Akif Ersoy Mah. 324 Cad. No: 2/B/37 Anadolu 1919 Plaza Yenimahalle/ANKARA",
+  address: "Mehmet Akif Ersoy Mah. 324 Cad. No: 2/B/37\nAnadolu 1919 Plaza\nYenimahalle/ANKARA",
   phone: "+90 531 662 66 76",
   barNumber: "Ankara Barosu - 12345",
-  shortLocation: "Ankara, Atatürk Bulvarı",
+  shortLocation: "Ankara, Anadolu Bulvarı",
   workingHours: "Pzt - Cum: 09:00 - 18:00",
 };
 
@@ -38,8 +38,8 @@ export const FOOTER_LINKS_CONTENT = [
 ];
 
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/eithan5",
-  linkedin: "https://linkedin.com/in/burkay-orkun-akin",
+  instagram: "https://instagram.com/avukatbusrakarakoc",
+  linkedin: "https://linkedin.com/in/büşra-nur-karakoç-776657430/",
   email: "av.busranurkarakoc@gmail.com",
   whatsapp: "https://wa.me/905316626676",
 };

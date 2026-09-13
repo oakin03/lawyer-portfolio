@@ -10,15 +10,21 @@ import ZigzagRow from "@/components/sections/ZigzagRow";
 import SectionDivider from "@/components/ui/SectionDivider";
 import { ATTORNEY, ABOUT_SECTIONS } from "@/lib/constants";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { buildMetadata } from "@/lib/seo";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("about.banner");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const tMeta = await getTranslations("meta");
-
-  return {
-    title: `${t("title")} | ${tMeta("siteTitle")}`,
-    description: t("subtitle"),
-  };
+  return buildMetadata({
+    locale,
+    path: "/hakkimda",
+    title: tMeta("siteTitle"),
+    description: tMeta("description"),
+  });
 }
 
 export default async function HakkimdaPage() {
@@ -46,16 +52,6 @@ export default async function HakkimdaPage() {
             <ZigzagRow image="/images/about-2.jpg" imageAlt="" imagePosition="left">
               <ExperienceTimeline />
             </ZigzagRow>
-          </ScrollReveal>
-
-          <SectionDivider />
-
-          <ScrollReveal>
-            <AboutSection
-              translationKey={ABOUT_SECTIONS[1].key}
-              image={ABOUT_SECTIONS[1].image}
-              imagePosition="right"
-            />
           </ScrollReveal>
         </div>
       </section>

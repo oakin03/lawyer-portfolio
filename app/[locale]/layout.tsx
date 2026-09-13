@@ -7,6 +7,9 @@ import "../globals.css";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { getTranslations } from "next-intl/server";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ATTORNEY } from "@/lib/constants";
 
 
 const playfair = Playfair_Display({
@@ -48,10 +51,33 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider messages={messages}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Attorney",
+              name: ATTORNEY.name,
+              image: "https://lawyer-portfolio-ecru.vercel.app/images/logo-black.png",
+              url: "https://lawyer-portfolio-ecru.vercel.app",
+              telephone: ATTORNEY.phone,
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: ATTORNEY.address,
+                addressLocality: "Yenimahalle",
+                addressRegion: "Ankara",
+                addressCountry: "TR",
+              },
+              areaServed: "Ankara",
+            }),
+          }}
+        />
           <TopBar />
           {children}
           <BackToTop />
           <WhatsAppButton />
+          <Analytics />
+          <SpeedInsights />
         </NextIntlClientProvider>
       </body>
     </html>

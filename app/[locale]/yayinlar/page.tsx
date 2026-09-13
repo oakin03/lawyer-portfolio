@@ -6,14 +6,23 @@ import PageBanner from "@/components/sections/PageBanner";
 import PublicationsSearch from "@/components/sections/PublicationsSearch";
 import { getPublications } from "@/lib/publications";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { buildMetadata } from "@/lib/seo";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
   const t = await getTranslations("publicationsPage");
   const tMeta = await getTranslations("meta");
-  return {
+
+  return buildMetadata({
+    locale,
+    path: "/yayinlar",
     title: `${t("title")} | ${tMeta("siteTitle")}`,
     description: t("subtitle"),
-  };
+  });
 }
 
 export default async function YayinlarPage() {
