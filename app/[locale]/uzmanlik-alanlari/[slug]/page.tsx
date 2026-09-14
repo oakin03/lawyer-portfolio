@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getLocale, getTranslations } from "next-intl/server";
-
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Link } from "@/lib/navigation";
@@ -141,98 +140,135 @@ export default async function PracticeAreaDetailPage({
       <section className="bg-cream-light py-16">
         <div className="mx-auto max-w-7xl px-4">
 
-          {/* YAYIN SAYFASIYLA AYNI NAV BUTONLARI */}
-          <div className="mx-auto mb-8 max-w-3xl lg:mx-0 lg:max-w-none">
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/uzmanlik-alanlari"
-                className={navButtonClass}
-              >
-                {isRtl ? (
-                  <CornerUpRight size={16} />
-                ) : (
-                  <CornerUpLeft size={16} />
-                )}
+          {/*
+            MASAÜSTÜNDE:
+            Sol içerik + sağ sticky menü aynı satırdan başlıyor.
 
-                {tPage("back")}
-              </Link>
+            MOBİLDE:
+            grid devreye girmediği için mevcut mobil yapı değişmiyor.
+          */}
+          <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start lg:gap-16">
 
-              {previousArea && (
-                <Link
-                  href={`/uzmanlik-alanlari/${previousArea.slug}`}
-                  className={navButtonClass}
-                >
-                  {isRtl ? (
-                    <ChevronRight size={16} />
-                  ) : (
-                    <ChevronLeft size={16} />
-                  )}
+            {/* SOL İÇERİK */}
+            <div className="min-w-0">
 
-                  {tPage("previousArea")}
-                </Link>
-              )}
+              {/* NAV BUTONLARI */}
+              <div className="mx-auto mb-8 max-w-3xl lg:mx-0">
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    href="/uzmanlik-alanlari"
+                    className={navButtonClass}
+                  >
+                    {isRtl ? (
+                      <CornerUpRight size={16} />
+                    ) : (
+                      <CornerUpLeft size={16} />
+                    )}
 
-              {nextArea && (
-                <Link
-                  href={`/uzmanlik-alanlari/${nextArea.slug}`}
-                  className={navButtonClass}
-                >
-                  {tPage("nextArea")}
+                    {tPage("back")}
+                  </Link>
 
-                  {isRtl ? (
-                    <ChevronLeft size={16} />
-                  ) : (
-                    <ChevronRight size={16} />
-                  )}
-                </Link>
-              )}
-            </div>
-          </div>
-
-          {/* FAALİYET ALANI BAŞLIĞI */}
-          <div className="mx-auto mb-8 max-w-3xl lg:mx-0">
-            <h1 className="text-2xl font-semibold text-neutral-900 sm:text-3xl">
-              {currentData.title}
-            </h1>
-          </div>
-
-          {/* MOBİL FAALİYET ALANLARI MENÜSÜ */}
-          <div className="sticky top-16 z-20 mb-8 lg:hidden">
-            <div className="border-y border-neutral-200 bg-cream-light/95 py-2 backdrop-blur-md">
-              <nav className="flex gap-2 overflow-x-auto px-1">
-                {availableAreas.map((area) => {
-                  const isActive = area.slug === slug;
-
-                  return (
+                  {previousArea && (
                     <Link
-                      key={area.slug}
-                      href={`/uzmanlik-alanlari/${area.slug}`}
-                      className={`shrink-0 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                        isActive
-                          ? "bg-burgundy text-white"
-                          : "bg-white/70 text-neutral-700 hover:text-burgundy"
-                      }`}
+                      href={`/uzmanlik-alanlari/${previousArea.slug}`}
+                      className={navButtonClass}
                     >
-                      {area.title}
+                      {isRtl ? (
+                        <ChevronRight size={16} />
+                      ) : (
+                        <ChevronLeft size={16} />
+                      )}
+
+                      {tPage("previousArea")}
                     </Link>
-                  );
-                })}
-              </nav>
-            </div>
-          </div>
+                  )}
 
-          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16">
+                  {nextArea && (
+                    <Link
+                      href={`/uzmanlik-alanlari/${nextArea.slug}`}
+                      className={navButtonClass}
+                    >
+                      {tPage("nextArea")}
 
-            {/* METİN */}
-            <article className="min-w-0">
-              <div className="mx-auto max-w-3xl lg:mx-0">
-                <div className="prose prose-lg max-w-none text-neutral-700 max-sm:prose-h1:text-xl max-sm:prose-h2:text-lg max-sm:prose-h3:text-base prose-headings: prose-headings:text-neutral-900 prose-strong:text-neutral-900 prose-li:marker:text-burgundy">
-                  <ReactMarkdown>
-                    {prepareMarkdown(currentData.description)}
-                  </ReactMarkdown>
+                      {isRtl ? (
+                        <ChevronLeft size={16} />
+                      ) : (
+                        <ChevronRight size={16} />
+                      )}
+                    </Link>
+                  )}
                 </div>
               </div>
-            </article>
+
+              {/* ANA FAALİYET ALANI BAŞLIĞI */}
+              <div className="mx-auto mb-8 max-w-3xl lg:mx-0">
+                <h1 className="text-2xl font-semibold text-neutral-900 sm:text-3xl">
+                  {currentData.title}
+                </h1>
+              </div>
+
+              {/* MOBİL FAALİYET ALANLARI MENÜSÜ */}
+              <div className="sticky top-16 z-20 mb-8 lg:hidden">
+                <div className="border-y border-neutral-200 bg-cream-light/95 py-2 backdrop-blur-md">
+                  <nav className="flex gap-2 overflow-x-auto px-1">
+                    {availableAreas.map((area) => {
+                      const isActive = area.slug === slug;
+
+                      return (
+                        <Link
+                          key={area.slug}
+                          href={`/uzmanlik-alanlari/${area.slug}`}
+                          className={`shrink-0 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                            isActive
+                              ? "bg-burgundy text-white"
+                              : "bg-white/70 text-neutral-700 hover:text-burgundy"
+                          }`}
+                        >
+                          {area.title}
+                        </Link>
+                      );
+                    })}
+                  </nav>
+                </div>
+              </div>
+
+              {/* METİN */}
+              <article className="min-w-0">
+                <div className="mx-auto max-w-3xl lg:mx-0">
+                  <div
+                    className="
+                      prose
+                      prose-lg
+                      max-w-none
+                      text-neutral-700
+
+                      max-sm:prose-h1:text-xl
+                      max-sm:prose-h2:text-lg
+                      max-sm:prose-h3:text-base
+
+                      prose-strong:font-normal
+
+                      lg:prose-h2:mt-8
+                      lg:prose-h2:mb-3
+                      lg:prose-h2:text-xl
+                      lg:prose-h2:font-semibold
+                      lg:prose-h2:leading-snug
+                      lg:prose-h2:text-neutral-900
+
+                      lg:prose-h3:text-lg
+                      lg:prose-h3:font-semibold
+                      lg:prose-h3:text-neutral-900
+
+                      prose-li:marker:text-burgundy
+                    "
+                  >
+                    <ReactMarkdown>
+                      {prepareMarkdown(currentData.description)}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              </article>
+            </div>
 
             {/* MASAÜSTÜ SAĞ MENÜ */}
             <aside className="sticky top-28 hidden self-start lg:block">

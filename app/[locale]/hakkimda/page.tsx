@@ -27,6 +27,8 @@ export default async function HakkimdaPage() {
   const tBanner = await getTranslations("about.banner");
   const tAbout = await getTranslations("about.sections.whoIAm");
 
+  let boldIndex = 0;
+
   return (
     <main>
       <Navbar />
@@ -40,7 +42,7 @@ export default async function HakkimdaPage() {
       <section className="bg-cream-light py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-0">
-            
+
             {/* HAKKIMDA */}
             <ScrollReveal>
               <section className="lg:pr-16">
@@ -54,11 +56,24 @@ export default async function HakkimdaPage() {
 
                 <div className="space-y-5 text-[15px] leading-8 text-neutral-600 md:text-base">
                   {tAbout.rich("text", {
-                    b: (chunks) => (
-                      <strong className="font-semibold text-neutral-900">
-                        {chunks}
-                      </strong>
-                    ),
+                    b: (chunks) => {
+                      boldIndex += 1;
+
+                      if (boldIndex <= 2) {
+                        return (
+                          <strong className="font-semibold text-neutral-900">
+                            {chunks}
+                          </strong>
+                        );
+                      }
+
+                      return (
+                        <span className="font-normal text-inherit">
+                          {chunks}
+                        </span>
+                      );
+                    },
+
                     p: (chunks) => <p>{chunks}</p>,
                   })}
                 </div>
