@@ -5,6 +5,7 @@ import AboutPreview from "@/components/sections/AboutPreview";
 import PracticeAreas from "@/components/sections/PracticeAreas";
 import SectionDivider from "@/components/ui/SectionDivider";
 import FirmOverview from "@/components/sections/FirmOverview";
+import { hasPublications } from "@/lib/publications";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -25,11 +26,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Home() {
+export default async function Home() {
+  const publicationsAvailable = await hasPublications();
   return (
     <main>
       <Navbar />
-      <Hero />
+      <Hero hasPublications={publicationsAvailable} />
 
       <ScrollReveal>
         <AboutPreview />

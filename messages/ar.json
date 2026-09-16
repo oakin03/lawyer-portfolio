@@ -5,7 +5,7 @@
   },
   "nav": {
     "home": "الرئيسية",
-    "about": "الشركة",
+    "about": "نبذة عني",
     "practiceAreas": "مجالات الممارسة",
     "publications": "المقالات",
     "contact": "اتصل بنا",
@@ -34,8 +34,9 @@
   "home": {
     "hero": {
       "locationTag": "محامية ووسيطة في أنقرة",
-      "headlineLine1": "من أجل حقوقكم،",
-      "headlineLine2": "بقوة القانون.",
+      "headlineLine1": "“Allah'a dayan, sa'ye sarıl, hikmete râm ol,",
+      "headlineLine2": "Yol varsa budur, bilmiyorum başka çıkar yol.”",
+      "quoteAuthor": "-Mehmet Akif Ersoy",
       "subtitle": "نقيّم احتياجاتكم القانونية بدقة، ونقدم خدمات قانونية موثوقة وموجهة نحو الحلول لحماية حقوقكم ومصالحكم.",
       "ctaPrimary": "اتصل الآن",
       "ctaSecondary": "استكشف مجالات الممارسة",
@@ -172,7 +173,7 @@
   },
   "about": {
     "banner": {
-      "title": "الشركة",
+      "title": "نبذة عني",
       "subtitle": "خبرتي ومبادئ عملي وكيف يمكنني مساعدتكم."
     },
     "sections": {

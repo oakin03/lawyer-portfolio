@@ -86,3 +86,19 @@ export async function getAdjacentPublications(
     next: index < all.length - 1 ? all[index + 1] : null,
   };
 }
+
+export async function hasPublications(): Promise<boolean> {
+  const supabase = await createServerClient();
+
+  const { data, error } = await supabase
+    .from("publications")
+    .select("id")
+    .limit(1);
+
+  if (error) {
+    console.error("Failed to check publications:", error.message);
+    return false;
+  }
+
+  return (data?.length ?? 0) > 0;
+}

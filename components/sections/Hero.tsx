@@ -14,7 +14,11 @@ import {
 import { ATTORNEY } from "@/lib/constants";
 import AppointmentModal from "@/components/ui/AppointmentModal";
 
-export default function Hero() {
+export default function Hero({
+  hasPublications,
+}: {
+  hasPublications: boolean;
+}) {
   const t = useTranslations("home.hero");
   const locale = useLocale();
   const isRtl = locale === "ar";
@@ -103,44 +107,42 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-20 sm:pt-24 lg:px-8 lg:pt-28">
-        <div className="mr-auto max-w-3xl text-left">
+        <div className="mr-auto max-w-4xl text-left">
 
-          {/* İSİM + ETİKET */}
-          <div className="flex flex-col gap-1">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#D4AF37] sm:text-sm [@media(max-height:500px)]:!text-[10px]">
-              {ATTORNEY.name}
-            </p>
+          {/* ALINTI */}
+          <div className="font-serif text-2xl leading-[1.35] text-white sm:text-4xl lg:text-[40px] [@media(max-height:500px)]:!text-lg">
+            <h1>
+              <span className="block">
+                {t("headlineLine1")}
+              </span>
 
-            <p className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/70 sm:text-xs [@media(max-height:500px)]:!text-[9px]">
-              {t("locationTag")}
+              <span className="mt-1 block">
+                {t("headlineLine2")}
+              </span>
+            </h1>
+
+            <p className="mt-4 text-base font-medium italic text-white/80 sm:text-lg [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!text-xs">
+              {t("quoteAuthor")}
             </p>
           </div>
 
-          {/* ANA SLOGAN */}
-          <h1 className="mt-6 font-serif text-2xl leading-[1.15] text-white sm:mt-8 sm:text-4xl lg:text-[40px] [@media(max-height:500px)]:!mt-1 [@media(max-height:500px)]:!text-lg">
-            <span className="block">
-              {t("headlineLine1")}
-            </span>
-
-            <span className="mt-1 block font-bold">
-              {t("headlineLine2")}
-            </span>
-          </h1>
-
           {/* BUTONLAR */}
-          <div className="mt-9 flex flex-col gap-2 sm:mt-10 sm:flex-row sm:gap-4 [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!flex-row [@media(max-height:500px)]:!gap-2">
-            <Link
-              href="/yayinlar"
-              className={buttonClass}
-            >
-              {t("ctaPublications")}
+          <div className="mt-20 flex flex-col gap-2 sm:mt-24 sm:flex-row sm:gap-4 [@media(max-height:500px)]:!mt-2 [@media(max-height:500px)]:!flex-row [@media(max-height:500px)]:!gap-2">
 
-              {isRtl ? (
-                <ArrowLeft size={16} />
-              ) : (
-                <ArrowRight size={16} />
-              )}
-            </Link>
+            {hasPublications && (
+              <Link
+                href="/yayinlar"
+                className={buttonClass}
+              >
+                {t("ctaPublications")}
+
+                {isRtl ? (
+                  <ArrowLeft size={16} />
+                ) : (
+                  <ArrowRight size={16} />
+                )}
+              </Link>
+            )}
 
             <Link
               href="/uzmanlik-alanlari"

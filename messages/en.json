@@ -19,7 +19,7 @@
   },
   "nav": {
     "home": "Home",
-    "about": "Corporate",
+    "about": "About Me",
     "practiceAreas": "Practice Areas",
     "publications": "Articles",
     "contact": "Contact",
@@ -51,9 +51,9 @@
   },
   "home": {
     "hero": {
-      "locationTag": "ATTORNEY & MEDIATOR IN ANKARA",
-      "headlineLine1": "FOR YOUR RIGHTS,",
-      "headlineLine2": "WITH THE POWER OF LAW.",
+      "headlineLine1": "“Allah'a dayan, sa'ye sarıl, hikmete râm ol,",
+      "headlineLine2": "Yol varsa budur, bilmiyorum başka çıkar yol.”",
+      "quoteAuthor": "-Mehmet Akif Ersoy",
       "subtitle": "We carefully assess your legal needs and provide reliable, solution-oriented legal services to protect your rights and interests.",
       "ctaPrimary": "Book a Consultation",
       "ctaSecondary": "Explore Practice Areas",
@@ -190,7 +190,7 @@
   },
   "about": {
     "banner": {
-      "title": "CORPORATE",
+      "title": "ABOUT ME",
       "subtitle": "My experience, working principles, and how I can help you."
     },
     "sections": {

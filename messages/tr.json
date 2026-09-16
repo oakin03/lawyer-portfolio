@@ -19,7 +19,7 @@
   },
   "nav": {
     "home": "Ana Sayfa",
-    "about": "Kurumsal",
+    "about": "Hakkımda",
     "practiceAreas": "Faaliyet Alanları",
     "publications": "Makaleler",
     "contact": "İletişim",
@@ -52,8 +52,9 @@
   "home": {
     "hero": {
       "locationTag": "ANKARA AVUKAT & ARABULUCU",
-      "headlineLine1": "HAKLARINIZ İÇİN,",
-      "headlineLine2": "HUKUKUN GÜCÜYLE.",
+      "headlineLine1": "“Allah'a dayan, sa'ye sarıl, hikmete râm ol,",
+      "headlineLine2": "Yol varsa budur, bilmiyorum başka çıkar yol.”",
+      "quoteAuthor": "-Mehmet Akif Ersoy",
       "subtitle": "Hukuki ihtiyaçlarınızı titizlikle değerlendiriyor, hak ve menfaatlerinizi korumak için güvenilir ve çözüm odaklı hukuki hizmet sunuyoruz.",
       "ctaPrimary": "Hemen Ara",
       "ctaSecondary": "Uzmanlık Alanlarını İncele",
@@ -203,7 +204,7 @@
   },
   "about": {
     "banner": {
-      "title": "KURUMSAL",
+      "title": "HAKKIMDA",
       "subtitle": "Deneyimim, çalışma prensiplerim ve size nasıl yardımcı olabileceğim hakkında."
     },
     "sections": {
