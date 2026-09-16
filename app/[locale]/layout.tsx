@@ -58,8 +58,8 @@ export default async function LocaleLayout({
               "@context": "https://schema.org",
               "@type": "Attorney",
               name: ATTORNEY.name,
-              image: "https://lawyer-portfolio-ecru.vercel.app/images/logo-black.png",
-              url: "https://lawyer-portfolio-ecru.vercel.app",
+              image: "https://busrakarakoc.av.tr/images/logo-black.png",
+              url: "https://busrakarakoc.av.tr",
               telephone: ATTORNEY.phone,
               address: {
                 "@type": "PostalAddress",

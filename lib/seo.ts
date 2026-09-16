@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 
-const BASE_URL = "https://lawyer-portfolio-ecru.vercel.app";
+export const SITE_URL = "https://busrakarakoc.av.tr";
 
 export function buildMetadata({
   locale,
@@ -9,31 +9,42 @@ export function buildMetadata({
   title,
   description,
   image,
+  languageAlternates = true,
 }: {
   locale: string;
   path: string;
   title: string;
   description: string;
   image?: string;
+  languageAlternates?: boolean;
 }): Metadata {
   const languages: Record<string, string> = {};
-  routing.locales.forEach((code) => {
-    languages[code] = `${BASE_URL}/${code}${path}`;
-  });
 
-  const ogImage = image ?? `${BASE_URL}/opengraph-image.jpg`;
+  if (languageAlternates) {
+    routing.locales.forEach((code) => {
+      languages[code] = `${SITE_URL}/${code}${path}`;
+    });
+
+    languages["x-default"] = `${SITE_URL}/tr${path}`;
+  }
+
+  const ogImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${SITE_URL}${image}`
+    : `${SITE_URL}/opengraph-image.jpg`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: `${BASE_URL}/${locale}${path}`,
-      languages,
+      canonical: `${SITE_URL}/${locale}${path}`,
+      ...(languageAlternates ? { languages } : {}),
     },
     openGraph: {
       title,
       description,
-      url: `${BASE_URL}/${locale}${path}`,
+      url: `${SITE_URL}/${locale}${path}`,
       siteName: "Büşra Nur Karakoç",
       images: [{ url: ogImage, width: 1200, height: 630 }],
       locale,

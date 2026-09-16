@@ -37,10 +37,12 @@ export async function generateMetadata({
   }
 
   return buildMetadata({
-    locale,
+    locale: publication.language,
     path: `/yayinlar/${slug}`,
-    title: tMeta("siteTitle"),
-    description: tMeta("description"),
+    title: `${publication.title} | ${tMeta("siteTitle")}`,
+    description: publication.excerpt,
+    image: `/images/practice-areas/${publication.category}-banner.jpg`,
+    languageAlternates: false,
   });
 }
 

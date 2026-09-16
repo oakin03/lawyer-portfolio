@@ -1,14 +1,42 @@
 import type { MetadataRoute } from "next";
+import { PRACTICE_AREAS } from "@/lib/constants";
+import { getPublications } from "@/lib/publications";
+import { SITE_URL } from "@/lib/seo";
 
-const BASE_URL = "https://lawyer-portfolio-ecru.vercel.app";
 const LOCALES = ["tr", "en", "ar"];
-const PATHS = ["", "/hakkimda", "/uzmanlik-alanlari", "/yayinlar", "/iletisim"];
+const STATIC_PATHS = [
+  "",
+  "/hakkimda",
+  "/uzmanlik-alanlari",
+  "/yayinlar",
+  "/iletisim",
+];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  return LOCALES.flatMap((locale) =>
-    PATHS.map((path) => ({
-      url: `${BASE_URL}/${locale}${path}`,
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const publications = await getPublications();
+
+  const staticPages = LOCALES.flatMap((locale) =>
+    STATIC_PATHS.map((path) => ({
+      url: `${SITE_URL}/${locale}${path}`,
       lastModified: new Date(),
     }))
   );
+
+  const practiceAreaPages = LOCALES.flatMap((locale) =>
+    PRACTICE_AREAS.map((area) => ({
+      url: `${SITE_URL}/${locale}/uzmanlik-alanlari/${area.slug}`,
+      lastModified: new Date(),
+    }))
+  );
+
+  const publicationPages = publications.map((publication) => ({
+    url: `${SITE_URL}/${publication.language}/yayinlar/${publication.slug}`,
+    lastModified: new Date(publication.updated_at || publication.date),
+  }));
+
+  return [
+    ...staticPages,
+    ...practiceAreaPages,
+    ...publicationPages,
+  ];
 }
