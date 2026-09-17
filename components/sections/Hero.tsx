@@ -107,7 +107,13 @@ export default function Hero({
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-20 sm:pt-24 lg:px-8 lg:pt-28">
-        <div className="mr-auto max-w-4xl text-left">
+        <div
+          className={`max-w-4xl ${
+            isRtl
+              ? "ml-auto text-right"
+              : "mr-auto text-left"
+          }`}
+        >
 
           {/* ALINTI */}
           <div className="font-serif text-2xl leading-[1.35] text-white sm:text-4xl lg:text-[40px] [@media(max-height:500px)]:!text-lg">
