@@ -13,9 +13,7 @@ export default function ContactIntro() {
       icon: MapPin,
       label: t("address"),
       value: ATTORNEY.address,
-      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        ATTORNEY.address
-      )}`,
+      href: ATTORNEY.googleMapsUrl,
       external: true,
     },
     {
@@ -136,9 +134,7 @@ export default function ContactIntro() {
             <div className="h-[400px] overflow-hidden rounded-lg border border-neutral-200 md:h-auto md:min-h-full md:self-stretch">
               <iframe
                 title={t("mapTitle")}
-                src={`https://www.google.com/maps?q=${encodeURIComponent(
-                  ATTORNEY.address
-                )}&output=embed`}
+                src={ATTORNEY.googleMapsEmbedUrl}
                 width="100%"
                 height="100%"
                 className="h-full w-full"

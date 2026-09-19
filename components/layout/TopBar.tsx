@@ -20,10 +20,6 @@ export default function TopBar() {
     return null;
   }
 
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-    ATTORNEY.address
-  )}`;
-
   const telHref = `tel:${ATTORNEY.phone.replace(/\s/g, "")}`;
 
   return (
@@ -33,7 +29,7 @@ export default function TopBar() {
         <AddressHoverPreview
           address={ATTORNEY.address}
           displayText={ATTORNEY.shortLocation}
-          href={mapsUrl}
+          href={ATTORNEY.googleMapsUrl}
           imageSrc="/images/office-building.jpg"
           iconSize={13}
           iconClassName="flex-shrink-0"

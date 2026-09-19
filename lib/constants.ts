@@ -11,6 +11,9 @@ export const ATTORNEY = {
   photo: "/images/attorney-photo.jpg",
   heroImage: "/images/hero-background.jpg",
   address: "Mehmet Akif Ersoy Mah. 324 Cad. No: 2/B/37\nAnadolu 1919 Plaza\nYenimahalle/ANKARA",
+  googleMapsUrl: "https://maps.app.goo.gl/RyEJdwG4NLjPuAVT6",
+  googleMapsEmbedUrl:
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.639247565595!2d32.76842351180715!3d39.97181767139585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d349f3c392b479%3A0xe697ee1e27c96b74!2zQsO8xZ9yYSBOdXIgS2FyYWtvw6cgfCBBdnVrYXQgJiBBcmFidWx1Y3UgfCBBbmthcmEgxLDFnyBIdWt1a3UgQXZ1a2F0xLE!5e0!3m2!1str!2str!4v1789822411789!5m2!1str!2str",
   phone: "+90 531 662 66 76",
   barNumber: "Ankara Barosu - 12345",
   shortLocation: "Ankara, Anadolu Bulvarı",

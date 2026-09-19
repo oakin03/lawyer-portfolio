@@ -43,9 +43,7 @@ export default function Footer() {
           <div className="mt-4 space-y-2 text-sm text-neutral-500">
             <AddressHoverPreview
               address={ATTORNEY.address}
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                ATTORNEY.address
-              )}`}
+              href={ATTORNEY.googleMapsUrl}
               imageSrc="/images/office-building.jpg"
             />
             <a

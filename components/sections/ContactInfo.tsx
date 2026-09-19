@@ -18,9 +18,7 @@ export default function ContactInfo() {
       icon: MapPin,
       label: t("address"),
       value: ATTORNEY.address,
-      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        ATTORNEY.address
-      )}`,
+      href: ATTORNEY.googleMapsUrl,
       external: true,
     },
     {
