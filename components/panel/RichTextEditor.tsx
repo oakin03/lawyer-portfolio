@@ -2646,7 +2646,10 @@ export default function RichTextEditor({
   const editor =
     useEditor({
       extensions: [
-        StarterKit,
+        StarterKit.configure({
+          link: false,
+          underline: false,
+        }),
 
         LinkWithExtraAttributes.configure(
           {
