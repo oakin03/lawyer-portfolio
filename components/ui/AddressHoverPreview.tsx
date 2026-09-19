@@ -87,7 +87,7 @@ export default function AddressHoverPreview({
   );
 
   const previewPortal =
-    mounted
+    mounted && window.innerWidth >= 768
       ? createPortal(preview, document.body)
       : null;
 
@@ -98,7 +98,11 @@ export default function AddressHoverPreview({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          onMouseEnter={() => setIsVisible(true)}
+          onMouseEnter={() => {
+            if (window.innerWidth >= 768) {
+              setIsVisible(true);
+            }
+          }}
           onMouseLeave={() => setIsVisible(false)}
           onMouseMove={handleMouseMove}
           className={className ?? "transition-opacity hover:opacity-70"}
@@ -133,7 +137,11 @@ export default function AddressHoverPreview({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        onMouseEnter={() => setIsVisible(true)}
+        onMouseEnter={() => {
+          if (window.innerWidth >= 768) {
+            setIsVisible(true);
+          }
+        }}
         onMouseLeave={() => setIsVisible(false)}
         onMouseMove={handleMouseMove}
         className={
