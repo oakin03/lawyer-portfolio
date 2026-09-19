@@ -55,6 +55,15 @@ body {
     counter(article-subheading)
     ". ";
 }
+.publication-rich-text h2,
+.publication-rich-text h3 {
+  font-weight: 400;
+}
+
+.publication-rich-text h2 strong,
+.publication-rich-text h3 strong {
+  font-weight: 700;
+}
 
 /* Dipnotlar */
 

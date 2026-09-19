@@ -511,7 +511,6 @@ function headingStyle(
     )}`,
     `font-size:${size}px`,
     `color:${settings.headingColor}`,
-    "font-weight:700",
   ].join(";");
 }
 
@@ -523,7 +522,6 @@ function normalizeHeading(
   text: string
 ) {
   return text
-    .replace(/\u00a0/g, " ")
     .replace(/\s+/g, " ")
     .trim()
     .replace(
@@ -535,12 +533,38 @@ function normalizeHeading(
     );
 }
 
+const LETTER_HEADING_PREFIX =
+  /^\s*[A-ZÇĞİÖŞÜ]\.\s+/u;
+
+const NUMBERED_HEADING_PREFIX =
+  /^\s*(?:\d+[.)]|\d+(?:\.\d+)+[.)]?)\s+/u;
+
+function looksLikeLetterHeading(
+  text: string
+) {
+  return LETTER_HEADING_PREFIX.test(
+    text
+  );
+}
+
+function looksLikeNumberedHeading(
+  text: string
+) {
+  return NUMBERED_HEADING_PREFIX.test(
+    text
+  );
+}
+
 function stripOldNumber(
   text: string
 ) {
   return text
     .replace(
-      /^\s*(?:[A-ZÇĞİÖŞÜ]\.\s+|\d+(?:\.\d+)*[.)]?\s+)/u,
+      LETTER_HEADING_PREFIX,
+      ""
+    )
+    .replace(
+      NUMBERED_HEADING_PREFIX,
       ""
     )
     .trim();
@@ -621,6 +645,76 @@ function looksLikeUppercaseHeading(
   );
 }
 
+function markTableOfContents(
+  root: HTMLElement
+) {
+  const children =
+    Array.from(
+      root.children
+    );
+
+  const tocStartIndex =
+    children.findIndex(
+      (element) => {
+        const normalized =
+          normalizeHeading(
+            element.textContent ?? ""
+          );
+
+        return (
+          normalized ===
+            "TABLE OF CONTENTS" ||
+          normalized ===
+            "İÇİNDEKİLER" ||
+          normalized ===
+            "İÇİNDEKİLER TABLOSU"
+        );
+      }
+    );
+
+  if (
+    tocStartIndex === -1
+  ) {
+    return;
+  }
+
+  children[
+    tocStartIndex
+  ].setAttribute(
+    "data-word-toc",
+    "true"
+  );
+
+  for (
+    let index =
+      tocStartIndex + 1;
+    index < children.length;
+    index += 1
+  ) {
+    const element =
+      children[index];
+
+    /*
+     * İçindekilerden sonra Word'ün
+     * gerçek heading stiline sahip
+     * ilk içerik başlığına geldiğimizde
+     * TOC bölgesi biter.
+     */
+    if (
+      /^H[1-6]$/i.test(
+        element.tagName
+      )
+    ) {
+      break;
+    }
+
+    element.setAttribute(
+      "data-word-toc",
+      "true"
+    );
+  }
+}
+
 function normalizeImportedHeadings(
   root: HTMLElement
 ) {
@@ -630,12 +724,53 @@ function normalizeImportedHeadings(
     )
   ).forEach(
     (heading) => {
+      const text =
+        heading.textContent
+          ?.replace(/\s+/g, " ")
+          .trim() ?? "";
+
+      if (
+        heading.getAttribute(
+          "data-word-toc"
+        ) === "true"
+      ) {
+        return;
+      }
+
       const level =
         Number(
           heading.tagName.substring(
             1
           )
         );
+
+      if (
+        splitLabelHeading(
+          heading
+        )
+      ) {
+        return;
+      }
+
+      if (
+        !looksLikeRealHeading(
+          text
+        )
+      ) {
+        const paragraph =
+          heading.ownerDocument.createElement(
+            "p"
+          );
+
+        paragraph.innerHTML =
+          heading.innerHTML;
+
+        heading.replaceWith(
+          paragraph
+        );
+
+        return;
+      }
 
       const replacement =
         changeTag(
@@ -644,6 +779,14 @@ function normalizeImportedHeadings(
             ? "h2"
             : "h3"
         );
+
+      if (level === 1) {
+        replacement.textContent =
+          replacement.textContent
+            ?.toLocaleUpperCase(
+              "tr-TR"
+            ) ?? "";
+      }
 
       cleanHeadingText(
         replacement
@@ -660,6 +803,14 @@ function normalizeImportedHeadings(
     )
     .forEach(
       (element) => {
+        if (
+          element.getAttribute(
+            "data-word-toc"
+          ) === "true"
+        ) {
+          return;
+        }
+
         const text =
           element.textContent
             ?.replace(
@@ -673,7 +824,7 @@ function normalizeImportedHeadings(
         }
 
         if (
-          /^[A-ZÇĞİÖŞÜ]\.\s+/u.test(
+          looksLikeLetterHeading(
             text
           )
         ) {
@@ -691,7 +842,7 @@ function normalizeImportedHeadings(
         }
 
         if (
-          /^\d+(?:\.\d+)*[.)]?\s+/u.test(
+          looksLikeNumberedHeading(
             text
           )
         ) {
@@ -824,6 +975,27 @@ function sanitizeImportedContent(
     );
 }
 
+function makeImportedHeadingBold(
+  element: HTMLElement
+) {
+  const strong =
+    element.ownerDocument.createElement(
+      "strong"
+    );
+
+  while (
+    element.firstChild
+  ) {
+    strong.appendChild(
+      element.firstChild
+    );
+  }
+
+  element.appendChild(
+    strong
+  );
+}
+
 function applyDefaultsToImportedContent(
   root: HTMLElement,
   settings: EditorDefaults
@@ -841,6 +1013,10 @@ function applyDefaultsToImportedContent(
             2
           )
         );
+
+        makeImportedHeadingBold(
+          element
+        );
       }
     );
 
@@ -856,6 +1032,10 @@ function applyDefaultsToImportedContent(
             settings,
             3
           )
+        );
+
+        makeImportedHeadingBold(
+          element
         );
       }
     );
@@ -887,7 +1067,7 @@ function applyDefaultsToImportedContent(
 function detectStartIndex(
   blocks: WordBlock[]
 ) {
-  let lastFrontMatter =
+  let tocIndex =
     -1;
 
   blocks.forEach(
@@ -895,39 +1075,63 @@ function detectStartIndex(
       block,
       index
     ) => {
+      const normalized =
+        normalizeHeading(
+          block.text
+        );
+
       if (
-        FRONT_MATTER_HEADINGS.has(
-          normalizeHeading(
-            block.text
-          )
-        )
+        normalized ===
+          "TABLE OF CONTENTS" ||
+        normalized ===
+          "İÇİNDEKİLER" ||
+        normalized ===
+          "İÇİNDEKİLER TABLOSU"
       ) {
-        lastFrontMatter =
+        tocIndex =
           index;
       }
     }
   );
 
-  const from =
-    Math.max(
-      lastFrontMatter + 1,
-      0
-    );
+  const searchFrom =
+    tocIndex !== -1
+      ? tocIndex + 1
+      : 0;
 
   for (
-    let index = from;
-    index < blocks.length;
+    let index =
+      searchFrom;
+    index <
+    blocks.length;
     index += 1
   ) {
+    const block =
+      blocks[index];
+
+    const normalized =
+      normalizeHeading(
+        block.text
+      );
+
     if (
-      blocks[index].tag ===
-      "H2"
+      block.tag === "H2" &&
+      !FRONT_MATTER_HEADINGS.has(
+        normalized
+      ) &&
+      !BIBLIOGRAPHY_HEADINGS.has(
+        normalized
+      )
     ) {
       return index;
     }
   }
 
-  return from;
+  /*
+   * Hiç gerçek başlık bulunamazsa
+   * ilk dolu içerikten başla.
+   */
+  return searchFrom;
 }
 
 function detectBibliographyIndex(
@@ -1006,6 +1210,10 @@ function parseWordHtml(
       container.remove()
   );
 
+  markTableOfContents(
+    root
+  );
+
   normalizeImportedHeadings(
     root
   );
@@ -1059,6 +1267,84 @@ function parseWordHtml(
     blocks,
     footnotes,
   };
+}
+
+function countSentenceEndings(
+  text: string
+) {
+  return (
+    text.match(/[.!?](?:\s|$)/g)
+      ?.length ?? 0
+  );
+}
+
+function looksLikeRealHeading(
+  text: string
+) {
+  const value = text
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!value) {
+    return false;
+  }
+
+  if (value.length > 160) {
+    return false;
+  }
+
+  if (
+    countSentenceEndings(value) >
+    1
+  ) {
+    return false;
+  }
+
+  return true;
+}
+
+function splitLabelHeading(
+  element: Element
+) {
+  const text =
+    element.textContent
+      ?.replace(/\s+/g, " ")
+      .trim() ?? "";
+
+  const match =
+    text.match(
+      /^([^:]{2,50}):\s+(.{20,})$/u
+    );
+
+  if (!match) {
+    return false;
+  }
+
+  const [, label, body] =
+    match;
+
+  const heading =
+    element.ownerDocument.createElement(
+      "h3"
+    );
+
+  heading.textContent =
+    label.trim();
+
+  const paragraph =
+    element.ownerDocument.createElement(
+      "p"
+    );
+
+  paragraph.textContent =
+    body.trim();
+
+  element.replaceWith(
+    heading,
+    paragraph
+  );
+
+  return true;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -1958,19 +2244,8 @@ function WordImportModal({
           parsed.blocks
         );
 
-      const bibliography =
-        detectBibliographyIndex(
-          parsed.blocks
-        );
-
       const end =
-        bibliography >
-        start
-          ? bibliography -
-            1
-          : parsed.blocks
-              .length -
-            1;
+        parsed.blocks.length - 1;
 
       setBlocks(
         parsed.blocks
@@ -2902,6 +3177,73 @@ export default function RichTextEditor({
   /* HEADING                                                                  */
   /* ------------------------------------------------------------------------ */
 
+  function setCurrentBlockBold(
+    bold: boolean
+  ) {
+    const selection =
+      safeEditor.state.selection;
+
+    if (!selection.empty) {
+      if (bold) {
+        safeEditor
+          .chain()
+          .focus()
+          .setBold()
+          .run();
+      } else {
+        safeEditor
+          .chain()
+          .focus()
+          .unsetBold()
+          .run();
+      }
+
+      return;
+    }
+
+    const cursorPosition =
+      selection.from;
+
+    const from =
+      selection.$from.start();
+
+    const to =
+      selection.$from.end();
+
+    if (from >= to) {
+      return;
+    }
+
+    if (bold) {
+      safeEditor
+        .chain()
+        .focus()
+        .setTextSelection({
+          from,
+          to,
+        })
+        .setBold()
+        .run();
+    } else {
+      safeEditor
+        .chain()
+        .focus()
+        .setTextSelection({
+          from,
+          to,
+        })
+        .unsetBold()
+        .run();
+    }
+
+    safeEditor.commands.setTextSelection(
+      cursorPosition
+    );
+
+    safeEditor.commands.focus();
+  }
+
+
   function makeHeading(
     level: 2 | 3
   ) {
@@ -2923,6 +3265,10 @@ export default function RichTextEditor({
       )
       .run();
 
+    setCurrentBlockBold(
+      true
+    );
+
     setSelectedFont(
       settings.headingFont
     );
@@ -2935,11 +3281,30 @@ export default function RichTextEditor({
   }
 
   function makeParagraph() {
+    const wasHeading =
+      isHeading2() ||
+      isHeading3();
+
     safeEditor
       .chain()
       .focus()
       .setParagraph()
+      .updateAttributes(
+        "paragraph",
+        {
+          style:
+            bodyStyle(
+              settings
+            ),
+        }
+      )
       .run();
+
+    if (wasHeading) {
+      setCurrentBlockBold(
+        false
+      );
+    }
 
     setSelectedFont(
       settings.bodyFont
