@@ -32,7 +32,10 @@ body {
 /* Makale başlıklarının otomatik numaralandırılması */
 
 .publication-rich-text {
-  counter-reset: article-heading;
+  counter-reset:
+    article-heading
+    article-subheading
+    article-subsubheading;
 }
 
 .publication-rich-text h2 {
@@ -46,6 +49,7 @@ body {
 
 .publication-rich-text h3 {
   counter-increment: article-subheading;
+  counter-reset: article-subsubheading;
 }
 
 .publication-rich-text h3::before {
@@ -55,13 +59,37 @@ body {
     counter(article-subheading)
     ". ";
 }
+
+.publication-rich-text h4 {
+  counter-increment: article-subsubheading;
+}
+
+.publication-rich-text h4::before {
+  content:
+    counter(article-heading)
+    "."
+    counter(article-subheading)
+    "."
+    counter(article-subsubheading)
+    ". ";
+}
+
+
 .publication-rich-text h2,
-.publication-rich-text h3 {
+.publication-rich-text h3,
+.publication-rich-text h4 {
   font-weight: 400;
+}
+
+.publication-rich-text strong {
+  font-weight: 700;
 }
 
 .publication-rich-text h2 strong,
 .publication-rich-text h3 strong {
+  font-weight: 700;
+}
+.publication-rich-text strong {
   font-weight: 700;
 }
 

@@ -555,6 +555,34 @@ function looksLikeNumberedHeading(
   );
 }
 
+function getNumberedHeadingLevel(
+  text: string
+): 2 | 3 | 4 | null {
+  const match =
+    text
+      .trim()
+      .match(
+        /^(\d+(?:\.\d+)*)[.)]?\s+/u
+      );
+
+  if (!match) {
+    return null;
+  }
+
+  const depth =
+    match[1].split(".").length;
+
+  if (depth === 1) {
+    return 2;
+  }
+
+  if (depth === 2) {
+    return 3;
+  }
+
+  return 4;
+}
+
 function stripOldNumber(
   text: string
 ) {
@@ -572,7 +600,7 @@ function stripOldNumber(
 
 function changeTag(
   element: Element,
-  tag: "h2" | "h3"
+  tag: "h2" | "h3" | "h4"
 ) {
   const replacement =
     element.ownerDocument.createElement(
@@ -777,7 +805,9 @@ function normalizeImportedHeadings(
           heading,
           level <= 2
             ? "h2"
-            : "h3"
+            : level === 3
+              ? "h3"
+              : "h4"
         );
 
       if (level === 1) {
@@ -841,15 +871,20 @@ function normalizeImportedHeadings(
           return;
         }
 
-        if (
-          looksLikeNumberedHeading(
+        const numberedLevel =
+          getNumberedHeadingLevel(
             text
-          )
-        ) {
+          );
+
+        if (numberedLevel) {
           const heading =
             changeTag(
               element,
-              "h3"
+              numberedLevel === 2
+                ? "h2"
+                : numberedLevel === 3
+                  ? "h3"
+                  : "h4"
             );
 
           cleanHeadingText(
