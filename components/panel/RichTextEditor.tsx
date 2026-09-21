@@ -47,6 +47,10 @@ import {
   X,
 } from "lucide-react";
 
+import {
+  textblockTypeInputRule,
+} from "@tiptap/core";
+
 import { createClient } from "@/lib/supabase/client";
 
 /* -------------------------------------------------------------------------- */
@@ -297,6 +301,47 @@ const FontSize = Extension.create({
     };
   },
 });
+
+const NumberedHeadingInputRules =
+  Extension.create({
+    name:
+      "numberedHeadingInputRules",
+
+    addInputRules() {
+      const heading =
+        this.editor.schema.nodes
+          .heading;
+
+      return [
+        textblockTypeInputRule({
+          find:
+            /^\d+\.\d+\.\d+[.)]?\s$/u,
+          type: heading,
+          getAttributes: () => ({
+            level: 4,
+          }),
+        }),
+
+        textblockTypeInputRule({
+          find:
+            /^\d+\.\d+[.)]?\s$/u,
+          type: heading,
+          getAttributes: () => ({
+            level: 3,
+          }),
+        }),
+
+        textblockTypeInputRule({
+          find:
+            /^\d+[.)]\s$/u,
+          type: heading,
+          getAttributes: () => ({
+            level: 2,
+          }),
+        }),
+      ];
+    },
+  });
 
 const LinkWithExtraAttributes = Link.extend({
   addAttributes() {
@@ -639,35 +684,76 @@ function extractTableOfContentsHeadings(
        */
       text = text
         .replace(
-          /\.{2,}\s*\d+\s*$/u,
+          /(?:\.{2,}|\s+)\s*\d+\s*$/u,
           ""
         )
         .trim();
 
-      const match =
-        text.match(
-          /^(\d+(?:\.\d+)*)(?:[.)])?\s+(.+)$/u
-        );
+        const numericMatch =
+          text.match(
+            /^(\d+(?:\.\d+)*)(?:[.)]\s*|\s+)(.+)$/u
+          );
 
-      if (!match) {
-        return;
-      }
+        const letterMatch =
+          text.match(
+            /^([A-ZÇĞİÖŞÜa-zçğıöşü])[.)]\s*(.+)$/u
+          );
 
-      const number =
-        match[1];
+        if (
+          !numericMatch &&
+          !letterMatch
+        ) {
+          return;
+        }
 
-      const title =
-        match[2].trim();
+        let number = "";
+        let title = "";
+        let level: 2 | 3 | 4;
 
-      const depth =
-        number.split(".").length;
+        if (numericMatch) {
+          number =
+            numericMatch[1];
 
-      const level: 2 | 3 | 4 =
-        depth === 1
-          ? 2
-          : depth === 2
-            ? 3
-            : 4;
+          title =
+            numericMatch[2].trim();
+
+          const depth =
+            number.split(".").length;
+
+          level =
+            depth === 1
+              ? 2
+              : depth === 2
+                ? 3
+                : 4;
+        } else {
+          number =
+            letterMatch![1];
+
+          title =
+            letterMatch![2].trim();
+
+          const isUppercase =
+            number ===
+            number.toLocaleUpperCase(
+              "tr-TR"
+            );
+
+          level =
+            isUppercase
+              ? 3
+              : 4;
+        }
+
+        headings.push({
+          number,
+          title,
+          normalizedTitle:
+            normalizeHeading(
+              title
+            ),
+          level,
+        });
 
       headings.push({
         number,
@@ -2966,7 +3052,8 @@ export default function RichTextEditor({
         ),
 
         BlockStyleAttributes,
-
+        NumberedHeadingInputRules,
+        
         Underline,
         TextStyle,
         Color,
