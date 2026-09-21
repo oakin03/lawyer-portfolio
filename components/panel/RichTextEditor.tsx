@@ -123,6 +123,10 @@ const FONT_OPTIONS = [
     value: "",
   },
   {
+    label: "Geist",
+    value: "var(--font-geist-sans), sans-serif",
+  },
+  {
     label: "Arial",
     value: "Arial, sans-serif",
   },
