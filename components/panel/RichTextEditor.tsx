@@ -79,14 +79,14 @@ type EditorDefaults = {
 
 const DEFAULT_SETTINGS: EditorDefaults = {
   bodyFont: "",
-  bodySize: 18,
+  bodySize: 16,
   bodyColor: "#000000",
 
   headingFont: "",
   headingColor: "#000000",
 
-  headingSize: 22,
-  subheadingSize: 20,
+  headingSize: 18,
+  subheadingSize: 18,
 };
 
 const FRONT_MATTER_HEADINGS = new Set([
