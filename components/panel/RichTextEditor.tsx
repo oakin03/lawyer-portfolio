@@ -1005,6 +1005,40 @@ function normalizeImportedHeadings(
         return;
       }
 
+      const normalizedText =
+        normalizeHeading(
+          text
+        );
+
+      if (
+        BIBLIOGRAPHY_HEADINGS.has(
+          normalizedText
+        )
+      ) {
+        const paragraph =
+          heading.ownerDocument.createElement(
+            "p"
+          );
+
+        const strong =
+          heading.ownerDocument.createElement(
+            "strong"
+          );
+
+        strong.textContent =
+          heading.textContent;
+
+        paragraph.appendChild(
+          strong
+        );
+
+        heading.replaceWith(
+          paragraph
+        );
+
+        return;
+      }
+
       if (
         splitLabelHeading(
           heading

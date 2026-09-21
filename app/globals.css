@@ -31,6 +31,7 @@ body {
 
 /* Makale başlıklarının otomatik numaralandırılması */
 
+
 .publication-rich-text {
   counter-reset:
     article-heading
@@ -40,7 +41,9 @@ body {
 
 .publication-rich-text h2 {
   counter-increment: article-heading;
-  counter-reset: article-subheading;
+  counter-set:
+    article-subheading 0
+    article-subsubheading 0;
 }
 
 .publication-rich-text h2::before {
@@ -49,7 +52,8 @@ body {
 
 .publication-rich-text h3 {
   counter-increment: article-subheading;
-  counter-reset: article-subsubheading;
+  counter-set:
+    article-subsubheading 0;
 }
 
 .publication-rich-text h3::before {
@@ -72,6 +76,14 @@ body {
     "."
     counter(article-subsubheading)
     ". ";
+}
+
+.publication-rich-text #footnotes-title {
+  counter-increment: none;
+}
+
+.publication-rich-text #footnotes-title::before {
+  content: none;
 }
 
 
