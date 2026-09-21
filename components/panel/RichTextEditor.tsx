@@ -59,6 +59,13 @@ type WordBlock = {
   tag: string;
 };
 
+type TocHeading = {
+  number: string;
+  title: string;
+  normalizedTitle: string;
+  level: 2 | 3 | 4;
+};
+
 type FootnoteMap = Record<string, string>;
 
 type EditorDefaults = {
@@ -583,6 +590,101 @@ function getNumberedHeadingLevel(
   return 4;
 }
 
+function headingTagFromLevel(
+  level: 2 | 3 | 4
+): "h2" | "h3" | "h4" {
+  if (level === 2) {
+    return "h2";
+  }
+
+  if (level === 3) {
+    return "h3";
+  }
+
+  return "h4";
+}
+
+function extractTableOfContentsHeadings(
+  root: HTMLElement
+): TocHeading[] {
+  const headings: TocHeading[] =
+    [];
+
+  root
+    .querySelectorAll<HTMLElement>(
+      '[data-word-toc="true"]'
+    )
+    .forEach((element) => {
+      let text =
+        element.textContent
+          ?.replace(/\s+/g, " ")
+          .trim() ?? "";
+
+      if (
+        !text ||
+        FRONT_MATTER_HEADINGS.has(
+          normalizeHeading(text)
+        )
+      ) {
+        return;
+      }
+
+      /*
+       * İçindekiler satırının sonundaki
+       * nokta dizisini ve sayfa numarasını
+       * temizler.
+       *
+       * Örnek:
+       * 3.2. Results..............12
+       */
+      text = text
+        .replace(
+          /\.{2,}\s*\d+\s*$/u,
+          ""
+        )
+        .trim();
+
+      const match =
+        text.match(
+          /^(\d+(?:\.\d+)*)(?:[.)])?\s+(.+)$/u
+        );
+
+      if (!match) {
+        return;
+      }
+
+      const number =
+        match[1];
+
+      const title =
+        match[2].trim();
+
+      const depth =
+        number.split(".").length;
+
+      const level: 2 | 3 | 4 =
+        depth === 1
+          ? 2
+          : depth === 2
+            ? 3
+            : 4;
+
+      headings.push({
+        number,
+        title,
+        normalizedTitle:
+          normalizeHeading(
+            stripOldNumber(
+              title
+            )
+          ),
+        level,
+      });
+    });
+
+  return headings;
+}
+
 function stripOldNumber(
   text: string
 ) {
@@ -744,19 +846,59 @@ function markTableOfContents(
 }
 
 function normalizeImportedHeadings(
-  root: HTMLElement
+  root: HTMLElement,
+  tocHeadings: TocHeading[]
 ) {
+  const usedTocHeadings =
+    new Set<number>();
+
+  function findTocHeading(
+    text: string
+  ) {
+    const normalized =
+      normalizeHeading(
+        stripOldNumber(
+          text
+        )
+      );
+
+    const index =
+      tocHeadings.findIndex(
+        (
+          heading,
+          headingIndex
+        ) =>
+          !usedTocHeadings.has(
+            headingIndex
+          ) &&
+          heading.normalizedTitle ===
+            normalized
+      );
+
+    if (index === -1) {
+      return null;
+    }
+
+    usedTocHeadings.add(
+      index
+    );
+
+    return tocHeadings[
+      index
+    ];
+  }
+
+  /*
+   * Önce Word tarafından gerçekten
+   * heading olarak işaretlenmiş
+   * elemanları işleriz.
+   */
   Array.from(
     root.querySelectorAll(
       "h1,h2,h3,h4,h5,h6"
     )
   ).forEach(
     (heading) => {
-      const text =
-        heading.textContent
-          ?.replace(/\s+/g, " ")
-          .trim() ?? "";
-
       if (
         heading.getAttribute(
           "data-word-toc"
@@ -765,12 +907,17 @@ function normalizeImportedHeadings(
         return;
       }
 
-      const level =
-        Number(
-          heading.tagName.substring(
-            1
+      const text =
+        heading.textContent
+          ?.replace(
+            /\s+/g,
+            " "
           )
-        );
+          .trim() ?? "";
+
+      if (!text) {
+        return;
+      }
 
       if (
         splitLabelHeading(
@@ -800,36 +947,91 @@ function normalizeImportedHeadings(
         return;
       }
 
+      /*
+       * Öncelik:
+       * 1. İçindekiler
+       * 2. Başlığın kendi numarası
+       * 3. Word Heading seviyesi
+       */
+      const tocHeading =
+        findTocHeading(
+          text
+        );
+
+      const numberedLevel =
+        getNumberedHeadingLevel(
+          text
+        );
+
+      const wordLevel =
+        Number(
+          heading.tagName.substring(
+            1
+          )
+        );
+
+      const finalLevel:
+        | 2
+        | 3
+        | 4 =
+        tocHeading?.level ??
+        numberedLevel ??
+        (
+          wordLevel <= 2
+            ? 2
+            : wordLevel === 3
+              ? 3
+              : 4
+        );
+
       const replacement =
         changeTag(
           heading,
-          level <= 2
-            ? "h2"
-            : level === 3
-              ? "h3"
-              : "h4"
+          headingTagFromLevel(
+            finalLevel
+          )
         );
 
-      if (level === 1) {
+      /*
+       * İçindekiler varsa başlığın
+       * yazımını da oradaki metinden
+       * alıyoruz.
+       */
+      if (tocHeading) {
         replacement.textContent =
-          replacement.textContent
-            ?.toLocaleUpperCase(
-              "tr-TR"
-            ) ?? "";
-      }
+          tocHeading.title;
+      } else {
+        cleanHeadingText(
+          replacement
+        );
 
-      cleanHeadingText(
-        replacement
-      );
+        if (
+          wordLevel === 1
+        ) {
+          replacement.textContent =
+            replacement.textContent
+              ?.toLocaleUpperCase(
+                "tr-TR"
+              ) ?? "";
+        }
+      }
     }
   );
 
+  /*
+   * Normal paragraflar.
+   *
+   * İçindekiler varsa yalnızca
+   * İçindekiler'de bulunan bir satır
+   * başlığa dönüştürülebilir.
+   */
   Array.from(
     root.children
   )
     .filter(
       (element) =>
-        element.tagName === "P"
+        element.tagName ===
+        "P"
     )
     .forEach(
       (element) => {
@@ -853,6 +1055,50 @@ function normalizeImportedHeadings(
           return;
         }
 
+        /*
+         * İçindekiler varsa onu
+         * kesin referans kabul et.
+         */
+        if (
+          tocHeadings.length >
+          0
+        ) {
+          const tocHeading =
+            findTocHeading(
+              text
+            );
+
+          if (
+            !tocHeading
+          ) {
+            return;
+          }
+
+          const replacement =
+            changeTag(
+              element,
+              headingTagFromLevel(
+                tocHeading.level
+              )
+            );
+
+          replacement.textContent =
+            tocHeading.title;
+
+          return;
+        }
+
+        /*
+         * İçindekiler YOKSA:
+         *
+         * Normal paragrafın başındaki
+         * 1.2.3 gibi rakamlara bakmıyoruz.
+         *
+         * Böylece:
+         * "753 sayılı Kanuna göre..."
+         * gibi paragraflar başlık olmaz.
+         */
+
         if (
           looksLikeLetterHeading(
             text
@@ -871,29 +1117,12 @@ function normalizeImportedHeadings(
           return;
         }
 
-        const numberedLevel =
-          getNumberedHeadingLevel(
-            text
-          );
-
-        if (numberedLevel) {
-          const heading =
-            changeTag(
-              element,
-              numberedLevel === 2
-                ? "h2"
-                : numberedLevel === 3
-                  ? "h3"
-                  : "h4"
-            );
-
-          cleanHeadingText(
-            heading
-          );
-
-          return;
-        }
-
+        /*
+         * IEEE tarzı belgelerde
+         * INTRODUCTION, METHODOLOGY
+         * gibi tamamen büyük harfli
+         * kısa başlıkları koruyoruz.
+         */
         if (
           looksLikeUppercaseHeading(
             text
@@ -1075,6 +1304,26 @@ function applyDefaultsToImportedContent(
       }
     );
 
+    root
+      .querySelectorAll<HTMLElement>(
+        "h4"
+      )
+      .forEach(
+        (element) => {
+          element.setAttribute(
+            "style",
+            headingStyle(
+              settings,
+              3
+            )
+          );
+
+          makeImportedHeadingBold(
+            element
+          );
+        }
+      );
+
   root
     .querySelectorAll<HTMLElement>(
       "p,li,td,th"
@@ -1249,8 +1498,14 @@ function parseWordHtml(
     root
   );
 
+  const tocHeadings =
+    extractTableOfContentsHeadings(
+      root
+    );
+
   normalizeImportedHeadings(
-    root
+    root,
+    tocHeadings
   );
 
   sanitizeImportedContent(
